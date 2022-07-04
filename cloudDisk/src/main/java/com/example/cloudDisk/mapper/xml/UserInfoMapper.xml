@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.cloudDisk.mapper.UserInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.example.cloudDisk.pojo.UserInfo">
+        <id column="user_id" property="userId" />
+        <result column="user_info_id" property="userInfoId" />
+        <result column="user_name" property="userName" />
+        <result column="user_tel" property="userTel" />
+        <result column="user_pwd" property="userPwd" />
+        <result column="user_initialize" property="userInitialize" />
+        <result column="user_introduction" property="userIntroduction" />
+        <result column="user_local" property="userLocal" />
+        <result column="user_avatar" property="userAvatar" />
+        <result column="create_time" property="createTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        user_info_id, user_id, user_name, user_tel, user_pwd, user_initialize, user_introduction, user_local, user_avatar, create_time
+    </sql>
+
+</mapper>

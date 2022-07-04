@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.cloudDisk.mapper.FolderFileInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.example.cloudDisk.pojo.FolderFileInfo">
+        <id column="folder_file_info_id" property="folderFileInfoId" />
+        <result column="folder_file_id" property="folderFileId" />
+        <result column="folder_file_type" property="folderFileType" />
+        <result column="folder_pd" property="folderPd" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        folder_file_info_id, folder_file_id, folder_file_type, folder_pd
+    </sql>
+
+</mapper>

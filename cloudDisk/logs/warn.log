@@ -1,0 +1,2 @@
+2022-06-03 10:17:38.050 WARN [http-nio-8080-exec-1] com.example.cloudDisk.TestController : 这是log4j2的日志测试，warn级别
+2022-06-03 10:17:38.050 ERROR[http-nio-8080-exec-1] com.example.cloudDisk.TestController : 这是log4j2的日志测试，error级别

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.cloudDisk.mapper.FileInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.example.cloudDisk.pojo.FileInfo">
+        <id column="file_id" property="fileId" />
+        <result column="file_info_id" property="fileInfoId" />
+        <result column="file_path" property="filePath" />
+        <result column="file_folder_id" property="fileFolderId" />
+        <result column="file_name" property="fileName" />
+        <result column="file_type" property="fileType" />
+        <result column="file_upload_id" property="fileUploadId" />
+        <result column="file_upload_time" property="fileUploadTime" />
+        <result column="file_status" property="fileStatus" />
+        <result column="file_others" property="fileOthers" />
+        <result column="file_click_nums" property="fileClickNums" />
+        <result column="file_download_nums" property="fileDownloadNums" />
+        <result column="file_avatar" property="fileAvatar" />
+        <result column="file_del" property="fileDel" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        file_info_id, file_id, file_path, file_folder_id, file_name, file_type, file_upload_id, file_upload_time, file_status, file_others, file_click_nums, file_download_nums, file_avatar, file_del
+    </sql>
+
+</mapper>

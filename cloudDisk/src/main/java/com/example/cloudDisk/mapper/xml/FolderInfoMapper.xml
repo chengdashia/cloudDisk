@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.cloudDisk.mapper.FolderInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.example.cloudDisk.pojo.FolderInfo">
+        <id column="folder_id" property="folderId" />
+        <result column="folder_info_id" property="folderInfoId" />
+        <result column="user_id" property="userId" />
+        <result column="folder_url" property="folderUrl" />
+        <result column="folder_name" property="folderName" />
+        <result column="folder_tips" property="folderTips" />
+        <result column="folder_create_time" property="folderCreateTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        folder_info_id, folder_id, user_id, folder_url, folder_name, folder_tips, folder_create_time
+    </sql>
+
+</mapper>

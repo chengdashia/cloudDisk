@@ -1,0 +1,25 @@
+2022-06-03 10:17:22.691 INFO [background-preinit] org.hibernate.validator.internal.util.Version : HV000001: Hibernate Validator 6.2.3.Final
+2022-06-03 10:17:22.715 INFO [main] com.example.cloudDisk.CloudDiskApplication : Starting DemoApplication using Java 1.8.0_311 on DESKTOP-3058MDQ with PID 15560 (E:\demo\target\classes started by Serendipity in E:\demo)
+2022-06-03 10:17:22.717 INFO [main] com.example.cloudDisk.CloudDiskApplication : The following 1 profile is active: "dev"
+2022-06-03 10:17:23.723 INFO [main] org.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8080"]
+2022-06-03 10:17:23.723 INFO [main] org.apache.catalina.core.StandardService : Starting service [Tomcat]
+2022-06-03 10:17:23.723 INFO [main] org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-06-03 10:17:23.851 INFO [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2022-06-03 10:17:24.883 INFO [main] org.apache.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8080"]
+2022-06-03 10:17:25.030 INFO [main] com.example.cloudDisk.CloudDiskApplication : Started DemoApplication in 2.635 seconds (JVM running for 3.447)
+2022-06-03 10:17:38.036 INFO [http-nio-8080-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-06-03 10:17:38.050 INFO [http-nio-8080-exec-1] com.example.cloudDisk.TestController : 这是log4j2的日志测试，info级别
+2022-06-03 10:17:38.050 WARN [http-nio-8080-exec-1] com.example.cloudDisk.TestController : 这是log4j2的日志测试，warn级别
+2022-06-03 10:17:38.050 ERROR[http-nio-8080-exec-1] com.example.cloudDisk.TestController : 这是log4j2的日志测试，error级别
+2022-06-03 10:17:38.052 INFO [http-nio-8080-exec-1] com.example.cloudDisk.TestController : 这是带参数的输出格式:约翰·冯·诺依曼 保佑，永无BUG
+2022-06-03 10:21:05.707 INFO [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource : {dataSource-0} closing ...
+2022-06-03 10:21:13.148 INFO [background-preinit] org.hibernate.validator.internal.util.Version : HV000001: Hibernate Validator 6.2.3.Final
+2022-06-03 10:21:13.170 INFO [main] com.example.cloudDisk.CloudDiskApplication : Starting DemoApplication using Java 1.8.0_311 on DESKTOP-3058MDQ with PID 11340 (E:\demo\target\classes started by Serendipity in E:\demo)
+2022-06-03 10:21:13.173 INFO [main] com.example.cloudDisk.CloudDiskApplication : The following 1 profile is active: "dev"
+2022-06-03 10:21:14.257 INFO [main] org.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8080"]
+2022-06-03 10:21:14.257 INFO [main] org.apache.catalina.core.StandardService : Starting service [Tomcat]
+2022-06-03 10:21:14.257 INFO [main] org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-06-03 10:21:14.386 INFO [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2022-06-03 10:21:15.486 INFO [main] org.apache.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8080"]
+2022-06-03 10:21:15.629 INFO [main] com.example.cloudDisk.CloudDiskApplication : Started DemoApplication in 2.82 seconds (JVM running for 3.889)
+2022-06-03 11:29:32.304 INFO [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource : {dataSource-0} closing ...
