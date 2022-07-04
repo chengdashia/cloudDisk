@@ -161,7 +161,7 @@ public class FileInfoController {
             @RequestPart("file") MultipartFile file
     ){
 
-//        System.out.println(file.getOriginalFilename());
+        System.out.println(file.getOriginalFilename());
         return null;
     }
 
