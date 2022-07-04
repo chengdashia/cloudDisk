@@ -148,22 +148,22 @@ public class FileInfoController {
     }
 
 
-    ///**
-    // * test upload 文件
-    // * @return          R
-    // */
-    //@ApiOperation("test upload 文件")
-    //@PostMapping("/testUploadFile")
-    //@ApiImplicitParams({
-    //        @ApiImplicitParam(paramType="form",name="file",dataTypeClass = MultipartFile.class,value="文件")
-    //})
-    //public R<Object> testUploadFile(
-    //        @RequestPart("file") MultipartFile file
-    //){
-    //
-    //    System.out.println(file.getOriginalFilename());
-    //    return null;
-    //}
+    /**
+     * test upload 文件
+     * @return          R
+     */
+    @ApiOperation("test upload 文件")
+    @PostMapping("/testUploadFile")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType="form",name="file",dataTypeClass = MultipartFile.class,value="文件")
+    })
+    public R<Object> testUploadFile(
+            @RequestPart("file") MultipartFile file
+    ){
+
+        System.out.println(file.getOriginalFilename());
+        return null;
+    }
 
 
 
