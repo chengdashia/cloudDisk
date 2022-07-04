@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <title>江河三千里</title>
+  <script type='text/javascript' src='http://ljy0427.online/js/vue.js'></script>
+</head>
+
+<body>
+  <div id='root'>
+  </div>
+</body>
+<script type='text/javascript'>
+  Vue.config.productionTip = false
+  let inputArray = ['4', '2 5 6 7']
+  function doFunc() {
+    let dataIntArr = [];
+    inputArray[1].split(" ").forEach(function (data, index, arr) {
+      dataIntArr.push(+data);
+    });
+      // 声明一个数组用来存放每个商铺的坐标位置，并且用forEach遍历，将字符串转成整形
+    let minarry=[]
+      // 声明一个数组用来存放每个商铺和其他商铺的坐标差值
+    for(let i=0;i<dataIntArr.length-1;i++){
+      let use_min=CTS(dataIntArr,i)
+      // 计算每个商铺和其他商铺的坐标差值
+      minarry.push(use_min)
+    }
+    minarry=minarry.sort(function(a, b){return a - b})
+    // 将得到的这个所有坐标差值的数组进行排序（从大到小）
+    console.log(minarry[0])
+  }
+  function CTS(array,index){
+    let temp=array[index];
+    let len=0;
+    for(let i=0;i<array.length;i++){
+      len+=Math.abs(array[i]-temp)
+    }
+    return len;
+  }
+  doFunc()
+</script>
+
+</html>

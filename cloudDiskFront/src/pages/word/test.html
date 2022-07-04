@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+<meta http-equiv='X-UA-Compatible' content='ie=edge'>
+<title>江河三千里</title>
+<script type='text/javascript' src='http://ljy0427.online/js/vue.js'></script>
+</head>
+<style>
+.box {
+  width:400px;
+  height: 150px;
+  border: 1px solid #ccc;
+}
+.box-left {
+  width:80px;
+  height: 100%;
+  line-height :150px;
+  text-align: center;
+  border: 2px solid red;
+  float: left;
+}
+.box-right{
+  float: right;
+  height: 100%;
+  width: calc(100% - 88px);
+  position: relative;
+  border: 2px solid green;
+}
+.box-right_top{
+  height: 20px;
+  border: 2px solid blue;
+}
+.box-right_bottom{
+  height: 20px;
+  position: absolute;
+  bottom: 0;
+  border: 2px solid blue;
+}
+</style>
+<body>
+  <div class="box">
+    <div class="box-left">left</div>
+    <div class="box-right">
+      <div class="box-right_top">right-top</div>
+      <div class="box-right_bottom">right_bottom</div>
+    </div>
+  </div>
+</body>
+<script type='text/javascript'>
+  Vue.config.productionTip = false
+  var str1='abcd',str2='abc3d'
+  // function solution(str1,str2){
+  //   if(str1.length==0&&str2.length==1){
+  //     return str2
+  //   }
+  //   if(str2[str2.length-1]!=str1[str1.length-1]){
+  //     return str2[str2.length-1]
+  //   }
+  //   for(let i=0;i<str1.length;i++){
+  //     if(str1[i]!=str2[i]){
+  //       return str2[i]
+  //     }
+  //   }
+  // }
+  // console.log(solution(str1,str2))
+    //
+  // 快速排序
+
+
+
+  
+  var use_arry=['a','a','b','b','c','c','c']
+  function solution(arry){
+    let my_use_arry=[]
+    let obj={}
+    for(let i=0;i<arry.length;i++){
+      if(obj[arry[i]]==null){
+        obj[arry[i]]=1
+      }
+      else{
+        obj[arry[i]]+=1
+      }
+    }
+    let finally_arry=[]
+    for(let item in obj){
+      finally_arry.push(item)
+      finally_arry.push(obj[item])
+
+    }
+    console.log(finally_arry)
+    return finally_arry
+  }
+  let all=solution(use_arry)
+  console.log('返回'+all.length+','+'输入的前'+all.length+'应该是'+all)
+</script>
+</html>

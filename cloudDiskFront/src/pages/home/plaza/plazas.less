@@ -1,0 +1,129 @@
+@file_width: 80%;
+
+.file_list {
+  overflow-y: auto;
+  width: 100%;
+}
+
+.file {
+  display: flex;
+  flex-wrap: wrap;
+  // min-width: 1300px;
+  justify-content: space-between;
+  background-color: #f1f1f1;
+}
+.search{
+
+// background-color: #FF6A6A;
+height: 200px;
+}
+.search_input{
+  width: 80%;
+}
+.file_info_all{
+  display: flex;
+  flex-wrap: wrap;
+  // justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+  // background-color: #909090;
+}
+.file_info_p {
+  width: 29vw ;
+  height: 200px;
+  margin:0 0.2vw 1vh 0.2vw ;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  // background-color: aqua;
+  border: 1px dashed #909090;
+}
+
+
+.file_info_p:hover {
+  color: #FF6A6A;
+  box-shadow: 10px 10px 10px 10px #909090;
+  .file_introduce_text{
+    color: orange;
+  }
+}
+
+.file_tip{
+
+  width: @file_width;
+  display: flex;
+  justify-content: space-between;
+  // background-color: antiquewhite;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: (1);
+}
+.filer{
+  width: @file_width;
+  display: flex;
+  justify-content: space-between;
+}
+.filer>div{
+  width: 25%;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: (1);
+}
+.file_introduce{
+  width: @file_width;
+  display: flex;
+  height: 80px;
+  align-items: center;
+  // background-color: aquamarine;
+}
+.file_introduce_text{
+  margin-left: 20px;
+  font-size: 14px;
+  color: grey;
+  // overflow: hidden; //超出的文本隐藏
+  // text-overflow: ellipsis; //溢出用省略号显示
+  // white-space: nowrap;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: (2);
+}
+
+@media screen and(max-width:900px) {
+  .file {
+    display: flex;
+    flex-wrap: wrap;
+    // min-width: 1300px;
+    justify-content: center;
+
+  }
+  .file_info_p {
+    width: 500px;
+  }
+
+  .file_list {
+    // width: 1080px;
+    // background-color: black;
+  }
+}
+
+@media screen and(min-width:900px) {
+  .file_list {
+    height: 85vh;
+    // background-color: black;
+  }
+}
+
+@media screen and(max-height:700px) {
+  .file_list {
+    height: 85vh;
+  }
+
+  // .file{
+  //   height: 20vh;
+  // }
+}

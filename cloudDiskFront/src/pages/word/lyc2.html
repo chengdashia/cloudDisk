@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <title>江河三千里</title>
+  <script type='text/javascript' src='http://ljy0427.online/js/vue.js'></script>
+</head>
+
+<body>
+  <div id='root'>
+  </div>
+</body>
+<script type='text/javascript'>
+  Vue.config.productionTip = false
+  let [str0, str1, str2] = ['()', '()[]{}', '([)]']
+
+  function check(str) {
+    let stack = [], flag = true
+    str.split('').map(res => {
+      if (res === '{' || res === '(' || res === '[') {
+        stack.push(res)
+        return
+      }
+      console.log("stack[stack.length - 1]=", stack[stack.length - 1])
+      console.log("res=", res)
+      let concatStr = stack[stack.length - 1] + res
+      if (concatStr === '[]' || concatStr === '{}' || concatStr === '()') {
+        stack.pop()
+      } else {
+        flag = false
+      }
+    })
+
+    return flag
+  }
+
+  // console.log(check(str0)); // true
+  // console.log(check(str1)); // true
+  // console.log(check(str2)); // false
+  var str = "hello"
+  function re(N) {
+    let arry = []
+    console.log('12213')
+    for (var i = 2; i <= N; i++) {//4
+      //假设所有的数都是质数
+      var flag = true;
+      //通过嵌套循环找到 i 除了1 和本身以外所有可能出现的因子
+      for (var j = 2; j < i; j++) {
+        //判断 i 是否为质数
+        if (i % j == 0) {//能进到当前的分支 说明不是质数
+          flag = false;
+        }
+      }
+      if (flag == true) {
+        console.log(i)
+        arry.push(i)
+      }
+    }
+    return arry
+  }
+  console.log(re(10))
+</script>
+
+</html>

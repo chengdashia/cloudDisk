@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+<meta http-equiv='X-UA-Compatible' content='ie=edge'>
+<title>江河三千里</title>
+<script type='text/javascript' src='http://ljy0427.online/js/vue.js'></script>
+</head>
+<body>
+  <div id='root'>
+  </div>
+</body>
+<script type='text/javascript'>
+  Vue.config.productionTip = false
+  var vm = new Vue({
+    el: '#root',
+    data: {
+    }
+  });
+  // 定义一个方法，将字符转成ASCII码进行排序，根据ASCII码值从小到大排序，然后再将ASCII码转成字符，之后两个字符串进行比对，即可找出不同的那个字符
+  // let inputArray = ['abc', 'abca']
+  // function doFunc(){
+  //   let str1=strSort(inputArray[0].split(""))
+  //   let str2=strSort(inputArray[1].split(""))
+  //   let countIndex=0
+  //   for(let item in str1){
+  //     if(str1[item]==str2[item]){
+  //       countIndex+=1
+  //     }else{
+  //       break;
+  //     }
+  //   }
+  //   console.log(str2[countIndex])
+  // }
+  // doFunc()
+  // function strSort(tempArry){
+  //   for (let item in tempArry){
+  //       tempArry[item]=tempArry[item].charCodeAt()
+  //   }
+  //   tempArry=tempArry.sort(function(a, b){return a - b});
+  //   for(let item in tempArry){
+  //     tempArry[item]=String.fromCharCode(tempArry[item]);
+  //   }
+  //   let restul=""
+  //   for(let item of tempArry){
+  //     restul+=item
+  //   }
+  //   return restul
+  // }
+    let array=[1,2,3,4,5,6]
+    console.log(array.splice(0,1))
+</script>
+</html>
