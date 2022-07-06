@@ -122,24 +122,28 @@ public class MailUtils {
         context.setVariable("verifyCode", Arrays.asList(verifyCode.split("")));
 
         //将模块引擎内容解析成html字符串
-//        String emailContent;
-//        if (isRegister){
-//            emailContent = templateEngine.process("register", context);
-//        }else {
-//            emailContent = templateEngine.process("login", context);
-//        }
-        String emailContent = templateEngine.process("register", context);
+        String emailContent;
+        if (isRegister){
+            emailContent = templateEngine.process("register", context);
+        }else {
+            emailContent = templateEngine.process("login", context);
+        }
         MimeMessage message=mailSender.createMimeMessage();
         try {
             //true表示需要创建一个multipart message
             MimeMessageHelper helper=new MimeMessageHelper(message,true);
             helper.setFrom(fromEmail);
             helper.setTo(toAddress);
-            helper.setSubject("注册验证码");
+            if (isRegister){
+                helper.setSubject("注册验证码");
+            }else {
+                helper.setSubject("登录验证码");
+            }
             helper.setText(emailContent,true);
             mailSender.send(message);
             return true;
         }catch (MessagingException e) {
+            e.printStackTrace();
             return false;
         }
     }

@@ -47,8 +47,8 @@ public class MailController {
     ){
 
         String random = RandomUtil.randomNumbers(6);
-        mailbox = getRegisterKey(mailbox);
         mailUtils.sendEmailVerificationCode(random,mailbox,true);
+        mailbox = getRegisterKey(mailbox);
         redisUtil.set(mailbox,random,60 * 3);
         return R.ok();
     }
@@ -68,8 +68,8 @@ public class MailController {
     ){
 
         String random = RandomUtil.randomNumbers(6);
-        mailbox = getLoginKey(mailbox);
         mailUtils.sendEmailVerificationCode(random,mailbox,false);
+        mailbox = getLoginKey(mailbox);
         redisUtil.set(mailbox,random,60 * 3);
         return R.ok();
     }
