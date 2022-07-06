@@ -1,4 +1,4 @@
-const userUrl='localhost:9081'
+const userUrl='http://localhost:9081'
 
 export default function myRequest(options) {
   return new Promise((resolve, reject) => {

@@ -44,7 +44,8 @@ public class WebConfig implements WebMvcConfigurer {
             // 登录认证 -- 拦截所有路由，并排除/user/doLogin 用于开放登
             SaRouter.match("/**")
                     .notMatch("/userInfo/loginByPassword")
-                    .notMatch("/userInfo/registered")
+                    .notMatch("/userInfo/registerByTel")
+                    .notMatch("/userInfo/registerByMail")
                     .notMatch("/userInfo/loginByVerificationCode")
                     .notMatch("/captcha/sendSmsCaptcha")
                     .notMatch("/fileInfo/getFIieRandomTen")
