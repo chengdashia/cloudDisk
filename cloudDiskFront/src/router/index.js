@@ -12,6 +12,7 @@ import register from '@/pages/login/register/register'
 import Qregister from '@/pages/login/Qregister/Qregister'
 import loginLogin from '@/pages/login/login_login/loginLogin'
 import verLogin from '@/pages/login/login_login/verLogin'
+import mailVerLogin from '@/pages/login/login_login/mailVerLogin'
 import File from '@/pages/file/file'
 import Person from '@/pages/person/person'
 import PersonInfo from '@/pages/person/components/personInfo/personInfo'
@@ -23,9 +24,9 @@ import HistoryFile from '@/pages/person/components/historyFiles/historyFile'
 import ShareFiles from '@/pages/person/components/shareFiles/shareFile'
 import wordTest from '@/pages/word/wordTest'
 import mail from '@/pages/login/mail/mail'
-import slider from "../pages/login/slider/slider";
+import slider from "../pages/login/slider/slider"
 import PersonV from '../store/person'
-import test from "../pages/file/components/music/test";
+import test from "../pages/file/components/music/test"
 Vue.use(Router)
 
 //解决vue路由重复导航错误
@@ -101,6 +102,15 @@ const router = new Router({
           name: 'verLogin',
           path: 'verLogin',
           component: verLogin,
+          meta: {
+            title: '登陆',
+            needLogin: false
+          },
+        },
+        {
+          name: 'mailVerLogin',
+          path: 'mailVerLogin',
+          component: mailVerLogin,
           meta: {
             title: '登陆',
             needLogin: false

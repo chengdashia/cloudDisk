@@ -47,6 +47,7 @@ public class WebConfig implements WebMvcConfigurer {
                     .notMatch("/userInfo/registerByTel")
                     .notMatch("/userInfo/registerByMail")
                     .notMatch("/userInfo/loginByVerificationCode")
+                    .notMatch("/userInfo/loginByMail")
                     .notMatch("/captcha/sendSmsCaptcha")
                     .notMatch("/fileInfo/getFIieRandomTen")
                     .notMatch("/fileInfo/getFIieTopTen")

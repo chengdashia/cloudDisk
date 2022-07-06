@@ -2,15 +2,15 @@
   <div>
     <div class="ver_login">
       <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px">
-        <el-form-item prop="tel">
-          <el-input v-model="ruleForm.tel" maxlength="11" placeholder="请输入手机号" class="input_class"
-            @keyup.enter.native="submitForm('ruleForm')"></el-input>
+        <el-form-item prop="mail">
+          <el-input v-model="ruleForm.mail" maxlength="17" placeholder="请输入邮箱" class="input_class"
+                    @keyup.enter.native="submitForm('ruleForm')"></el-input>
         </el-form-item>
         <el-form-item label-width="100px" prop="ver">
           <el-input v-model="ruleForm.ver" type="text" maxlength="6" placeholder="请输入验证码" class="input_pwd"
-            @keyup.enter.native="submitForm('ruleForm')"></el-input>
+                    @keyup.enter.native="submitForm('ruleForm')"></el-input>
           <el-button type="success" @click="getVer" @keyup.enter.native="submitForm('ruleForm')" class="login_btn"
-            ref="login_now" :loading="getVerLoad">{{ getVerStr }}</el-button>
+                     ref="login_now" :loading="getVerLoad">{{ getVerStr }}</el-button>
         </el-form-item>
         <el-form-item>
           <div class="login_ver_btn_all">
@@ -20,14 +20,9 @@
         </el-form-item>
       </el-form>
     </div>
-    <div style="display: flex;align-items: center;justify-items: center;">
-      <div class="mail_login">
-        <span @click="mailLogin">邮箱登陆</span>
-      </div>
       <div class="pwd_login">
         <span @click="pwdLogin">密码登陆</span>
       </div>
-    </div>
   </div>
 </template>
 <style lang="less" scoped>
@@ -62,15 +57,9 @@
 .login_ver_btn {
   width: @login_width;
 }
-.mail_login{
-  width: 50%;
-  text-align: center;
-  color: grey;
-  cursor: pointer;
-}
 .pwd_login {
-  width: 50%;
-  text-align: center;
+  width: 80%;
+  text-align: right;
   color: grey;
   cursor: pointer;
 }
@@ -87,10 +76,10 @@
 import { mapState, mapActions } from 'vuex'
 export default {
   data() {
-    let validTel = (rule, value, callback) => {
-      let reg = /^[1](([3][0-9])|([4][5-9])|([5][0-3,5-9])|([6][5,6])|([7][0-8])|([8][0-9])|([9][1,8,9]))[0-9]{8}$/
+    let validMail = (rule, value, callback) => {
+      let reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/
       if (!reg.test(value)) {
-        callback(new Error('手机号不合法'))
+        callback(new Error('邮箱不合法'))
       } else {
         callback()
       }
@@ -100,13 +89,13 @@ export default {
       time: 59,
       getVerLoad: false,
       ruleForm: {
-        tel: '',
+        mail: '',
         ver: '',
       },
       rules: {
-        tel: [
-          { required: true, message: '请输入手机号', trigger: 'blur' },
-          { validator: validTel, trigger: 'blur' }
+        mail: [
+          { required: true, message: '请输入邮箱', trigger: 'blur' },
+          { validator: validMail, trigger: 'blur' }
         ],
         ver: [
           { required: true, message: '请输入验证码', trigger: 'blur' },
@@ -119,10 +108,10 @@ export default {
     this.changeMarginClass()
   },
   computed:{
-     ...mapState('PersonV',['user_tel','token']),
+    ...mapState('PersonV',['user_mail','token']),
   },
   methods: {
-     ...mapActions('PersonV',{login_tel:'change_tel'}),
+    ...mapActions('PersonV',{login_mail:'change_mail'}),
     changeMarginClass() {
       var red = document.getElementsByClassName('el-form-item__content');
       var login = document.getElementsByClassName('login_box');
@@ -132,11 +121,6 @@ export default {
       for (let i = 0; i < red.length; i++) {
         red[i].style.cssText = useCss
       }
-    },
-    mailLogin(){
-      this.$router.push({
-        name: 'mailVerLogin',
-      })
     },
     pwdLogin() {
       this.$router.push({
@@ -154,7 +138,7 @@ export default {
         }
       });
     },
-    checkTel() {
+    checkMail() {
       let that = this
       let intval = setInterval(() => {
         if (that.time > 1) {
@@ -172,14 +156,14 @@ export default {
     async loginByVer() {
       let that = this
       const res = await this.$myRequest({
-        url: '/userInfo/loginByVerificationCode',
+        url: '/userInfo/loginByMail',
         method: 'post',
         header: {
           token: ""
         },
         data: {
-          user_tel: that.ruleForm.tel,
-          verification_code: that.ruleForm.ver
+          mailbox: that.ruleForm.mail,
+          mailCode: that.ruleForm.ver
         }
       })
       if (res.data.code == "506") {
@@ -192,16 +176,16 @@ export default {
           message: '登陆成功',
           type: 'success'
         });
-        that.$store.dispatch('PersonV/change_tel',this.ruleForm.tel)
+        that.$store.dispatch('PersonV/change_mail',this.ruleForm.mail)
         localStorage.setItem('token',res.data.data.tokenValue)
-        localStorage.setItem('user_tel',this.ruleForm.tel)
+        localStorage.setItem('user_mail',this.ruleForm.mail)
         setTimeout(() => {
           this.$router.push({
             name: 'plaza',
           })
         }, 1000)
       }else if(res.data.code==504){
-          that.$message({
+        that.$message({
           message: '用户不存在',
           type: 'warning'
         });
@@ -209,33 +193,33 @@ export default {
     },
     async getVer() {
       let that = this
-      let reg = /^[1](([3][0-9])|([4][5-9])|([5][0-3,5-9])|([6][5,6])|([7][0-8])|([8][0-9])|([9][1,8,9]))[0-9]{8}$/
-      if (reg.test(this.ruleForm.tel)) {
+      let reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/
+      if (reg.test(this.ruleForm.mail)) {
         const res = await this.$myRequest({
-          url: '/captcha/sendSmsCaptcha',
+          url: '/mail/sendMailCodeForRegister',
           method: 'post',
           header: {
             token: ""
           },
           data: {
-            user_tel: that.ruleForm.tel,
+            mailbox: that.ruleForm.mail,
           }
         })
         if (res.data.code == 200) {
           that.$message({
-            message: '下发验证码成功',
+            message: '发送验证码成功',
             type: 'success'
           });
           that.checkTel()
         } else {
           that.$message({
-            message: '下发验证码失败，稍后再试',
+            message: '发送验证码失败，稍后再试',
             type: 'info'
           });
         }
       } else {
         that.$message({
-          message: '手机号有误',
+          message: '邮箱有误',
           type: 'warning'
         });
       }
