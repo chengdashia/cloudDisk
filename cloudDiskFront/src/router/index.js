@@ -24,6 +24,7 @@ import wordTest from '@/pages/word/wordTest'
 import mail from '@/pages/login/mail/mail'
 import slider from "../pages/login/slider/slider";
 import PersonV from '../store/person'
+import test from "../pages/file/components/music/test";
 Vue.use(Router)
 
 //解决vue路由重复导航错误
@@ -113,6 +114,15 @@ const router = new Router({
             needLogin: false
           },
         },
+        {
+          name: 'test',
+          path: 'test',
+          component: test,
+          meta: {
+            title: '测试滑块',
+            needLogin: false
+          }
+        }
       ]
     },
     {

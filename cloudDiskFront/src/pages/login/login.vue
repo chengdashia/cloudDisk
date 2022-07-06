@@ -10,7 +10,7 @@
           </div>
       </div>
       <transition name="test" mode="out-in">
-        <keep-alive :include="['register','loginLogin']">
+        <keep-alive :include="['register','loginLogin','test']">
           <router-view />
         </keep-alive>
       </transition>
