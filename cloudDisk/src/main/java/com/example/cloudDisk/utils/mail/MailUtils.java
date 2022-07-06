@@ -99,7 +99,7 @@ public class MailUtils {
             // 获得模板
             Template template1 = freeMarkerConfigurer.getConfiguration().getTemplate(template);
             // 使用Map作为数据模型，定义属性和值
-            Map<String,Object> model = new HashMap<>();
+            Map<String,Object> model = new HashMap<>(2);
             //model.put("myname","Ray。");
             //model.put("blog","https://chengdashia.github.io");
             model.put("code",123456);

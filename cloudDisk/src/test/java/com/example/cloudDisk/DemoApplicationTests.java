@@ -16,11 +16,13 @@ class DemoApplicationTests {
 
     @Test
     void contextLoads() {
-        boolean b = HdfsUtil.checkFileExist("/165034235099284957cb857d04c12ae63cb9dab7287e5/董博阳的文件夹/y");
-        log.info("b：  {}",b);
+        //boolean b = HdfsUtil.checkFileExist("/165034235099284957cb857d04c12ae63cb9dab7287e5/董博阳的文件夹/y");
+        //log.info("b：  {}",b);
+        //
+        //log.info(hdfsConfig.getPort());
+        //log.info(hdfsConfig.getUrl());
 
-        log.info(hdfsConfig.getPort());
-        log.info(hdfsConfig.getUrl());
+        HdfsUtil.deleteAllFilesInThisFolder("/165034235099284957cb857d04c12ae63cb9dab7287e5m    ");
 
     }
 

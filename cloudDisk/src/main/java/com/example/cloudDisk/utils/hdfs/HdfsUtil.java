@@ -22,6 +22,8 @@ public class HdfsUtil {
 
     private static FileSystem fs;
 
+
+
     /**
      * 初始化相关配置
      * @throws URISyntaxException
