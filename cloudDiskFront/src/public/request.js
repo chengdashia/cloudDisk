@@ -1,5 +1,5 @@
-// const userUrl='http://localhost:4428/TheRivers'
-const userUrl='http://192.168.0.84:9081'
+const userUrl='localhost:9081'
+
 export default function myRequest(options) {
   return new Promise((resolve, reject) => {
     const request= new this.$axios({

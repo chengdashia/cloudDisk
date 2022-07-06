@@ -9,6 +9,7 @@ import Superior from '@/pages/home/superior/superior'
 import VuexUse from '@/pages/VuexUse/demo'
 import Login from '@/pages/login/login'
 import register from '@/pages/login/register/register'
+import Qregister from '@/pages/login/Qregister/Qregister'
 import loginLogin from '@/pages/login/login_login/loginLogin'
 import verLogin from '@/pages/login/login_login/verLogin'
 import File from '@/pages/file/file'
@@ -75,6 +76,15 @@ const router = new Router({
           component: register,
           meta: {
             title: '注册',
+            needLogin: false
+          },
+        },
+        {
+          name: 'Qregister',
+          path: 'Qregister',
+          component: Qregister,
+          meta: {
+            title: '邮箱注册',
             needLogin: false
           },
         },

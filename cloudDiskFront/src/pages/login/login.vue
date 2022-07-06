@@ -1,16 +1,17 @@
 <template>
   <div class="login_all">
-    <!-- <el-image src="http://ljy0427.online/graduate/font-logo1.png" fit="contain" class="font_logo"></el-image> -->
+    <div class="dynamic-area1"></div>
+    <div class="dynamic-area2"></div>
     <el-image src="https://img1.imgtp.com/2022/06/29/BlsBNj8x.png" fit="contain" class="font_logo"></el-image>
     <div class="login_box">
       <div class="title">
         <div class="title_des">
           <h3>欢迎{{ tips }}</h3>
 
-          </div>
+        </div>
       </div>
       <transition name="test" mode="out-in">
-        <keep-alive :include="['register','loginLogin','test']">
+        <keep-alive :include="['Qregister','register','loginLogin']">
           <router-view />
         </keep-alive>
       </transition>
@@ -21,8 +22,8 @@
 @import "./logins.less";
 @import "../../public/public.less";
 body {
-  background: url(../../assets/bg.jpg) no-repeat;
-  background-size: 100% auto;
+  // background: url(../../assets/bg.jpg) no-repeat;
+  background-size: cover;
   margin: 0 auto;
   height: 100%;
 }

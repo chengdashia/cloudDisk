@@ -2,8 +2,8 @@
   <div>
     <div class="title_tips">
       没有账号？
-      <router-link :to="{ name: 'register',}">注册</router-link>
-<!--      <router-link :to="{name:'mail',}">邮箱注册</router-link>-->
+      <router-link :to="{ name: 'register',}">手机注册</router-link>
+      <router-link :to="{ name: 'Qregister',}">邮箱注册</router-link>
     </div>
     <div class="login">
       <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px">
@@ -12,7 +12,7 @@
             <el-input
               v-model="ruleForm.user_tel"
               maxlength="11"
-              placeholder="请输入手机号"
+              placeholder="请输入手机号/邮箱"
               class="input_class"
               @keyup.enter.native="submitForm('ruleForm')"
             ></el-input>
