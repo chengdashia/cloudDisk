@@ -130,9 +130,8 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
      */
     @Override
     public R<Object> loginByMail(String mailbox, String mailCode) {
-        mailbox = MailController.getLoginKey(mailbox);
-        if (redisUtil.hasKey(mailbox)) {
-            if (redisUtil.get(mailbox).equals(mailCode)) {
+        if (redisUtil.hasKey(MailController.getLoginKey(mailbox))) {
+            if (redisUtil.get(MailController.getLoginKey(mailbox)).equals(mailCode)) {
                 try {
                     UserInfo userInfo = userInfoMapper.selectOne(new QueryWrapper<UserInfo>()
                             .select("user_id", "user_initialize")
@@ -169,10 +168,9 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
      */
     @Override
     public R<Object> registerByMail(String mailbox, String pwd, String mailCode) {
-        mailbox = MailController.getRegisterKey(mailbox);
         //如果redis有这个验证码
-        if(redisUtil.hasKey(mailbox)){
-            String redisSmsCode = (String) redisUtil.get(mailbox);
+        if(redisUtil.hasKey(MailController.getRegisterKey(mailbox))){
+            String redisSmsCode = (String) redisUtil.get(MailController.getRegisterKey(mailbox));
             if(redisSmsCode.equals(mailCode)){
                 UserInfo user = userInfoMapper.selectOne(new QueryWrapper<UserInfo>().eq("user_mail", mailbox));
                 if (user == null) {

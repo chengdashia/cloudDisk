@@ -196,7 +196,7 @@ export default {
       let reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/
       if (reg.test(this.ruleForm.mail)) {
         const res = await this.$myRequest({
-          url: '/mail/sendMailCodeForRegister',
+          url: '/mail/sendMailCodeForLogin',
           method: 'post',
           header: {
             token: ""
