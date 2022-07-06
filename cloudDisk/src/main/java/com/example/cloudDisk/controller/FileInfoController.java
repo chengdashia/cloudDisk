@@ -122,12 +122,15 @@ public class FileInfoController {
             @RequestParam(value = "labelList",required = false) List<String> labelList
     ){
         String id = (String) StpUtil.getLoginId();
-        log.info("上传文件，用户id："+id);
-        log.info("上传文件，父文件夹id："+folderId);
-        log.info("上传文件，文件名字："+fileName);
-        log.info("上传文件，标签列表："+labelList);
-        log.info("上传文件，文件："+file.getOriginalFilename());
+        log.info("上传文件，用户id：{}",id);
+        log.info("上传文件，父文件夹id：{}",folderId);
+        log.info("上传文件，文件名字：{}",fileName);
+        log.info("上传文件，标签列表：{}",labelList);
+        log.info("上传文件，文件：{}",file.getOriginalFilename());
+        log.info("标签信息  {}",labelList);
+        //log.info("标签列表的大小 {}",labelList.size());
         return fileInfoService.uploadFile(folderId, file, labelList, fileName,remarks);
+        //return null;
     }
 
 

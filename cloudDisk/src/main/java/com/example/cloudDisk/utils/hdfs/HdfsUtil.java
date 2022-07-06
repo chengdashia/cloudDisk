@@ -1,5 +1,6 @@
 package com.example.cloudDisk.utils.hdfs;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.*;
 import org.apache.hadoop.util.Progressable;
@@ -15,12 +16,16 @@ import java.net.URISyntaxException;
  * @since 2022/4/20 10:10
  * hdfs平台接口类，批量上传和下载文件
  */
+@Slf4j
 @Component
 public class HdfsUtil {
 
-    private static FileSystem fs = null;
+    private static FileSystem fs;
 
-    // 初始化相关配置
+    /**
+     * 初始化相关配置
+     * @throws URISyntaxException
+     */
     public HdfsUtil() throws URISyntaxException {
         Configuration conf = new Configuration();
         URI uri = new URI("hdfs://10.111.43.13:8020");
@@ -32,7 +37,11 @@ public class HdfsUtil {
     }
 
     /*--------------------文件表面的操作------------------------------------*/
-    // 循环删除某一文件夹下的所有文件
+
+    /**
+     * 循环删除某一文件夹下的所有文件
+     * @param path hdfs 的路径
+     */
     public static void deleteAllFilesInThisFolder(String path) {
         File f = new File(path);
         File[] f1 = f.listFiles();
@@ -40,7 +49,6 @@ public class HdfsUtil {
             if (f2.isFile() && f2.getName().endsWith(".crc")) {
                 f2.delete();
             } else {
-                // System.out.println(f2.getAbsolutePath());
                 if (f2.isDirectory()) {
                     deleteAllFilesInThisFolder(f2.getAbsolutePath());
                 }
@@ -50,8 +58,12 @@ public class HdfsUtil {
 
     }
 
-     // 上传文件到hdfs,sc11本地文件目录，scr2 hdfs文件目录
-     // 批量上传
+    /**
+     * 上传文件到hdfs,sc11本地文件目录，scr2 hdfs文件目录
+     * @param localPath      本地路径
+     * @param hdfsPath        hdfs 路径
+     * @return    boolean
+     */
     public static boolean upload(String localPath, String hdfsPath) {
         if (!checkFileExist(hdfsPath)){
             createFolder(hdfsPath);
@@ -67,7 +79,11 @@ public class HdfsUtil {
         }
     }
 
-    // 从hdfs下载文件，到本地路径
+    /**
+     * 从hdfs下载文件，到本地路径
+     * @param localPath      本地路径
+     * @param hdfsPath        hdfs 路径
+     */
     public static void download(String hdfsPath, String localPath) {
         try {
             fs.copyToLocalFile(new Path(hdfsPath), new Path(localPath));
@@ -77,7 +93,10 @@ public class HdfsUtil {
         }
     }
 
-    // 删除hdfs的某个文件或者目录
+    /**
+     * 删除hdfs的某个文件或者目录
+     * @param hdfsPath hdfs 路径
+     */
     public static void deleteFileOrFolder(String hdfsPath) {
         try {
             fs.delete(new Path(hdfsPath), true);
@@ -145,13 +164,17 @@ public class HdfsUtil {
     }
 
 
-    // 创建文件目录
-    public static boolean createFolder(String src) {
-        if(checkFileExist(src)){
+    /**
+     * 创建文件目录
+     * @param hdfsPath    hdfs 路径
+     * @return     boolean
+     */
+    public static boolean createFolder(String hdfsPath) {
+        if(checkFileExist(hdfsPath)){
             return false;
         }
         try {
-            fs.mkdirs(new Path(src));
+            fs.mkdirs(new Path(hdfsPath));
             return true;
         } catch (IllegalArgumentException | IOException e) {
             e.printStackTrace();
@@ -160,7 +183,10 @@ public class HdfsUtil {
     }
 
 
-    // 创建文件
+    /**
+     * 创建文件
+     * @param src     路径
+     */
     public void creatFile(String src) {
         try {
             FSDataOutputStream fis = fs.create(new Path(src), new Progressable() {
@@ -185,7 +211,10 @@ public class HdfsUtil {
         fs.rename(p1, p2);
     }
 
-    //查看某个目录下的文件，并打印出其详细信息
+    /**
+     * 查看某个目录下的文件，并打印出其详细信息
+     * @param hdfsPath  hdfs 路径
+     */
     public void getFilesByFolder(String hdfsPath) {
         FileStatus[] file1;
         try {
@@ -199,18 +228,24 @@ public class HdfsUtil {
             }
         } catch (IllegalArgumentException | IOException e) {
             e.printStackTrace();
-        }//Path[]list=FileUtil.stat2Paths(file1);
+        }
     }
 
 
 
 
 
+
     /*--------------------文件本身的的操作------------------------------------*/
-    public void catFile(String src)
+
+    /**
+     *
+     * @param hdfsPath hdfs path
+     */
+    public void catFile(String hdfsPath)
     {
         try {
-            RemoteIterator<LocatedFileStatus> ri= fs.listFiles(new Path(src), false);
+            RemoteIterator<LocatedFileStatus> ri= fs.listFiles(new Path(hdfsPath), false);
             while(ri.hasNext())
             {
                 LocatedFileStatus file=ri.next();

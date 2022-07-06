@@ -258,7 +258,7 @@ public class FileInfoServiceImpl extends ServiceImpl<FileInfoMapper, FileInfo> i
                     //如果文件夹文件表插入成功，插入folderFileInfo表
                     if (folderFileInsert == 1) {
                         //插入标签
-                        if (labelList.size() != 0){
+                        if (labelList != null){
                             for (String s : labelList) {
                                 FileLabel fileLabel = new FileLabel();
                                 fileLabel.setFileLableId(IdUtil.fastUUID());
