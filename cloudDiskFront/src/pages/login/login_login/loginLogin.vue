@@ -4,7 +4,6 @@
       没有账号？
       <router-link :to="{ name: 'register',}">注册</router-link>
 <!--      <router-link :to="{name:'mail',}">邮箱注册</router-link>-->
-      <router-link :to="{name:'test',}">滑块测试</router-link>
     </div>
     <div class="login">
       <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px">
