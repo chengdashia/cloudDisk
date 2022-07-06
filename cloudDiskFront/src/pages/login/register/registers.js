@@ -1,5 +1,10 @@
+import Vcode from "vue-puzzle-vcode";
+import Img1 from '../../../assets/loginbg.jpg'
 export default {
   name: "register",
+  components:{
+    Vcode
+  },
   data() {
     let validTel = (rule, value, callback) => {
       let reg = /^[1](([3][0-9])|([4][5-9])|([5][0-3,5-9])|([6][5,6])|([7][0-8])|([8][0-9])|([9][1,8,9]))[0-9]{8}$/
@@ -27,6 +32,8 @@ export default {
       }
     }
     return {
+      Img1,
+      isShow: false, // 验证码模态框是否出现
       getVerStr: "获取验证码",
       time: 59,
       getVerLoad: false,
@@ -102,7 +109,7 @@ export default {
           message: '注册成功',
           type: 'success'
         });
-        
+
       }
     },
     resetForm(formName) {
@@ -124,6 +131,7 @@ export default {
       },1000)
     },
     async getVer(){
+      this.isShow = true;
       let that = this
       let reg = /^[1](([3][0-9])|([4][5-9])|([5][0-3,5-9])|([6][5,6])|([7][0-8])|([8][0-9])|([9][1,8,9]))[0-9]{8}$/
       if (reg.test(this.ruleForm.tel)) {
@@ -155,6 +163,14 @@ export default {
           type: 'warning'
         });
       }
+    },
+    // 用户通过了验证
+    success(msg){
+      this.isShow = false; // 通过验证后，需要手动隐藏模态框
+    },
+    // 用户点击遮罩层，应该关闭模态框
+    close(){
+      this.isShow = false;
     }
   }
 }

@@ -12,6 +12,10 @@ export default {
     }
 
     return {
+      conShow:true,
+      conShow2:false,
+      conShow3:false,
+      conShow4:false,
       getVerStr: "获取验证码",
       time: 59,
       getVerLoad: false,
@@ -131,6 +135,18 @@ export default {
       this.$router.push({
         name:'verLogin',
       })
-    }
+    },
+    click1(){
+      this.conShow = !this.conShow;
+      this.conShow2 = !this.conShow2;
+      this.conShow3 = !this.conShow3;
+      this.conShow4 = !this.conShow4;
+    },
+    click2(){
+      this.conShow = !this.conShow;
+      this.conShow2 = !this.conShow2;
+      this.conShow3 = !this.conShow3;
+      this.conShow4 = !this.conShow4;
+    },
   }
 }

@@ -12,7 +12,7 @@
         <el-dropdown>
           <span class="el-dropdown-link">
             {{ user_tel }}
-            <span v-if="user_tel.length == 0" @click="login">请登录 嘿嘿</span>
+            <span v-if="user_tel.length == 0" @click="login">请登录</span>
             <i class="el-icon-arrow-down el-icon--right"></i>
           </span>
           <el-dropdown-menu slot="dropdown" v-if="user_tel.length != 0">

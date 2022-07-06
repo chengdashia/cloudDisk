@@ -53,6 +53,7 @@
               @keyup.enter.native="submitForm('ruleForm')"
             ></el-input>
              <el-button @click="getVer" size="mini" type="success" class="ver_btn" :loading="getVerLoad">{{getVerStr}}</el-button>
+               <Vcode :show="isShow" @success="success" @close="close" :imgs="[Img1]"></Vcode>
           </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="submitForm('ruleForm')">立即注册</el-button>

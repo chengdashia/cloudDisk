@@ -2,9 +2,8 @@
   <div>
     <div class="title_tips">
       没有账号？
-      <router-link :to="{
-        name: 'register',
-      }">注册</router-link>
+      <router-link :to="{ name: 'register',}">注册</router-link>
+<!--      <router-link :to="{name:'mail',}">邮箱注册</router-link>-->
     </div>
     <div class="login">
       <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px">
@@ -43,8 +42,12 @@
     <el-divider content-position="center">第三方登陆</el-divider>
     <div class="other_login">
       <i class="el-icon-chat-round"></i>
-      <i class="el-icon-chat-line-round"></i>
-      <i class="el-icon-chat-dot-round"></i>
+      <i class="el-icon-minus"></i>
+      <i class="el-icon-plus"></i>
+      <el-button icon="el-icon-more" type="primary" @click="click1" v-show="conShow" circle></el-button>
+      <i class="el-icon-chat-line-round" v-show="conShow2"></i>
+      <i class="el-icon-chat-dot-round" v-show="conShow3"></i>
+      <el-button icon="el-icon-d-arrow-left" type="primary" @click="click2" v-show="conShow4" circle class="el-button2" size="mini"></el-button>
     </div>
   </div>
 </template>

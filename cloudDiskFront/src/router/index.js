@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import axios from 'axios'
+import elementUI from 'element-ui';
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import Home from '@/pages/home/home'
@@ -20,6 +21,8 @@ import DelFile from '@/pages/person/components/delFiles/delFile'
 import HistoryFile from '@/pages/person/components/historyFiles/historyFile'
 import ShareFiles from '@/pages/person/components/shareFiles/shareFile'
 import wordTest from '@/pages/word/wordTest'
+import mail from '@/pages/login/mail/mail'
+import slider from "../pages/login/slider/slider";
 import PersonV from '../store/person'
 Vue.use(Router)
 
@@ -89,6 +92,24 @@ const router = new Router({
           component: verLogin,
           meta: {
             title: '登陆',
+            needLogin: false
+          },
+        },
+        {
+          name:'mail',
+          path: 'mail',
+          component: mail,
+          meta:{
+            title: '邮箱登录',
+            needLogin: false
+          },
+        },
+        {
+          name:'slider',
+          path: 'slider',
+          component: slider,
+          meta:{
+            title: '验证滑块',
             needLogin: false
           },
         },

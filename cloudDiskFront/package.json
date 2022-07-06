@@ -16,6 +16,7 @@
     "postcss-px2rem-exclude": "^0.0.6",
     "vue": "^2.5.2",
     "vue-cropper": "^0.5.8",
+    "vue-puzzle-vcode": "^1.1.9",
     "vue-router": "^3.0.1",
     "vue-video-player": "^5.0.2",
     "vuex": "^3.6.2"
