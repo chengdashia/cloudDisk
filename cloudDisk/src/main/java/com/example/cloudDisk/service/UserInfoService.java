@@ -57,4 +57,13 @@ public interface UserInfoService extends IService<UserInfo> {
      * @return  R
      */
     R<Object> loginByMail(String mailbox, String mailCode);
+
+    /**
+     * 注册 通过邮箱
+     * @param mailbox       邮箱
+     * @param pwd           密码
+     * @param mailCode      验证码
+     * @return R
+     */
+    R<Object> registerByMail(String mailbox, String pwd, String mailCode);
 }

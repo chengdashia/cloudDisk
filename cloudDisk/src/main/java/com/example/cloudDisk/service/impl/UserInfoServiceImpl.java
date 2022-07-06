@@ -152,6 +152,87 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
     }
 
     /**
+     * 注册 通过邮箱
+     * @param mailbox       邮箱
+     * @param pwd           密码
+     * @param mailCode      验证码
+     * @return R
+     */
+    @Override
+    public R<Object> registerByMail(String mailbox, String pwd, String mailCode) {
+        //如果redis有这个验证码
+        if(redisUtil.hasKey(mailbox)){
+            String redisSmsCode = (String) redisUtil.get(mailbox);
+            if(redisSmsCode.equals(mailCode)){
+                UserInfo user = userInfoMapper.selectOne(new QueryWrapper<UserInfo>().eq("user_mail", mailbox));
+                if (user == null) {
+                    user = new UserInfo();
+                    user.setUserInfoId(IdUtil.fastUUID());
+                    user.setUserId(IdUtil.simpleUUID());
+                    user.setUserMail(mailbox);
+                    user.setUserPwd(pwd);
+                    user.setUserName(mailbox + RandomUtil.randomString(IdUtil.simpleUUID(), 5));
+                    int userInsert = userInfoMapper.insert(user);
+                    //如果注册成功，则创建根目录
+                    if (userInsert == 1) {
+                        //先在文件表中创建
+                        FolderInfo folderInfo = new FolderInfo();
+                        folderInfo.setFolderInfoId(IdUtil.fastUUID());
+                        folderInfo.setFolderId(IdUtil.simpleUUID());
+                        folderInfo.setUserId(user.getUserId());
+                        folderInfo.setFolderUrl("/"+System.currentTimeMillis() + user.getUserId());
+                        folderInfo.setFolderName("我的资源");
+                        folderInfo.setFolderCreateTime(new Date());
+                        int folderInsert = folderInfoMapper.insert(folderInfo);
+                        //创建根目录
+                        if (folderInsert == 1) {
+                            //初始化根目录
+                            RootDirectoryInfo rootDirectoryInfo = new RootDirectoryInfo();
+                            rootDirectoryInfo.setRootDirectoryId(IdUtil.fastUUID());
+                            rootDirectoryInfo.setUserId(user.getUserId());
+                            rootDirectoryInfo.setFolderId(folderInfo.getFolderId());
+                            //插入根目录
+                            int rootInsert = rootDirectoryInfoMapper.insert(rootDirectoryInfo);
+                            if(rootInsert == 1){
+                                FolderFileInfo folderFileInfo = new FolderFileInfo();
+                                folderFileInfo.setFolderFileInfoId(IdUtil.fastUUID());
+                                folderFileInfo.setFolderFileId(folderInfo.getFolderId());
+                                folderFileInfo.setFolderFileType(Constant.FOLDER);
+                                folderFileInfo.setFolderPd(folderInfo.getFolderId());
+                                int insert = folderFileInfoMapper.insert(folderFileInfo);
+                                if(insert == 1){
+                                    HdfsUtil.createFolder(folderInfo.getFolderUrl());
+                                    return R.ok();
+                                }else {
+                                    return R.error();
+                                }
+                            }else {
+                                return R.error();
+                            }
+                        } else {
+                            // 根目录创建不成功
+                            return R.error();
+                        }
+                    }else {
+                        // 注册失败了
+                        return R.error();
+                    }
+                }else {
+                    //手机号已经注册
+                    return R.error(ResultCode.REGISTERED.getCode(), ResultCode.REGISTERED.getMessage());
+                }
+
+            }else {
+                //验证码错误
+                return R.error(ResultCode.CAPTCHA_ERROR.getCode(), ResultCode.CAPTCHA_ERROR.getMessage());
+            }
+        }else {
+            //如果redis没有这个验证码   过期了。重新发送
+            return R.error(ResultCode.CAPTCHA_EXPIRE.getCode(), ResultCode.CAPTCHA_EXPIRE.getMessage());
+        }
+    }
+
+    /**
      * 获取用户信息
      * @param uId       用户id
      * @param uInit     用户是否初始化
@@ -272,6 +353,7 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
             return R.error(ResultCode.CAPTCHA_EXPIRE.getCode(), ResultCode.CAPTCHA_EXPIRE.getMessage());
         }
     }
+
 
 
 }

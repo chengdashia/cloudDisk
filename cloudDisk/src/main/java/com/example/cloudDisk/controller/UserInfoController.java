@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -103,8 +104,8 @@ public class UserInfoController {
      * @param code     验证码
      * @return R
      */
-    @ApiOperation("注册")
-    @PostMapping("/registered")
+    @ApiOperation("注册 通过手机号")
+    @PostMapping("/registerByTel")
     @ApiImplicitParams({
             @ApiImplicitParam(paramType="query",name="phone",dataTypeClass = String.class,required=true,value="用户的手机号"),
             @ApiImplicitParam(paramType="query",name="pwd",dataTypeClass = String.class,required=true,value="用户的密码"),
@@ -116,6 +117,29 @@ public class UserInfoController {
             @RequestParam("smsCode") @NotBlank(message = "短信验证码不能为空") String code
     ){
         return userInfoService.register(tel, pwd, code);
+    }
+
+
+    /**
+     * 注册 通过邮箱
+     * @param mailbox       邮箱
+     * @param pwd           密码
+     * @param mailCode      验证码
+     * @return R
+     */
+    @ApiOperation("注册 通过邮箱")
+    @PostMapping("/registerByMail")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType="query",name="mailbox",dataTypeClass = String.class,required=true,value="用户的邮箱"),
+            @ApiImplicitParam(paramType="query",name="pwd",dataTypeClass = String.class,required=true,value="用户的密码"),
+            @ApiImplicitParam(paramType="query",name="mailCode",dataTypeClass = String.class,required=true,value="验证码")
+    })
+    public R<Object> registerByMail(
+            @RequestParam("mailbox") @NotBlank(message = "邮箱不能为空") @Email String mailbox,
+            @RequestParam("pwd") @NotBlank(message = "密码不能为空") String pwd,
+            @RequestParam("mailCode") @NotBlank(message = "短信验证码不能为空") String mailCode
+    ){
+        return userInfoService.registerByMail(mailbox, pwd, mailCode);
     }
 
 
