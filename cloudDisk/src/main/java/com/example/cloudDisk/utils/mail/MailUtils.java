@@ -114,15 +114,20 @@ public class MailUtils {
         }
     }
 
-    public boolean sendEmailVerificationCode(String verifyCode,String toAddress) {
+    public boolean sendEmailVerificationCode(String verifyCode,String toAddress,boolean isRegister) {
         //调用 VerificationCodeService 生产验证码
-
 
         //创建邮件正文
         Context context = new Context();
         context.setVariable("verifyCode", Arrays.asList(verifyCode.split("")));
 
         //将模块引擎内容解析成html字符串
+//        String emailContent;
+//        if (isRegister){
+//            emailContent = templateEngine.process("register", context);
+//        }else {
+//            emailContent = templateEngine.process("login", context);
+//        }
         String emailContent = templateEngine.process("register", context);
         MimeMessage message=mailSender.createMimeMessage();
         try {

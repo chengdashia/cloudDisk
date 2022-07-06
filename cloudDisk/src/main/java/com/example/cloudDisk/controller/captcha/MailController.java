@@ -47,8 +47,38 @@ public class MailController {
     ){
 
         String random = RandomUtil.randomNumbers(6);
-        mailUtils.sendEmailVerificationCode(random,mailbox);
+        mailbox = getRegisterKey(mailbox);
+        mailUtils.sendEmailVerificationCode(random,mailbox,true);
         redisUtil.set(mailbox,random,60 * 3);
         return R.ok();
+    }
+
+
+    /**
+     * 发送邮箱验证码登录时
+     * @param mailbox 用户邮箱
+     */
+    @ApiOperation("发送邮箱验证码登录时")
+    @PostMapping("/sendMailCodeForLogin")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType="query",name="mailbox",dataTypeClass = String.class,required=true,value="用户邮箱")
+    })
+    public R<Object> sendMailCodeForLogin(
+            @ApiParam(value = "用户邮箱",required = true) @RequestParam("mailbox")  @NotBlank(message = "用户邮箱不能为空") @Email String mailbox
+    ){
+
+        String random = RandomUtil.randomNumbers(6);
+        mailbox = getLoginKey(mailbox);
+        mailUtils.sendEmailVerificationCode(random,mailbox,false);
+        redisUtil.set(mailbox,random,60 * 3);
+        return R.ok();
+    }
+
+    public static String getLoginKey(String mailbox){
+        return "login:"+mailbox;
+    }
+
+    public static String getRegisterKey(String mailbox){
+        return "register:"+mailbox;
     }
 }

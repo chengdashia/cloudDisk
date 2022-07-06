@@ -51,7 +51,7 @@ public interface UserInfoService extends IService<UserInfo> {
 
 
     /**
-     * 手机号登录,使用手机号+邮箱验证码
+     * 使用邮箱验证码登录
      * @param mailbox  手机号
      * @param mailCode 邮箱验证码
      * @return  R

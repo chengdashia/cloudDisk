@@ -7,6 +7,8 @@ import cn.hutool.core.util.RandomUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.cloudDisk.common.result.R;
 import com.example.cloudDisk.common.result.ResultCode;
+import com.example.cloudDisk.controller.UserInfoController;
+import com.example.cloudDisk.controller.captcha.MailController;
 import com.example.cloudDisk.mapper.*;
 import com.example.cloudDisk.pojo.*;
 import com.example.cloudDisk.service.UserInfoService;
@@ -120,8 +122,15 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
         }
     }
 
+    /**
+     * 使用邮箱验证码登录
+     * @param mailbox  手机号
+     * @param mailCode 邮箱验证码
+     * @return  R
+     */
     @Override
     public R<Object> loginByMail(String mailbox, String mailCode) {
+        mailbox = MailController.getLoginKey(mailbox);
         if (redisUtil.hasKey(mailbox)) {
             if (redisUtil.get(mailbox).equals(mailCode)) {
                 try {
@@ -160,6 +169,7 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
      */
     @Override
     public R<Object> registerByMail(String mailbox, String pwd, String mailCode) {
+        mailbox = MailController.getRegisterKey(mailbox);
         //如果redis有这个验证码
         if(redisUtil.hasKey(mailbox)){
             String redisSmsCode = (String) redisUtil.get(mailbox);
