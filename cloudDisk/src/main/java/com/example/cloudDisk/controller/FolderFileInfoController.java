@@ -38,7 +38,7 @@ public class FolderFileInfoController {
      * @param folderId 文件夹id
      * @return               R
      */
-    @ApiOperation("根据文件夹id查询文件夹下的文件")
+    @ApiOperation(value = "根据文件夹id查询文件夹下的文件",notes = "根据文件夹id查询文件夹下的文件")
     @PostMapping("/getFolderFileByFolderId")
     @ApiImplicitParams({
             @ApiImplicitParam(paramType="query",name="folderId",dataTypeClass = String.class,required=true,value="文件夹id")

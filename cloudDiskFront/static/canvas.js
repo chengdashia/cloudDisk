@@ -115,5 +115,5 @@ var Index = function() {
 		m.mouse.update(e.clientX, e.clientY)
 	}), v.onUpdate(function(e) {
 		m.render(e)
-	}), v.update();	
+	}), v.update();
 }();

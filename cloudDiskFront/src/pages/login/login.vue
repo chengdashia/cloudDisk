@@ -11,7 +11,7 @@
         </div>
       </div>
       <transition name="test" mode="out-in">
-        <keep-alive :include="['Qregister','register','loginLogin']">
+        <keep-alive :include="['Qregister','register','loginLogin','wxLogin','gitLogin']">
           <router-view />
         </keep-alive>
       </transition>

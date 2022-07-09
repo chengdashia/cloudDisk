@@ -148,5 +148,19 @@ export default {
       this.conShow3 = !this.conShow3;
       this.conShow4 = !this.conShow4;
     },
+    gitLogin(){
+      this.$axios.get('/oauth/login/gitee').then(res => {
+        //获取到后端传递过来的授权路径
+        console.log('>>>>')
+        console.log(res.data.data.url)
+        //跳转到gitee授权页
+        window.location.href= res.data.data.url;
+      })
+    },
+    wxLogin(){
+      this.$router.push({
+        name:'wxLogin'
+      })
+    }
   }
 }

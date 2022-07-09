@@ -116,7 +116,7 @@ public class FileHistoryController {
      * @param fileId   文件id
      * @return           R
      */
-    @ApiOperation("添加浏览记录 不使用redis")
+    @ApiOperation(value = "添加浏览记录 不使用redis",notes = "添加浏览记录 不使用redis")
     @PostMapping("/addMyFileHistory")
     @ApiImplicitParams({
             @ApiImplicitParam(paramType="query",name="fileId",dataTypeClass = String.class,required=true,value="文件id")
@@ -126,21 +126,6 @@ public class FileHistoryController {
     ){
         return fileHistoryService.addMyFileHistory(fileId);
     }
-
-    /**
-     * 获取自己浏览的文件信息
-     * @return  R
-     */
-    @ApiOperation("获取自己浏览的文件信息")
-    @PostMapping("/getMyFileHistory")
-    public R<Object> getMyFileHistory(
-    ){
-        return fileHistoryService.getMyFileHistory();
-
-
-    }
-
-
 
     /**
      * 删除自己浏览的文件信息
@@ -157,6 +142,17 @@ public class FileHistoryController {
     ){
 
         return fileHistoryService.delMyFileHistory(historyId);
+    }
+
+    /**
+     * 获取自己浏览的文件信息
+     * @return  R
+     */
+    @ApiOperation("获取自己浏览的文件信息")
+    @PostMapping("/getMyFileHistory")
+    public R<Object> getMyFileHistory(
+    ){
+        return fileHistoryService.getMyFileHistory();
     }
 }
 

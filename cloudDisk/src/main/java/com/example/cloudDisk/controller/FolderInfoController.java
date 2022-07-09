@@ -72,25 +72,6 @@ public class FolderInfoController {
 
     }
 
-
-    /**
-     * 更改文件夹名称
-     * @return  R
-     */
-    @ApiOperation("更改文件夹名称")
-    @PostMapping("/updateFolderName")
-    @ApiImplicitParams({
-            @ApiImplicitParam(paramType="query",name="folderId",dataTypeClass = String.class,required=true,value="文件夹id"),
-            @ApiImplicitParam(paramType="query",name="folderName",dataTypeClass = String.class,required=true,value="文件夹的名称")
-    })
-    public R<Object> updateFolderName(
-            @RequestParam("folderId") @NotBlank(message = "文件id不能为空") String folderId,
-            @RequestParam("folderName") @NotBlank(message = "文件id不能为空") String folderName
-    ){
-        return folderInfoService.updateFolderName(folderId, folderName);
-    }
-
-
     /**
      * 更改文件夹备注
      * @param folderId 文件夹id
@@ -109,6 +90,23 @@ public class FolderInfoController {
     ){
 
         return folderInfoService.updateFolderRemark(folderId,folderRemark);
+    }
+
+    /**
+     * 更改文件夹名称
+     * @return  R
+     */
+    @ApiOperation("更改文件夹名称")
+    @PostMapping("/updateFolderName")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType="query",name="folderId",dataTypeClass = String.class,required=true,value="文件夹id"),
+            @ApiImplicitParam(paramType="query",name="folderName",dataTypeClass = String.class,required=true,value="文件夹的名称")
+    })
+    public R<Object> updateFolderName(
+            @RequestParam("folderId") @NotBlank(message = "文件id不能为空") String folderId,
+            @RequestParam("folderName") @NotBlank(message = "文件id不能为空") String folderName
+    ){
+        return folderInfoService.updateFolderName(folderId, folderName);
     }
 
 }

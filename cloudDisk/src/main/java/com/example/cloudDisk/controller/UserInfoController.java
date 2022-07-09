@@ -98,6 +98,28 @@ public class UserInfoController {
     }
 
     /**
+     * 注册 通过邮箱
+     * @param mailbox       邮箱
+     * @param pwd           密码
+     * @param mailCode      验证码
+     * @return R
+     */
+    @ApiOperation("注册 通过邮箱")
+    @PostMapping("/registerByMail")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType="query",name="mailbox",dataTypeClass = String.class,required=true,value="用户的邮箱"),
+            @ApiImplicitParam(paramType="query",name="pwd",dataTypeClass = String.class,required=true,value="用户的密码"),
+            @ApiImplicitParam(paramType="query",name="mailCode",dataTypeClass = String.class,required=true,value="验证码")
+    })
+    public R<Object> registerByMail(
+            @RequestParam("mailbox") @NotBlank(message = "邮箱不能为空") @Email String mailbox,
+            @RequestParam("pwd") @NotBlank(message = "密码不能为空") String pwd,
+            @RequestParam("mailCode") @NotBlank(message = "短信验证码不能为空") String mailCode
+    ){
+        return userInfoService.registerByMail(mailbox, pwd, mailCode);
+    }
+
+    /**
      * 注册
      * @param tel       手机号
      * @param pwd         密码
@@ -121,34 +143,10 @@ public class UserInfoController {
 
 
     /**
-     * 注册 通过邮箱
-     * @param mailbox       邮箱
-     * @param pwd           密码
-     * @param mailCode      验证码
-     * @return R
-     */
-    @ApiOperation("注册 通过邮箱")
-    @PostMapping("/registerByMail")
-    @ApiImplicitParams({
-            @ApiImplicitParam(paramType="query",name="mailbox",dataTypeClass = String.class,required=true,value="用户的邮箱"),
-            @ApiImplicitParam(paramType="query",name="pwd",dataTypeClass = String.class,required=true,value="用户的密码"),
-            @ApiImplicitParam(paramType="query",name="mailCode",dataTypeClass = String.class,required=true,value="验证码")
-    })
-    public R<Object> registerByMail(
-            @RequestParam("mailbox") @NotBlank(message = "邮箱不能为空") @Email String mailbox,
-            @RequestParam("pwd") @NotBlank(message = "密码不能为空") String pwd,
-            @RequestParam("mailCode") @NotBlank(message = "短信验证码不能为空") String mailCode
-    ){
-        return userInfoService.registerByMail(mailbox, pwd, mailCode);
-    }
-
-
-
-    /**
      * 用户获取个人信息
      * @return  R
      */
-    @ApiOperation("用户获取个人信息 New")
+    @ApiOperation(value = "用户获取个人信息",notes = "获取用户的详细信息")
     @PostMapping("/getUserInfo")
     public R<Object> getUserInfoNew(){
         int uInit = (int) StpUtil.getExtra("uInit");
@@ -161,7 +159,7 @@ public class UserInfoController {
     /**
      * 用户注销登录
      */
-    @ApiOperation("用户注销登录")
+    @ApiOperation(value = "用户注销登录",notes = "根据id让用户退出登录状态")
     @PostMapping("/loginOut")
     public void loginOut(
     ){

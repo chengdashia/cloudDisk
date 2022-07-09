@@ -9,10 +9,9 @@ import Superior from '@/pages/home/superior/superior'
 import VuexUse from '@/pages/VuexUse/demo'
 import Login from '@/pages/login/login'
 import register from '@/pages/login/register/register'
-import Qregister from '@/pages/login/Qregister/Qregister'
+import Qregister from "../pages/login/Qregister/Qregister";
 import loginLogin from '@/pages/login/login_login/loginLogin'
 import verLogin from '@/pages/login/login_login/verLogin'
-import mailVerLogin from '@/pages/login/login_login/mailVerLogin'
 import File from '@/pages/file/file'
 import Person from '@/pages/person/person'
 import PersonInfo from '@/pages/person/components/personInfo/personInfo'
@@ -24,9 +23,12 @@ import HistoryFile from '@/pages/person/components/historyFiles/historyFile'
 import ShareFiles from '@/pages/person/components/shareFiles/shareFile'
 import wordTest from '@/pages/word/wordTest'
 import mail from '@/pages/login/mail/mail'
-import slider from "../pages/login/slider/slider"
+import slider from "../pages/login/slider/slider";
+import gitLogin from "../pages/login/login_login/gitLogin"
+import wxLogin from "../pages/login/login_login/wxLogin"
 import PersonV from '../store/person'
-import test from "../pages/file/components/music/test"
+import test from "../pages/file/components/music/test";
+// import oauthCallback from "../pages/login/login_login/oauthCallback";
 Vue.use(Router)
 
 //解决vue路由重复导航错误
@@ -108,15 +110,6 @@ const router = new Router({
           },
         },
         {
-          name: 'mailVerLogin',
-          path: 'mailVerLogin',
-          component: mailVerLogin,
-          meta: {
-            title: '登陆',
-            needLogin: false
-          },
-        },
-        {
           name:'mail',
           path: 'mail',
           component: mail,
@@ -135,14 +128,23 @@ const router = new Router({
           },
         },
         {
-          name: 'test',
-          path: 'test',
-          component: test,
+          name: 'wxLogin',
+          path: 'wxLogin',
+          component: wxLogin,
           meta: {
-            title: '测试滑块',
-            needLogin: false
+            title: '微信授权登陆',
+            needLogin: false,
           }
-        }
+        },
+        {
+          name: 'gitLogin',
+          path: 'gitLogin',
+          component: gitLogin,
+          meta: {
+            title: 'gitee授权登录',
+            needLogin: false,
+          }
+        },
       ]
     },
     {
@@ -240,7 +242,6 @@ router.beforeEach((to, from, next) => {
   	next()
   }
 })
-
 //全局后置路由守卫————初始化的时候被调用、每次路由切换之后被调用
 router.afterEach((to, from) => {
   // console.log('后置路由守卫',to,from)

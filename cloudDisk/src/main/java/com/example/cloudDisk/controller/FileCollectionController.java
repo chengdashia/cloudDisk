@@ -71,7 +71,7 @@ public class FileCollectionController {
      * @param fileId 文件id
      * @return R
      */
-    @ApiOperation("删除自己收藏的文件信息")
+    @ApiOperation(value = "删除自己收藏的文件信息",notes = "通过文件id删除文件")
     @PostMapping("/delMyFileCollection")
     @ApiImplicitParams({
             @ApiImplicitParam(paramType="query",name="fileId",dataTypeClass = String.class,required=true,value="文件的id")

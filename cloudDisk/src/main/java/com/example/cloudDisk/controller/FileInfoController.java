@@ -43,7 +43,7 @@ public class FileInfoController {
      * @param fileId  文件id
      * @return  R
      */
-    @ApiOperation("根据文件id获取文件信息")
+    @ApiOperation(value = "根据文件id获取文件信息",notes = "根据文件id获取文件信息")
     @PostMapping("/getFileInfoById")
     @ApiImplicitParams({
             @ApiImplicitParam(paramType="query",name="fileId",dataTypeClass = String.class,required=true,value="文件id")
@@ -75,6 +75,15 @@ public class FileInfoController {
         return fileInfoService.getFileInfoListByPage(page);
     }
 
+    /**
+     * 随机获取十条文件信息
+     * @return  R
+     */
+    @ApiOperation("随机获取十条文件信息")
+    @PostMapping("/getFileRandomTen")
+    public R<Object> getFileRandomTen(){
+        return fileInfoService.getFileRandomTen();
+    }
 
     /**
      * 获取点击量最高的前十个文件信息
@@ -88,24 +97,13 @@ public class FileInfoController {
 
 
     /**
-     * 随机获取十条文件信息
-     * @return  R
-     */
-    @ApiOperation("随机获取十条文件信息")
-    @PostMapping("/getFileRandomTen")
-    public R<Object> getFileRandomTen(){
-        return fileInfoService.getFileRandomTen();
-    }
-
-
-    /**
      * 上传文件
      * @param folderId             父文件夹id
      * @param file                 文件
      * @param labelList            标签列表
      * @return         R
      */
-    @ApiOperation("上传文件")
+    @ApiOperation(value = "上传文件" ,notes = "上传文件")
     @PostMapping("/uploadFile")
     @ApiImplicitParams({
             @ApiImplicitParam(paramType="query",name="folderId",dataTypeClass = String.class,required=true,value="父文件夹id"),
