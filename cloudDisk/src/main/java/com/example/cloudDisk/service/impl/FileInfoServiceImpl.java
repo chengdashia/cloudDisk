@@ -56,6 +56,9 @@ public class FileInfoServiceImpl extends ServiceImpl<FileInfoMapper, FileInfo> i
     @Resource
     private FolderFileInfoMapper folderFileInfoMapper;
 
+    @Resource
+    private HdfsUtil hdfsUtil;
+
     /**
      * 根据文件id获取文件信息
      * @param fileId  文件id
@@ -221,7 +224,7 @@ public class FileInfoServiceImpl extends ServiceImpl<FileInfoMapper, FileInfo> i
             //获取路径
             String filePath = localFile.getPath();
             //从本地上传到hdfs成功
-            boolean upload = HdfsUtil.upload(filePath, folderUrl);
+            boolean upload = hdfsUtil.upload(filePath, folderUrl);
             if (upload) {
                 //文件后缀
                 String name = localFile.getName();
@@ -234,7 +237,7 @@ public class FileInfoServiceImpl extends ServiceImpl<FileInfoMapper, FileInfo> i
                 Integer type = FileTypeUtil.FILE_TYPE.get(suffix);
 
                 //将名字改一下
-                HdfsUtil.fileRename(hdfsFilePath,fileName);
+                hdfsUtil.fileRename(hdfsFilePath,fileName);
 
                 FileInfo fileInfo = new FileInfo();
                 fileInfo.setFileInfoId(IdUtil.fastUUID());
@@ -415,7 +418,7 @@ public class FileInfoServiceImpl extends ServiceImpl<FileInfoMapper, FileInfo> i
             fileInfo.setFilePath(newFilePath);
             int i = fileInfoMapper.updateById(fileInfo);
             if (i == 1) {
-                HdfsUtil.fileRename(filePath,fileName);
+                hdfsUtil.fileRename(filePath,fileName);
                 return R.ok();
             }
             return R.error();

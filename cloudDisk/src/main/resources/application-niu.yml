@@ -139,7 +139,7 @@ knife4j:
   cors: true
 
 hdfs:
-  url: http://10.111.43.13
+  url: hdfs://10.111.43.13
   port: 8020
   userName: root
   path: http://10.111.43.13:8020

@@ -1,6 +1,5 @@
 package com.example.cloudDisk;
 
-import com.example.cloudDisk.utils.hdfs.HdfsConfig;
 import com.example.cloudDisk.utils.hdfs.HdfsUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -11,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 class DemoApplicationTests {
 
     @Autowired
-    private HdfsConfig hdfsConfig;
+    private HdfsUtil hdfsUtil;
 
 
     @Test
@@ -22,7 +21,8 @@ class DemoApplicationTests {
         //log.info(hdfsConfig.getPort());
         //log.info(hdfsConfig.getUrl());
 
-        HdfsUtil.deleteAllFilesInThisFolder("/165034235099284957cb857d04c12ae63cb9dab7287e5m    ");
+        hdfsUtil.createFolder("/1657101057728492c8106f2b549e1a1c2d8baeee3b7cf/test2");
+
 
     }
 

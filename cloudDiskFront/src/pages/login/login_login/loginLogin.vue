@@ -42,10 +42,10 @@
     <el-divider content-position="center">第三方登陆</el-divider>
     <div class="other_login">
       <i class="el-icon-chat-round"></i>
-      <i class="el-icon-minus" @click="gitLogin"></i>
+      <i class="el-icon-minus"></i>
       <i class="el-icon-plus"></i>
-      <el-button icon="el-icon-more" type="primary" @click="click1" v-show="conShow" circle></el-button>
-      <i class="el-icon-chat-line-round" v-show="conShow2" @click="wxLogin"></i>
+      <el-button style="background-color: #c8c9cc;margin-left: 2vw;" icon="el-icon-more" type="primary" @click="click1" v-show="conShow" circle></el-button>
+      <i class="el-icon-chat-line-round" v-show="conShow2"></i>
       <i class="el-icon-chat-dot-round" v-show="conShow3"></i>
       <el-button icon="el-icon-d-arrow-left" type="primary" @click="click2" v-show="conShow4" circle class="el-button2" size="mini"></el-button>
     </div>
