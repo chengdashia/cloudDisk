@@ -5,14 +5,13 @@ import cn.dev33.satoken.stp.StpUtil;
 import cn.hutool.core.util.IdUtil;
 import cn.hutool.core.util.RandomUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.cloudDisk.common.result.R;
 import com.example.cloudDisk.common.result.ResultCode;
-import com.example.cloudDisk.controller.UserInfoController;
 import com.example.cloudDisk.controller.captcha.MailController;
 import com.example.cloudDisk.mapper.*;
 import com.example.cloudDisk.pojo.*;
 import com.example.cloudDisk.service.UserInfoService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.cloudDisk.utils.Constants.Constant;
 import com.example.cloudDisk.utils.hdfs.HdfsUtil;
 import com.example.cloudDisk.utils.redis.RedisUtil;
@@ -52,6 +51,9 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
 
     @Resource
     private RedisUtil redisUtil;
+
+    @Resource
+    private HdfsUtil hdfsUtil;
 
 
     /**
@@ -209,7 +211,7 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
                                 folderFileInfo.setFolderPd(folderInfo.getFolderId());
                                 int insert = folderFileInfoMapper.insert(folderFileInfo);
                                 if(insert == 1){
-                                    HdfsUtil.createFolder(folderInfo.getFolderUrl());
+                                    hdfsUtil.createFolder(folderInfo.getFolderUrl());
                                     return R.ok();
                                 }else {
                                     return R.error();
@@ -333,7 +335,7 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
                                 folderFileInfo.setFolderPd(folderInfo.getFolderId());
                                 int insert = folderFileInfoMapper.insert(folderFileInfo);
                                 if(insert == 1){
-                                    HdfsUtil.createFolder(folderInfo.getFolderUrl());
+                                    hdfsUtil.createFolder(folderInfo.getFolderUrl());
                                     return R.ok();
                                 }else {
                                     return R.error();

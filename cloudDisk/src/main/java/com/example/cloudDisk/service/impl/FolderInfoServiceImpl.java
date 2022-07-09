@@ -34,7 +34,8 @@ public class FolderInfoServiceImpl extends ServiceImpl<FolderInfoMapper, FolderI
 
     @Resource
     private FolderFileInfoMapper folderFileInfoMapper;
-
+    @Resource
+    private HdfsUtil hdfsUtil;
     /**
      * 创建文件夹
      * @param folderName     文件夹名称
@@ -51,7 +52,7 @@ public class FolderInfoServiceImpl extends ServiceImpl<FolderInfoMapper, FolderI
                 .eq("folder_id", parentFolderId));
 
         String folderUrl = folder.getFolderUrl() + "/" + folderName;
-        HdfsUtil.createFolder(folderUrl);
+        hdfsUtil.createFolder(folderUrl);
         try {
             FolderInfo folderInfo = new FolderInfo();
             folderInfo.setFolderInfoId(IdUtil.fastUUID());
@@ -97,7 +98,7 @@ public class FolderInfoServiceImpl extends ServiceImpl<FolderInfoMapper, FolderI
                         .eq("folder_file_id", folderId));
                 if (delFolderFileInfo == 1) {
                     //删除文件夹 文件成功
-                    HdfsUtil.deleteFileOrFolder(folderUrl);
+                     hdfsUtil.deleteFileOrFolder(folderUrl);
                     return R.ok();
                 }
                 return R.error();
@@ -125,7 +126,7 @@ public class FolderInfoServiceImpl extends ServiceImpl<FolderInfoMapper, FolderI
             folderInfo.setFolderName(folderName);
             int i = folderInfoMapper.updateById(folderInfo);
             if (i == 1) {
-                HdfsUtil.folderRename(folderUrl, folderName);
+                hdfsUtil.folderRename(folderUrl, folderName);
                 return R.ok();
             }
             return R.error();

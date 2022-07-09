@@ -2,15 +2,15 @@ package com.example.cloudDisk.service.impl;
 
 import cn.dev33.satoken.stp.StpUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.cloudDisk.common.result.R;
+import com.example.cloudDisk.mapper.FileDelMapper;
 import com.example.cloudDisk.mapper.FileInfoMapper;
 import com.example.cloudDisk.mapper.FolderFileInfoMapper;
 import com.example.cloudDisk.pojo.FileDel;
-import com.example.cloudDisk.mapper.FileDelMapper;
 import com.example.cloudDisk.pojo.FileInfo;
 import com.example.cloudDisk.pojo.FolderFileInfo;
 import com.example.cloudDisk.service.FileDelService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.cloudDisk.utils.hdfs.HdfsUtil;
 import com.example.cloudDisk.utils.time.DateCalculateUtil;
 import com.github.yulichang.wrapper.MPJLambdaWrapper;
@@ -40,6 +40,9 @@ public class FileDelServiceImpl extends ServiceImpl<FileDelMapper, FileDel> impl
 
     @Resource
     private FolderFileInfoMapper folderFileInfoMapper;
+
+    @Resource
+    private HdfsUtil hdfsUtil;
 
     /**
      * 获取回收站  自己删除的文件信息
@@ -85,7 +88,7 @@ public class FileDelServiceImpl extends ServiceImpl<FileDelMapper, FileDel> impl
             if (delete == 1) {
                 int delete1 = folderFileInfoMapper.delete(new QueryWrapper<FolderFileInfo>().eq("folder_file_id", fileId));
                 if (delete1 == 1) {
-                    HdfsUtil.deleteFileOrFolder(filePath);
+                    hdfsUtil.deleteFileOrFolder(filePath);
                     return R.ok();
                 }
                 return R.error();

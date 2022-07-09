@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.*;
 import org.apache.hadoop.util.Progressable;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
@@ -20,8 +21,19 @@ import java.net.URISyntaxException;
 @Component
 public class HdfsUtil {
 
-    private static FileSystem fs;
+    private FileSystem fs = null;
 
+
+    @Value("${hdfs.url}")
+    private String url;
+
+    /**操作用户*/
+    @Value("${hdfs.userName}")
+    private String userName;
+
+    /**操作存储节点路径*/
+    @Value("${hdfs.port}")
+    private String port;
 
 
     /**
@@ -30,7 +42,9 @@ public class HdfsUtil {
      */
     public HdfsUtil() throws URISyntaxException {
         Configuration conf = new Configuration();
-        URI uri = new URI("hdfs://10.111.43.13:8020");
+        //String tmpUrl = this.url + ":" + this.port;
+        String url = "hdfs://10.111.43.13:8020";
+        URI uri = new URI(url);
         try {
             fs = FileSystem.get(uri, conf, "root");
         } catch (IOException | InterruptedException e) {
@@ -44,7 +58,7 @@ public class HdfsUtil {
      * 循环删除某一文件夹下的所有文件
      * @param path hdfs 的路径
      */
-    public static void deleteAllFilesInThisFolder(String path) {
+    public void deleteAllFilesInThisFolder(String path) {
         File f = new File(path);
         File[] f1 = f.listFiles();
         for (File f2 : f1) {
@@ -54,6 +68,7 @@ public class HdfsUtil {
                 if (f2.isDirectory()) {
                     deleteAllFilesInThisFolder(f2.getAbsolutePath());
                 }
+
             }
 
         }
@@ -66,7 +81,7 @@ public class HdfsUtil {
      * @param hdfsPath        hdfs 路径
      * @return    boolean
      */
-    public static boolean upload(String localPath, String hdfsPath) {
+    public boolean upload(String localPath, String hdfsPath) {
         if (!checkFileExist(hdfsPath)){
             createFolder(hdfsPath);
         }
@@ -86,7 +101,7 @@ public class HdfsUtil {
      * @param localPath      本地路径
      * @param hdfsPath        hdfs 路径
      */
-    public static void download(String hdfsPath, String localPath) {
+    public void download(String hdfsPath, String localPath) {
         try {
             fs.copyToLocalFile(new Path(hdfsPath), new Path(localPath));
             deleteAllFilesInThisFolder(localPath);
@@ -99,7 +114,7 @@ public class HdfsUtil {
      * 删除hdfs的某个文件或者目录
      * @param hdfsPath hdfs 路径
      */
-    public static void deleteFileOrFolder(String hdfsPath) {
+    public void deleteFileOrFolder(String hdfsPath) {
         try {
             fs.delete(new Path(hdfsPath), true);
         } catch (IllegalArgumentException | IOException e) {
@@ -114,7 +129,7 @@ public class HdfsUtil {
      * @param newName             文件的新的名字
      * @return                boolean
      */
-    public static boolean fileRename(String hdfsPath, String newName){
+    public boolean fileRename(String hdfsPath, String newName){
         try{
             String path = hdfsPath.substring(0,hdfsPath.lastIndexOf("/") + 1);
             String suffix = hdfsPath.substring(hdfsPath.lastIndexOf(".")+1);
@@ -135,7 +150,7 @@ public class HdfsUtil {
      * @param newName             文件的新的名字
      * @return                boolean
      */
-    public static boolean folderRename(String hdfsPath, String newName){
+    public boolean folderRename(String hdfsPath, String newName){
         try{
             String path = hdfsPath.substring(0,hdfsPath.lastIndexOf("/") + 1);
             String changePath = path + newName;
@@ -155,7 +170,7 @@ public class HdfsUtil {
      * @param filename  文件或者文件夹的完整路径
      * @return true 存在 false 不存在
      */
-    public static boolean checkFileExist(String filename) {
+    public boolean checkFileExist(String filename) {
         try {
             Path f = new Path(filename);
             return fs.exists(f);
@@ -171,7 +186,7 @@ public class HdfsUtil {
      * @param hdfsPath    hdfs 路径
      * @return     boolean
      */
-    public static boolean createFolder(String hdfsPath) {
+    public boolean createFolder(String hdfsPath) {
         if(checkFileExist(hdfsPath)){
             return false;
         }
@@ -207,7 +222,7 @@ public class HdfsUtil {
      * @param src     初始路径
      * @param dst     移动结束路径
      */
-    public static void moveFile(String src, String dst) throws Exception {
+    public void moveFile(String src, String dst) throws Exception {
         Path p1 = new Path(src);
         Path p2 = new Path(dst);
         fs.rename(p1, p2);
