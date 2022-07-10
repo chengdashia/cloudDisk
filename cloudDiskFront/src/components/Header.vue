@@ -248,7 +248,7 @@ export default {
     localStorage.getItem('token')
     console.log(this.user_tel)
     this.getData()
-    this.user_tel=localStorage.getItem('user_tel')
+    this.user_tel=localStorage.getItem('user_mail')
   },
   methods: {
   ...mapActions('PersonV',["change_info",'change_tel']),
