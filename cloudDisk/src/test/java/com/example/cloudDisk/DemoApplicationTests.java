@@ -1,10 +1,18 @@
 package com.example.cloudDisk;
 
 import com.example.cloudDisk.utils.hdfs.HdfsUtil;
+import io.minio.BucketExistsArgs;
+import io.minio.MinioClient;
+import io.minio.errors.*;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.io.IOException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+
 @Slf4j
 @SpringBootTest
 class DemoApplicationTests {
@@ -14,14 +22,18 @@ class DemoApplicationTests {
 
 
     @Test
-    void contextLoads() {
-        //boolean b = HdfsUtil.checkFileExist("/165034235099284957cb857d04c12ae63cb9dab7287e5/董博阳的文件夹/y");
-        //log.info("b：  {}",b);
-        //
-        //log.info(hdfsConfig.getPort());
-        //log.info(hdfsConfig.getUrl());
+    void contextLoads() throws ServerException, InsufficientDataException, ErrorResponseException, IOException, NoSuchAlgorithmException, InvalidKeyException, InvalidResponseException, XmlParserException, InternalException {
+        String endpoint = "http://10.111.43.55:9000";
+        String accessKey = "admin";
+        String secretKey = "12345678";
+        String bucketName = "file";
+        MinioClient build = MinioClient.builder()
+                .endpoint(endpoint)
+                .credentials(accessKey, secretKey)
+                .build();
 
-        hdfsUtil.createFolder("/1657101057728492c8106f2b549e1a1c2d8baeee3b7cf/test2");
+        boolean b = build.bucketExists(BucketExistsArgs.builder().bucket(bucketName).build());
+        System.out.println(b);
 
 
     }
