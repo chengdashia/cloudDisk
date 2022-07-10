@@ -23,7 +23,7 @@
       <el-dialog title="上传文件" :visible.sync="fileVisible" width="30%" :before-close="handleClose">
         <div class="add_file">
           <div class="upload">
-            <el-upload class="upload-demo" drag action="http://192.168.0.84:9081/fileInfo/uploadFile"
+            <el-upload class="upload-demo" drag action="http://localhost:8888/fileInfo/uploadFile"
               :on-change="progress" :on-error="uploadError" :auto-upload="false" :on-remove="handleRemove" :limit="1"
               ref="upload" :headers="headers" :data="uploadData" :on-success="successUpload">
               <i class="el-icon-upload"></i>

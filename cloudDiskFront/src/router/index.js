@@ -12,6 +12,7 @@ import register from '@/pages/login/register/register'
 import Qregister from "../pages/login/Qregister/Qregister";
 import loginLogin from '@/pages/login/login_login/loginLogin'
 import verLogin from '@/pages/login/login_login/verLogin'
+import mailVerLogin from '@/pages/login/login_login/mailVerLogin'
 import File from '@/pages/file/file'
 import Person from '@/pages/person/person'
 import PersonInfo from '@/pages/person/components/personInfo/personInfo'
@@ -22,10 +23,10 @@ import DelFile from '@/pages/person/components/delFiles/delFile'
 import HistoryFile from '@/pages/person/components/historyFiles/historyFile'
 import ShareFiles from '@/pages/person/components/shareFiles/shareFile'
 import wordTest from '@/pages/word/wordTest'
-import mail from '@/pages/login/mail/mail'
+// import mail from '@/pages/login/mail/mail'
 import slider from "../pages/login/slider/slider";
-import gitLogin from "../pages/login/login_login/gitLogin"
-import wxLogin from "../pages/login/login_login/wxLogin"
+// import gitLogin from "../pages/login/login_login/gitLogin"
+// import wxLogin from "../pages/login/login_login/wxLogin"
 import PersonV from '../store/person'
 import test from "../pages/file/components/music/test";
 // import oauthCallback from "../pages/login/login_login/oauthCallback";
@@ -110,9 +111,9 @@ const router = new Router({
           },
         },
         {
-          name:'mail',
-          path: 'mail',
-          component: mail,
+          name:'mailVerLogin',
+          path: 'mailVerLogin',
+          component: mailVerLogin,
           meta:{
             title: '邮箱登录',
             needLogin: false
@@ -127,24 +128,24 @@ const router = new Router({
             needLogin: false
           },
         },
-        {
-          name: 'wxLogin',
-          path: 'wxLogin',
-          component: wxLogin,
-          meta: {
-            title: '微信授权登陆',
-            needLogin: false,
-          }
-        },
-        {
-          name: 'gitLogin',
-          path: 'gitLogin',
-          component: gitLogin,
-          meta: {
-            title: 'gitee授权登录',
-            needLogin: false,
-          }
-        },
+        // {
+        //   name: 'wxLogin',
+        //   path: 'wxLogin',
+        //   component: wxLogin,
+        //   meta: {
+        //     title: '微信授权登陆',
+        //     needLogin: false,
+        //   }
+        // },
+        // {
+        //   name: 'gitLogin',
+        //   path: 'gitLogin',
+        //   component: gitLogin,
+        //   meta: {
+        //     title: 'gitee授权登录',
+        //     needLogin: false,
+        //   }
+        // },
       ]
     },
     {
