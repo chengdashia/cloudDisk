@@ -13,6 +13,10 @@ export default {
       show_introduction: false,
       show_pwd: false,
       show_initialize: false,
+      imageUrl: "https://ts1.cn.mm.bing.net/th/id/R-C.7c9c4e243fdb9a9ee4ef8543b8775774?rik=aSIWGQ1%2fQpDFcw&riu=http%3a%2f%2fimg.jutoula.com%2f202001%2f13%2f112034433.jpg&ehk=7Ih01mtXJxyOWholMYPxNQFyVqwJhAkQmJkql3lLVfc%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1",
+      myHeaders: {Authorization: localStorage.getItem('_UTK')}, //获取Token
+      action: "" + '',
+      // action: "http://172.20.21.92:8084/" + 'file/uploadFile',
     };
   },
   mounted() {
@@ -119,5 +123,20 @@ export default {
     changePwd() {
       this.show_pwd = true
     },
+    //
+    handleAvatarSuccess(res, file) {
+      this.imageUrl = URL.createObjectURL(file.raw);
+    },
+    beforeAvatarUpload(file) {
+      const isJPG = file.type === "image/png" || "image/jpg" || "image/jpeg";
+      const isLt2M = file.size / 1024 / 1024 < 2;
+      if (!isJPG) {
+        this.$message.error("上传头像图片只能是 JPG/PNG/JPEG 格式!");
+      }
+      if (!isLt2M) {
+        this.$message.error("上传头像图片大小不能超过 2MB!");
+      }
+      return isJPG && isLt2M;
+    }
   },
 };
