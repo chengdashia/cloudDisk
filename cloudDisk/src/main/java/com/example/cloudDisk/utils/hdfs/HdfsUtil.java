@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.constraints.Email;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -104,7 +105,7 @@ public class HdfsUtil {
      * @param file      MultipartFile  文件
      * @param hdfsPath        hdfs 路径
      */
-    public boolean upload(MultipartFile file, String hdfsPath) throws IOException {
+    public boolean upload(@Email MultipartFile file, String hdfsPath) throws IOException {
         InputStream in = file.getInputStream();
         FSDataOutputStream out = fs.create(new Path(hdfsPath));
         try {

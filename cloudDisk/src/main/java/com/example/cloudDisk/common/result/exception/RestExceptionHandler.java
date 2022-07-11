@@ -19,13 +19,23 @@ import javax.validation.ConstraintViolationException;
 public class RestExceptionHandler {
 
     /**
+     * 处理其他异常
+     */
+    @ExceptionHandler(value =Exception.class)
+    @ResponseBody
+    public R<String> exceptionHandler(Exception e){
+        log.error("未知异常！原因是:",e);
+        return R.error(Integer.parseInt(ExceptionEnum.INTERNAL_SERVER_ERROR.getResultCode()),ExceptionEnum.INTERNAL_SERVER_ERROR.getResultMsg());
+    }
+
+    /**
      * 处理自定义的业务异常
      */
     @ExceptionHandler(value = BaseException.class)
     @ResponseBody
     public R<String> baseExceptionHandler(BaseException e){
         log.error("发生业务异常！原因是：{}",e.getErrorMsg());
-        return R.error(e.getErrorCode(),e.getErrorMsg());
+        return R.error(Integer.parseInt(e.getErrorCode()),e.getErrorMsg());
     }
 
     /**
@@ -35,18 +45,9 @@ public class RestExceptionHandler {
     @ResponseBody
     public R<String> exceptionHandler(NullPointerException e){
         log.error("发生空指针异常！原因是:",e);
-        return R.error(ExceptionEnum.BODY_NOT_MATCH.getResultCode(),ExceptionEnum.BODY_NOT_MATCH.getResultMsg());
+        return R.error(Integer.parseInt(ExceptionEnum.BODY_NOT_MATCH.getResultCode()),ExceptionEnum.BODY_NOT_MATCH.getResultMsg());
     }
 
-    /**
-     * 处理其他异常
-     */
-    @ExceptionHandler(value =Exception.class)
-    @ResponseBody
-    public R<String> exceptionHandler(Exception e){
-        log.error("未知异常！原因是:",e);
-        return R.error(ExceptionEnum.INTERNAL_SERVER_ERROR.getResultCode(),ExceptionEnum.INTERNAL_SERVER_ERROR.getResultMsg());
-    }
 
     /**
      * 处理没登录异常
@@ -55,7 +56,7 @@ public class RestExceptionHandler {
     @ResponseBody
     public R<String> notLoginExceptionHandler(NotLoginException e){
         log.error("未知异常！原因是:",e);
-        return R.error(ExceptionEnum.NOT_FOUND.getResultCode(), ExceptionEnum.NOT_LOGIN.getResultMsg());
+        return R.error(Integer.parseInt(ExceptionEnum.NOT_FOUND.getResultCode()), ExceptionEnum.NOT_LOGIN.getResultMsg());
     }
 
     /**
@@ -63,9 +64,9 @@ public class RestExceptionHandler {
      */
     @ExceptionHandler(value = ConstraintViolationException.class)
     @ResponseBody
-    public R<String> constraintViolationExceptionHandler(NotLoginException e){
+    public R<String> constraintViolationExceptionHandler(ConstraintViolationException e){
         log.error("未知异常！原因是:",e);
-        return R.error(ExceptionEnum.CONSTRAINT_VIOLATION_EXCEPTION.getResultCode(),ExceptionEnum.CONSTRAINT_VIOLATION_EXCEPTION.getResultMsg());
+        return R.error(Integer.parseInt(ExceptionEnum.CONSTRAINT_VIOLATION_EXCEPTION.getResultCode()),ExceptionEnum.CONSTRAINT_VIOLATION_EXCEPTION.getResultMsg());
     }
 
 
@@ -75,9 +76,9 @@ public class RestExceptionHandler {
      */
     @ExceptionHandler(value = MissingServletRequestParameterException.class)
     @ResponseBody
-    public R<String> missingServletRequestParameterExceptionHandler(NotLoginException e){
+    public R<String> missingServletRequestParameterExceptionHandler(MissingServletRequestParameterException e){
         log.error("未知异常！原因是:",e);
-        return R.error(ExceptionEnum.REQUEST_PARAMETER_EXCEPTION.getResultCode(),ExceptionEnum.REQUEST_PARAMETER_EXCEPTION.getResultMsg());
+        return R.error(Integer.parseInt(ExceptionEnum.REQUEST_PARAMETER_EXCEPTION.getResultCode()),ExceptionEnum.REQUEST_PARAMETER_EXCEPTION.getResultMsg());
     }
 
 

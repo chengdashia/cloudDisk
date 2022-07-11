@@ -87,7 +87,7 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
                         .select("user_id", "user_pwd", "user_initialize")
                         .eq("user_mail", userAccount));
             }else {
-                return R.error(ResultCode.FORMAT_MISMATCH.getCode(),ResultCode.FORMAT_MISMATCH.getMessage());
+               return R.error(ResultCode.FORMAT_MISMATCH.getCode(),ResultCode.FORMAT_MISMATCH.getMessage());
             }
             if(userInfo != null){
                 if(userInfo.getUserPwd().equals(userPwd)){

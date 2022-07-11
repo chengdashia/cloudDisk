@@ -3,6 +3,8 @@ package com.example.cloudDisk.controller.file;
 import com.example.cloudDisk.common.minio.MinioConfig;
 import com.example.cloudDisk.common.minio.MinioUtil;
 import com.example.cloudDisk.common.result.R;
+import com.example.cloudDisk.common.result.exception.BaseException;
+import com.example.cloudDisk.common.result.exception.ExceptionEnum;
 import com.example.cloudDisk.utils.hdfs.HdfsUtil;
 import io.minio.ObjectWriteResponse;
 import io.swagger.annotations.Api;
@@ -12,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import javax.validation.constraints.Email;
 
 /**
  * @author 成大事
@@ -60,5 +64,11 @@ public class FileController {
     public R testUpload3(@RequestPart("file") MultipartFile file) throws Exception {
         hdfsUtil.upload(file,"/1.jpg");
         return R.ok();
+    }
+
+
+    @PostMapping("/upload4")
+    public R testUpload4(@Email @RequestParam("code") String code){
+        throw new BaseException(ExceptionEnum.SIGNATURE_NOT_MATCH.getResultCode(),ExceptionEnum.SIGNATURE_NOT_MATCH.getResultMsg());
     }
 }

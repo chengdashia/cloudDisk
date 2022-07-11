@@ -111,8 +111,9 @@ public class R<T> implements Serializable {
     /**
      * 失 败 操 作, 携 带 自 定 义 状 态 码 和 自 定 义 消 息
      */
+
     public static <T> R<T> error(int code, String message) {
-        return error(ResultCode.FAILED.getCode(), message, null);
+        return error(code, message, null);
     }
 
     /**
