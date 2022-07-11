@@ -43,12 +43,30 @@ public class FileCollectionController {
     @ApiOperation("文件收藏")
     @PostMapping("/fileCollection")
     @ApiImplicitParams({
-            @ApiImplicitParam(paramType="query",name="fileId",dataTypeClass = String.class,required=true,value="文件的id")
+            @ApiImplicitParam(paramType = "query", name = "fileId", dataTypeClass = String.class, required = true, value = "文件的id")
     })
     public R<Object> fileCollection(
             @RequestParam("fileId") @NotBlank(message = "文件的id") @NotNull String fileId
     ) {
         return fileCollectionService.fileCollection(fileId);
+    }
+
+    /**
+     * 删除自己收藏的文件信息
+     *
+     * @param fileId 文件id
+     * @return R
+     */
+    @ApiOperation(value = "删除自己收藏的文件信息",notes = "通过文件id删除文件")
+    @PostMapping("/delMyFileCollection")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType = "query", name = "fileId", dataTypeClass = String.class, required = true, value = "文件的id")
+    })
+    public R<Object> delMyFileCollection(
+            @ApiParam(value = "文件的id", required = true) @RequestParam("fileId") @NotBlank(message = "文件的id") @NotNull String fileId
+    ) {
+        //直接删除
+        return fileCollectionService.delMyFileCollection(fileId);
     }
 
 
@@ -64,24 +82,4 @@ public class FileCollectionController {
         // 查询自己收藏的文件
         return fileCollectionService.getMyCollectionFile();
     }
-
-    /**
-     * 删除自己收藏的文件信息
-     *
-     * @param fileId 文件id
-     * @return R
-     */
-    @ApiOperation(value = "删除自己收藏的文件信息",notes = "通过文件id删除文件")
-    @PostMapping("/delMyFileCollection")
-    @ApiImplicitParams({
-            @ApiImplicitParam(paramType="query",name="fileId",dataTypeClass = String.class,required=true,value="文件的id")
-    })
-    public R<Object> delMyFileCollection(
-            @ApiParam(value = "文件的id", required = true) @RequestParam("fileId") @NotBlank(message = "文件的id") @NotNull String fileId
-    ) {
-        //直接删除
-        return fileCollectionService.delMyFileCollection(fileId);
-    }
-
-
 }
