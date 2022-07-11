@@ -55,22 +55,7 @@ public class FolderInfoController {
     }
 
 
-    /**
-     * 删除文件夹
-     * @param folderId 文件id
-     * @return R
-     */
-    @ApiOperation("删除文件夹")
-    @PostMapping("/delFolder")
-    @ApiImplicitParams({
-            @ApiImplicitParam(paramType="query",name="folderId",dataTypeClass = String.class,required=true,value="文件夹id")
-    })
-    public R<Object> delFolder(
-            @RequestParam("folderId") @NotBlank(message = "文件夹id不能为空") String folderId
-    ) {
-        return folderInfoService.deleteFolder(folderId);
 
-    }
 
     /**
      * 更改文件夹备注
@@ -90,6 +75,23 @@ public class FolderInfoController {
     ){
 
         return folderInfoService.updateFolderRemark(folderId,folderRemark);
+    }
+
+    /**
+     * 删除文件夹
+     * @param folderId 文件id
+     * @return R
+     */
+    @ApiOperation("删除文件夹")
+    @PostMapping("/delFolder")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType="query",name="folderId",dataTypeClass = String.class,required=true,value="文件夹id")
+    })
+    public R<Object> delFolder(
+            @RequestParam("folderId") @NotBlank(message = "文件夹id不能为空") String folderId
+    ) {
+        return folderInfoService.deleteFolder(folderId);
+
     }
 
     /**
