@@ -16,6 +16,7 @@ import com.example.cloudDisk.mapper.*;
 import com.example.cloudDisk.pojo.*;
 import com.example.cloudDisk.service.UserInfoService;
 import com.example.cloudDisk.utils.Constants.Constant;
+import com.example.cloudDisk.utils.RegexUtil;
 import com.example.cloudDisk.utils.hdfs.HdfsUtil;
 import com.example.cloudDisk.utils.redis.RedisUtil;
 import com.github.yulichang.wrapper.MPJLambdaWrapper;
@@ -69,29 +70,37 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
 
     /**
      * 通过密码登录
-     * @param tel        电话号
-     * @param pwd        密码
+     * @param userAccount        电话号 或 着邮箱
+     * @param userPwd        密码
      * @return           R
      */
     @Override
-    public R<Object> loginByPwd(String tel, String pwd) {
+    public R<Object> loginByPwd(String userAccount, String userPwd) {
         try {
-            UserInfo userInfo = userInfoMapper.selectOne(new QueryWrapper<UserInfo>()
-                    .select("user_id", "user_pwd", "user_initialize")
-                    .eq("user_tel", tel));
+            UserInfo userInfo = null;
+            if(RegexUtil.checkPhone(userAccount)){
+                userInfo = userInfoMapper.selectOne(new QueryWrapper<UserInfo>()
+                        .select("user_id", "user_pwd", "user_initialize")
+                        .eq("user_tel", userAccount));
+            }else if(RegexUtil.checkEmail(userAccount)){
+                userInfo = userInfoMapper.selectOne(new QueryWrapper<UserInfo>()
+                        .select("user_id", "user_pwd", "user_initialize")
+                        .eq("user_mail", userAccount));
+            }else {
+                return R.error(ResultCode.FORMAT_MISMATCH.getCode(),ResultCode.FORMAT_MISMATCH.getMessage());
+            }
             if(userInfo != null){
-                if(userInfo.getUserPwd().equals(pwd)){
+                if(userInfo.getUserPwd().equals(userPwd)){
                     StpUtil.login(userInfo.getUserId(), SaLoginConfig.setExtra("uInit", userInfo.getUserInitialize()));
                     log.info("用户{}登录成功",userInfo.getUserId());
                     return R.ok(StpUtil.getTokenInfo());
-                }else {
-                    // 密码错误
-                    return R.error(ResultCode.PWD_ERROR.getCode(), ResultCode.PWD_ERROR.getMessage());
                 }
-            }else {
-                // 用户不存在 请先注册
-                return R.error(ResultCode.NOT_EXIST.getCode(),ResultCode.NOT_EXIST.getMessage());
+                // 密码错误
+                return R.error(ResultCode.PWD_ERROR.getCode(), ResultCode.PWD_ERROR.getMessage());
+
             }
+            // 用户不存在 请先注册
+            return R.error(ResultCode.NOT_EXIST.getCode(),ResultCode.NOT_EXIST.getMessage());
         } catch (Exception e) {
             e.printStackTrace();
             return R.error();

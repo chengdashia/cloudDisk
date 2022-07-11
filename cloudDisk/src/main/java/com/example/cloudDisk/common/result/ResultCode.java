@@ -31,6 +31,8 @@ public enum ResultCode {
     CAPTCHA_ERROR(413,"验证码不正确"),
     CAPTCHA_EXPIRE(414,"验证码过期"),
     REGISTERED(415,"该用户已注册"),
+    /** 格式不匹配**/
+    FORMAT_MISMATCH(416,"格式不匹配！请检查输入的手机号或邮箱是否合规！"),
     /**服务异常**/
     FAILED(500,"系统异常，请稍后重试"),
 

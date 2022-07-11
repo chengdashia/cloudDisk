@@ -36,22 +36,22 @@ public class UserInfoController {
     private final UserInfoService userInfoService;
 
     /**
-     * 普通登录,使用手机号+密码
-     * @param tel  手机号
-     * @param pwd    密码
+     * 普通登录,使用手机号+密码  或者 邮箱+密码
+     * @param userAccount  手机号 或 邮箱
+     * @param userPwd    密码
      * @return  R
      */
-    @ApiOperation("使用手机号+密码登录")
+    @ApiOperation("使用手机号+密码 或者 邮箱+密码 进行登录")
     @PostMapping("/loginByPassword")
     @ApiImplicitParams({
-            @ApiImplicitParam(paramType="query",name="user_tel",dataTypeClass = String.class,required=true,value="用户的手机号"),
-            @ApiImplicitParam(paramType="query",name="user_pwd",dataTypeClass = String.class,required=true,value="用户的密码")
+            @ApiImplicitParam(paramType="query",name="userAccount",dataTypeClass = String.class,required=true,value="用户的手机号 或者 邮箱"),
+            @ApiImplicitParam(paramType="query",name="userPwd",dataTypeClass = String.class,required=true,value="用户的密码")
     })
     public R<Object> loginByPassword(
-            @RequestParam("user_tel") @NotBlank(message = "手机号不能为空") @Phone @Size(max = 11,min = 11)String tel,
-            @RequestParam("user_pwd") @NotBlank(message = "密码不能为空") String pwd
+            @RequestParam("userAccount") @NotBlank(message = "手机号不能为空") String userAccount,
+            @RequestParam("userPwd") @NotBlank(message = "密码不能为空") String userPwd
     ){
-       return userInfoService.loginByPwd(tel,pwd);
+       return userInfoService.loginByPwd(userAccount,userPwd);
     }
 
 

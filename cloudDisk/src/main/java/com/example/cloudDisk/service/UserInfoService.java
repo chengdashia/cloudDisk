@@ -36,11 +36,11 @@ public interface UserInfoService extends IService<UserInfo> {
 
     /**
      * 通过密码登录
-     * @param tel        电话号
-     * @param pwd        密码
+     * @param userAccount        电话号
+     * @param userPwd        密码
      * @return           R
      */
-    R<Object> loginByPwd(String tel, String pwd);
+    R<Object> loginByPwd(String userAccount, String userPwd);
 
     /**
      * 通过验证码登录
