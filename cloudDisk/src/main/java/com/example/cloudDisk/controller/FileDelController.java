@@ -35,20 +35,6 @@ public class FileDelController {
 
     private final FileDelService fileDelService;
 
-    /**
-     * 获取回收站  自己删除的文件信息
-     * @return  R
-     */
-    @ApiOperation(value = "获取回收站  自己删除的文件信息",notes ="获取回收站中已删除的文件信息" )
-    @PostMapping("/getRecycleMyFileList")
-    @ApiImplicitParams({
-            @ApiImplicitParam(paramType="header",name="token",dataTypeClass = String.class,required=true,value="校验")
-    })
-    public R<Object> getRecycleMyFileList(){
-        // 文件名称   文件备注  删除时间 文件id
-        return fileDelService.getRecycleMyFileList();
-
-    }
 
     /**
      * 从回收站回复自己删除的文件信息
@@ -63,6 +49,21 @@ public class FileDelController {
             @ApiParam(value = "文件的id",required = true) @RequestParam("fileId") @NotBlank(message = "文件的id") @NotNull String fileId
     ){
         return fileDelService.recoveryMyFile(fileId);
+
+    }
+
+    /**
+     * 获取回收站  自己删除的文件信息
+     * @return  R
+     */
+    @ApiOperation(value = "获取回收站  自己删除的文件信息",notes ="获取回收站中已删除的文件信息" )
+    @PostMapping("/getRecycleMyFileList")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType="header",name="token",dataTypeClass = String.class,required=true,value="校验")
+    })
+    public R<Object> getRecycleMyFileList(){
+        // 文件名称   文件备注  删除时间 文件id
+        return fileDelService.getRecycleMyFileList();
 
     }
 
