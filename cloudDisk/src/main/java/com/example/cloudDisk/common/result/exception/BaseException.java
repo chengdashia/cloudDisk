@@ -19,18 +19,6 @@ public class BaseException extends RuntimeException{
         super();
     }
 
-    public BaseException(BaseErrorInfoInterface errorInfoInterface) {
-        super(errorInfoInterface.getResultCode());
-        this.errorCode = errorInfoInterface.getResultCode();
-        this.errorMsg = errorInfoInterface.getResultMsg();
-    }
-
-    public BaseException(BaseErrorInfoInterface errorInfoInterface, Throwable cause) {
-        super(errorInfoInterface.getResultCode(), cause);
-        this.errorCode = errorInfoInterface.getResultCode();
-        this.errorMsg = errorInfoInterface.getResultMsg();
-    }
-
     public BaseException(String errorMsg) {
         super(errorMsg);
         this.errorMsg = errorMsg;
