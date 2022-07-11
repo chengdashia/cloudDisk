@@ -78,7 +78,7 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
     public R<Object> loginByPwd(String userAccount, String userPwd) {
         try {
             UserInfo userInfo = null;
-            if(RegexUtil.checkPhone(userAccount)){
+            if(RegexUtil.checkMobile(userAccount)){
                 userInfo = userInfoMapper.selectOne(new QueryWrapper<UserInfo>()
                         .select("user_id", "user_pwd", "user_initialize")
                         .eq("user_tel", userAccount));

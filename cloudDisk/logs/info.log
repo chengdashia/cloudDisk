@@ -21,3 +21,18 @@
 2022-07-11 09:53:09.217 INFO [main] com.example.cloudDisk.common.minio.MinioUtil : 创建完毕 MinioClient...
 2022-07-11 09:53:09.604 INFO [main] org.apache.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8888"]
 2022-07-11 09:53:09.987 INFO [main] com.example.cloudDisk.CloudDiskApplication : Started CloudDiskApplication in 6.244 seconds (JVM running for 7.416)
+2022-07-11 10:43:09.158 INFO [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource : {dataSource-0} closing ...
+2022-07-11 10:43:21.494 INFO [background-preinit] org.hibernate.validator.internal.util.Version : HV000001: Hibernate Validator 6.2.3.Final
+2022-07-11 10:43:21.523 INFO [main] com.example.cloudDisk.CloudDiskApplication : Starting CloudDiskApplication using Java 1.8.0_311 on DESKTOP-3058MDQ with PID 18864 (E:\gitProject\github\cloudDisk\cloudDisk\target\classes started by Serendipity in E:\gitProject\github\cloudDisk\cloudDisk)
+2022-07-11 10:43:21.526 INFO [main] com.example.cloudDisk.CloudDiskApplication : The following 1 profile is active: "dev"
+2022-07-11 10:43:22.992 INFO [main] org.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8888"]
+2022-07-11 10:43:22.993 INFO [main] org.apache.catalina.core.StandardService : Starting service [Tomcat]
+2022-07-11 10:43:22.993 INFO [main] org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-07-11 10:43:23.080 INFO [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2022-07-11 10:43:26.508 INFO [main] com.example.cloudDisk.common.minio.MinioUtil : 开始创建 MinioClient...
+2022-07-11 10:43:27.125 INFO [main] com.example.cloudDisk.common.minio.MinioUtil : 创建完毕 MinioClient...
+2022-07-11 10:43:27.496 INFO [main] org.apache.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8888"]
+2022-07-11 10:43:27.917 INFO [main] com.example.cloudDisk.CloudDiskApplication : Started CloudDiskApplication in 6.828 seconds (JVM running for 8.938)
+2022-07-11 10:44:19.711 INFO [http-nio-8888-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-07-11 10:44:57.024 INFO [http-nio-8888-exec-8] com.alibaba.druid.pool.DruidDataSource : {dataSource-1} inited
+2022-07-11 10:44:57.703 INFO [http-nio-8888-exec-8] com.example.cloudDisk.service.impl.UserInfoServiceImpl : 用户48e876253e7c401faabcc78c8550cd7e登录成功

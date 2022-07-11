@@ -14,7 +14,7 @@ public class RegexUtil {
      * @return 验证成功返回true，验证失败返回false
      */
     public static boolean checkEmail(String email) {
-        String regex = "\\w+@\\w+\\.[a-z]+(\\.[a-z]+)?";
+        String regex = "^[a-z0-9A-Z]+[- | a-z0-9A-Z . _]+@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\\\.)+[a-z]{2,}$";
         return Pattern.matches(regex, email);
     }
 
