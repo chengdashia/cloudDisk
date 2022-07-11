@@ -6,7 +6,6 @@ package com.example.cloudDisk.common.result.exception;
  */
 public class BaseException extends RuntimeException{
     private static final long serialVersionUID = 1L;
-
     /**
      * 错误码
      */

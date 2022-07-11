@@ -6,8 +6,11 @@ import cn.hutool.core.util.IdUtil;
 import cn.hutool.core.util.RandomUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.example.cloudDisk.common.minio.MinioConfig;
+import com.example.cloudDisk.common.minio.MinioUtil;
 import com.example.cloudDisk.common.result.R;
 import com.example.cloudDisk.common.result.ResultCode;
+import com.example.cloudDisk.common.result.exception.BaseException;
 import com.example.cloudDisk.controller.captcha.MailController;
 import com.example.cloudDisk.mapper.*;
 import com.example.cloudDisk.pojo.*;
@@ -17,7 +20,9 @@ import com.example.cloudDisk.utils.hdfs.HdfsUtil;
 import com.example.cloudDisk.utils.redis.RedisUtil;
 import com.github.yulichang.wrapper.MPJLambdaWrapper;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import java.util.*;
@@ -54,6 +59,12 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
 
     @Resource
     private HdfsUtil hdfsUtil;
+
+    @Autowired
+    private MinioConfig minioConfig;
+
+    @Resource
+    private MinioUtil minioUtil;
 
 
     /**
@@ -161,84 +172,32 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
         }
     }
 
+
     /**
-     * 注册 通过邮箱
-     * @param mailbox       邮箱
-     * @param pwd           密码
-     * @param mailCode      验证码
-     * @return R
+     * 用户上传头像
+     * @param  file 用户头像图片
+     * @return  R
      */
     @Override
-    public R<Object> registerByMail(String mailbox, String pwd, String mailCode) {
-        //如果redis有这个验证码
-        if(redisUtil.hasKey(MailController.getRegisterKey(mailbox))){
-            String redisSmsCode = (String) redisUtil.get(MailController.getRegisterKey(mailbox));
-            if(redisSmsCode.equals(mailCode)){
-                UserInfo user = userInfoMapper.selectOne(new QueryWrapper<UserInfo>().eq("user_mail", mailbox));
-                if (user == null) {
-                    user = new UserInfo();
-                    user.setUserInfoId(IdUtil.fastUUID());
-                    user.setUserId(IdUtil.simpleUUID());
-                    user.setUserMail(mailbox);
-                    user.setUserPwd(pwd);
-                    user.setUserName(mailbox + RandomUtil.randomString(IdUtil.simpleUUID(), 5));
-                    int userInsert = userInfoMapper.insert(user);
-                    //如果注册成功，则创建根目录
-                    if (userInsert == 1) {
-                        //先在文件表中创建
-                        FolderInfo folderInfo = new FolderInfo();
-                        folderInfo.setFolderInfoId(IdUtil.fastUUID());
-                        folderInfo.setFolderId(IdUtil.simpleUUID());
-                        folderInfo.setUserId(user.getUserId());
-                        folderInfo.setFolderUrl("/"+System.currentTimeMillis() + user.getUserId());
-                        folderInfo.setFolderName("我的资源");
-                        folderInfo.setFolderCreateTime(new Date());
-                        int folderInsert = folderInfoMapper.insert(folderInfo);
-                        //创建根目录
-                        if (folderInsert == 1) {
-                            //初始化根目录
-                            RootDirectoryInfo rootDirectoryInfo = new RootDirectoryInfo();
-                            rootDirectoryInfo.setRootDirectoryId(IdUtil.fastUUID());
-                            rootDirectoryInfo.setUserId(user.getUserId());
-                            rootDirectoryInfo.setFolderId(folderInfo.getFolderId());
-                            //插入根目录
-                            int rootInsert = rootDirectoryInfoMapper.insert(rootDirectoryInfo);
-                            if(rootInsert == 1){
-                                FolderFileInfo folderFileInfo = new FolderFileInfo();
-                                folderFileInfo.setFolderFileInfoId(IdUtil.fastUUID());
-                                folderFileInfo.setFolderFileId(folderInfo.getFolderId());
-                                folderFileInfo.setFolderFileType(Constant.FOLDER);
-                                folderFileInfo.setFolderPd(folderInfo.getFolderId());
-                                int insert = folderFileInfoMapper.insert(folderFileInfo);
-                                if(insert == 1){
-                                    hdfsUtil.createFolder(folderInfo.getFolderUrl());
-                                    return R.ok();
-                                }else {
-                                    return R.error();
-                                }
-                            }else {
-                                return R.error();
-                            }
-                        } else {
-                            // 根目录创建不成功
-                            return R.error();
-                        }
-                    }else {
-                        // 注册失败了
-                        return R.error();
-                    }
-                }else {
-                    //手机号已经注册
-                    return R.error(ResultCode.REGISTERED.getCode(), ResultCode.REGISTERED.getMessage());
-                }
-
-            }else {
-                //验证码错误
-                return R.error(ResultCode.CAPTCHA_ERROR.getCode(), ResultCode.CAPTCHA_ERROR.getMessage());
+    public R<Object> updateUserAvatar(MultipartFile file) throws Exception {
+        String uId = (String) StpUtil.getLoginId();
+        try {
+            UserInfo userInfo = userInfoMapper.selectOne(new QueryWrapper<UserInfo>()
+                    .select("user_avatar", "user_id")
+                    .eq("user_id", uId));
+            //将用户原本的头像删除
+            minioUtil.removeFile(minioConfig.getBucketName(),userInfo.getUserAvatar());
+            //上传用户的新头像
+            String uploadFilePath = minioUtil.uploadFile(minioConfig.getBucketName(), file, uId);
+            userInfo.setUserAvatar(uploadFilePath);
+            //修改用户的头像
+            int i = userInfoMapper.updateById(userInfo);
+            if(i == 1){
+                return R.ok(uploadFilePath);
             }
-        }else {
-            //如果redis没有这个验证码   过期了。重新发送
-            return R.error(ResultCode.CAPTCHA_EXPIRE.getCode(), ResultCode.CAPTCHA_EXPIRE.getMessage());
+            return R.error();
+        } catch (Exception e) {
+            throw new BaseException(e.getMessage());
         }
     }
 
@@ -302,7 +261,8 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
                 if (user == null) {
                     user = new UserInfo();
                     user.setUserInfoId(IdUtil.fastUUID());
-                    user.setUserId(IdUtil.simpleUUID());
+                    String uId = IdUtil.simpleUUID();
+                    user.setUserId(uId);
                     user.setUserTel(tel);
                     user.setUserPwd(pwd);
                     user.setUserName(tel + RandomUtil.randomString(IdUtil.simpleUUID(), 5));
@@ -336,6 +296,7 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
                                 int insert = folderFileInfoMapper.insert(folderFileInfo);
                                 if(insert == 1){
                                     hdfsUtil.createFolder(folderInfo.getFolderUrl());
+                                    minioUtil.createRootUrl(uId,minioConfig.getBucketName());
                                     return R.ok();
                                 }else {
                                     return R.error();
@@ -363,6 +324,90 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
             return R.error(ResultCode.CAPTCHA_EXPIRE.getCode(), ResultCode.CAPTCHA_EXPIRE.getMessage());
         }
     }
+
+    /**
+     * 注册 通过邮箱
+     * @param mailbox       邮箱
+     * @param pwd           密码
+     * @param mailCode      验证码
+     * @return R
+     */
+    @Override
+    public R<Object> registerByMail(String mailbox, String pwd, String mailCode) {
+        //如果redis有这个验证码
+        if(redisUtil.hasKey(MailController.getRegisterKey(mailbox))){
+            String redisSmsCode = (String) redisUtil.get(MailController.getRegisterKey(mailbox));
+            if(redisSmsCode.equals(mailCode)){
+                UserInfo user = userInfoMapper.selectOne(new QueryWrapper<UserInfo>().eq("user_mail", mailbox));
+                if (user == null) {
+                    user = new UserInfo();
+                    user.setUserInfoId(IdUtil.fastUUID());
+                    String uId = IdUtil.simpleUUID();
+                    user.setUserId(uId);
+                    user.setUserMail(mailbox);
+                    user.setUserPwd(pwd);
+                    user.setUserName(mailbox + RandomUtil.randomString(IdUtil.simpleUUID(), 5));
+                    int userInsert = userInfoMapper.insert(user);
+                    //如果注册成功，则创建根目录
+                    if (userInsert == 1) {
+                        //先在文件表中创建
+                        FolderInfo folderInfo = new FolderInfo();
+                        folderInfo.setFolderInfoId(IdUtil.fastUUID());
+                        folderInfo.setFolderId(IdUtil.simpleUUID());
+                        folderInfo.setUserId(user.getUserId());
+                        folderInfo.setFolderUrl("/"+System.currentTimeMillis() + user.getUserId());
+                        folderInfo.setFolderName("我的资源");
+                        folderInfo.setFolderCreateTime(new Date());
+                        int folderInsert = folderInfoMapper.insert(folderInfo);
+                        //创建根目录
+                        if (folderInsert == 1) {
+                            //初始化根目录
+                            RootDirectoryInfo rootDirectoryInfo = new RootDirectoryInfo();
+                            rootDirectoryInfo.setRootDirectoryId(IdUtil.fastUUID());
+                            rootDirectoryInfo.setUserId(user.getUserId());
+                            rootDirectoryInfo.setFolderId(folderInfo.getFolderId());
+                            //插入根目录
+                            int rootInsert = rootDirectoryInfoMapper.insert(rootDirectoryInfo);
+                            if(rootInsert == 1){
+                                FolderFileInfo folderFileInfo = new FolderFileInfo();
+                                folderFileInfo.setFolderFileInfoId(IdUtil.fastUUID());
+                                folderFileInfo.setFolderFileId(folderInfo.getFolderId());
+                                folderFileInfo.setFolderFileType(Constant.FOLDER);
+                                folderFileInfo.setFolderPd(folderInfo.getFolderId());
+                                int insert = folderFileInfoMapper.insert(folderFileInfo);
+                                if(insert == 1){
+                                    hdfsUtil.createFolder(folderInfo.getFolderUrl());
+                                    minioUtil.createRootUrl(uId,minioConfig.getBucketName());
+                                    return R.ok();
+                                }else {
+                                    return R.error();
+                                }
+                            }else {
+                                return R.error();
+                            }
+                        } else {
+                            // 根目录创建不成功
+                            return R.error();
+                        }
+                    }else {
+                        // 注册失败了
+                        return R.error();
+                    }
+                }else {
+                    //手机号已经注册
+                    return R.error(ResultCode.REGISTERED.getCode(), ResultCode.REGISTERED.getMessage());
+                }
+
+            }else {
+                //验证码错误
+                return R.error(ResultCode.CAPTCHA_ERROR.getCode(), ResultCode.CAPTCHA_ERROR.getMessage());
+            }
+        }else {
+            //如果redis没有这个验证码   过期了。重新发送
+            return R.error(ResultCode.CAPTCHA_EXPIRE.getCode(), ResultCode.CAPTCHA_EXPIRE.getMessage());
+        }
+    }
+
 
 
 

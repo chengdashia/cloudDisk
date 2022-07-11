@@ -162,6 +162,5 @@ public class FileTypeUtil {
         FILE_TYPE.put("ace",Constant.OTHER_TYPE);
 
 
-
     }
 }

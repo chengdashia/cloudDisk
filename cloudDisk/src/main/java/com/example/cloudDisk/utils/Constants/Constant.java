@@ -6,6 +6,8 @@ package com.example.cloudDisk.utils.Constants;
  */
 public class Constant {
 
+
+
     //word文档类
     public static final int WORD_TYPE = 1;
 
@@ -54,6 +56,7 @@ public class Constant {
 
     //没有初始化
     public static final int NOT_INIT = 0;
+
 
     //获取浏览记录list
     public static String getHistoryList(String uuid){

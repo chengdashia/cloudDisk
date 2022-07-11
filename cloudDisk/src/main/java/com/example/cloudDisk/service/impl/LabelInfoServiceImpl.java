@@ -35,7 +35,7 @@ public class LabelInfoServiceImpl extends ServiceImpl<LabelInfoMapper, LabelInfo
     public R<Object> getLabelInfoRandom20() {
         try {
             int count = Math.toIntExact(labelInfoMapper.selectCount(new QueryWrapper<LabelInfo>().select("1")));
-            int random = RandomUtil.randomInt(0, count - 20);
+            int random = RandomUtil.randomInt(0, (count - 20)/10);
             Page<Map<String, Object>> mapPage = labelInfoMapper.selectMapsPage(new Page<>(random, 20,false),
                     new QueryWrapper<LabelInfo>()
                             .select("interest_label_id", "label_name"));

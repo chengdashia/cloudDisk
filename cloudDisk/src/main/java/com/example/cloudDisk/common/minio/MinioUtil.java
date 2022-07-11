@@ -1,12 +1,12 @@
 package com.example.cloudDisk.common.minio;
 
+import com.example.cloudDisk.common.result.exception.BaseException;
 import io.minio.*;
 import io.minio.http.Method;
 import io.minio.messages.Bucket;
 import io.minio.messages.DeleteObject;
 import io.minio.messages.Item;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -19,6 +19,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
+import static com.example.cloudDisk.common.result.project.ConstantEnum.SEPARATOR;
+
 
 /**
  * @author 成大事
@@ -28,28 +30,80 @@ import java.util.Optional;
 @Component
 public class MinioUtil {
 
-    @Autowired
-    private MinioClient minioClient;
-    //
-    @Autowired
-    private MinioConfig minioConfig;
+    private static MinioClient minioClient;
 
-    
-    private  final String SEPARATOR = "/";
+    private  static String endpoint;
+    private static String bucketName;
+    private  static String accessKey;
+    private  static String secretKey;
+    private  static Integer imgSize;
+    private  static Integer fileSize;
+
 
     public MinioUtil() {
-
     }
-    
 
+    public MinioUtil(String endpoint, String bucketName, String accessKey, String secretKey, Integer imgSize, Integer fileSize) {
+        MinioUtil.endpoint = endpoint;
+        MinioUtil.bucketName = bucketName;
+        MinioUtil.accessKey = accessKey;
+        MinioUtil.secretKey = secretKey;
+        MinioUtil.imgSize = imgSize;
+        MinioUtil.fileSize = fileSize;
+        createMinioClient();
+    }
+
+    /**
+     * 创建基于Java端的MinioClient
+     */
+    public void createMinioClient() {
+        try {
+            if (null == minioClient) {
+                log.info("开始创建 MinioClient...");
+                minioClient = MinioClient
+                        .builder()
+                        .endpoint(endpoint)
+                        .credentials(accessKey, secretKey)
+                        .build();
+                createBucket(bucketName);
+                log.info("创建完毕 MinioClient...");
+            }
+        } catch (Exception e) {
+            log.error("MinIO服务器异常：{}", e);
+        }
+    }
 
 
     /**
      * 获取上传文件前缀路径
-     * @return
+     * @return  "http://10.111.43.55:9000/file/"
      */
     public String getBasisUrl() {
-        return minioConfig.getEndpoint()+ SEPARATOR + minioConfig.getBucketName() + SEPARATOR;
+        return endpoint + SEPARATOR.getMsg() + bucketName + SEPARATOR.getMsg();
+    }
+
+    /**
+     * 获取用户的路径
+     */
+    public String getUserUploadUrl(String uId,String objectName) {
+        return uId + SEPARATOR.getMsg() + objectName;
+    }
+
+    /**
+     * 用户的注册的时候，给一个根目录
+     * @param uId               用户id
+     * @param bucketName        桶名
+     * @return         boolean
+     */
+    public boolean createRootUrl(String uId,String bucketName){
+        log.info("bucketName:  "+bucketName);
+        String folder = uId + SEPARATOR.getMsg();
+        try {
+            createFolder(bucketName, folder);
+            return true;
+        } catch (Exception e) {
+            throw new BaseException(e.getMessage());
+        }
     }
 
     /******************************  Operate Bucket Start  ******************************/
@@ -57,7 +111,7 @@ public class MinioUtil {
     /**
      * 启动SpringBoot容器的时候初始化Bucket
      * 如果没有Bucket则创建
-     * @throws Exception
+     * @throws Exception  异常
      */
     private  void createBucket(String bucketName) throws Exception {
         if (!bucketExists(bucketName)) {
@@ -77,26 +131,24 @@ public class MinioUtil {
 
     /**
      * 获得Bucket的策略
-     * @param bucketName
-     * @return
-     * @throws Exception
+     * @param bucketName 捅名
+     * @return 桶的策略
+     * @throws Exception   异常
      */
     public  String getBucketPolicy(String bucketName) throws Exception {
-        String bucketPolicy = minioClient
+        return  minioClient
                 .getBucketPolicy(
                         GetBucketPolicyArgs
                                 .builder()
                                 .bucket(bucketName)
-                                .build()
-                );
-        return bucketPolicy;
+                                .build());
     }
 
 
     /**
      * 获得所有Bucket列表
-     * @return
-     * @throws Exception
+     * @return  所有的桶名
+     * @throws Exception 异常
      */
     public  List<Bucket> getAllBuckets() throws Exception {
         return minioClient.listBuckets();
@@ -104,9 +156,9 @@ public class MinioUtil {
 
     /**
      * 根据bucketName获取其相关信息
-     * @param bucketName
-     * @return
-     * @throws Exception
+     * @param bucketName  桶名
+     * @return 桶名其相关信息
+     * @throws Exception 异常
      */
     public  Optional<Bucket> getBucket(String bucketName) throws Exception {
         return getAllBuckets().stream().filter(b -> b.name().equals(bucketName)).findFirst();
@@ -114,8 +166,8 @@ public class MinioUtil {
 
     /**
      * 根据bucketName删除Bucket，true：删除成功； false：删除失败，文件或已不存在
-     * @param bucketName
-     * @throws Exception
+     * @param bucketName  桶名
+     * @throws Exception 异常
      */
     public  void removeBucket(String bucketName) throws Exception {
         minioClient.removeBucket(RemoveBucketArgs.builder().bucket(bucketName).build());
@@ -130,7 +182,7 @@ public class MinioUtil {
      * 判断文件是否存在
      * @param bucketName 存储桶
      * @param objectName 文件名
-     * @return
+     * @return boolean
      */
     public  boolean isObjectExist(String bucketName, String objectName) {
         boolean exist = true;
@@ -171,7 +223,7 @@ public class MinioUtil {
      * @param prefix 前缀
      * @param recursive 是否使用递归查询
      * @return MinioItem 列表
-     * @throws Exception
+     * @throws Exception 异常
      */
     public  List<Item> getAllObjectsByPrefix(String bucketName,
                                                    String prefix,
@@ -237,21 +289,23 @@ public class MinioUtil {
      * 使用MultipartFile进行文件上传
      * @param bucketName 存储桶
      * @param file 文件名
-     * @param objectName 对象名
-     * @param contentType 类型
-     * @return
-     * @throws Exception
+     * @throws Exception 异常
      */
-    public  ObjectWriteResponse uploadFile(String bucketName, MultipartFile file,
-                                                 String objectName, String contentType) throws Exception {
+    public  String
+    uploadFile(String bucketName, MultipartFile file,String uId) throws Exception {
+
+        String objectName = getUserUploadUrl(uId,file.getOriginalFilename());
+        String contentType = file.getContentType();
         InputStream inputStream = file.getInputStream();
-        return minioClient.putObject(
+        minioClient.putObject(
                 PutObjectArgs.builder()
                         .bucket(bucketName)
                         .object(objectName)
                         .contentType(contentType)
                         .stream(inputStream, inputStream.available(), -1)
                         .build());
+
+        return getBasisUrl() + objectName;
     }
 
     /**
@@ -292,8 +346,8 @@ public class MinioUtil {
      * @param folderPath 目录路径
      */
     public  ObjectWriteResponse createFolder(String bucketName, String folderPath) throws Exception {
-        if(!SEPARATOR.equals(folderPath.substring(folderPath.length()-2))){
-            folderPath += SEPARATOR;
+        if(!SEPARATOR.getMsg().equals(folderPath.substring(folderPath.length()-2))){
+            folderPath += SEPARATOR.getMsg();
         }
         return minioClient.putObject(
                 PutObjectArgs.builder()
@@ -301,6 +355,33 @@ public class MinioUtil {
                         .object(folderPath)
                         .stream(new ByteArrayInputStream(new byte[]{}), 0, -1)
                         .build());
+    }
+
+    /**
+     * 创建文件夹或目录
+     * @param bucketName 存储桶
+     * @param uId 用户的id
+     */
+    public ObjectWriteResponse createFolderByUserId(String uId,String bucketName) throws Exception {
+        String folderPath = getFolderPath(uId);
+        if(!isFolderExist(bucketName,folderPath)){
+            return minioClient.putObject(
+                    PutObjectArgs.builder()
+                            .bucket(bucketName)
+                            .object(folderPath)
+                            .stream(new ByteArrayInputStream(new byte[]{}), 0, -1)
+                            .build());
+        }
+        return null;
+    }
+
+    /**
+     * 通过id 获取minio 的文件夹的路径
+     * @param uId   用户的id
+     * @return minio 的文件夹的路径
+      */
+    public String getFolderPath(String uId){
+        return uId + SEPARATOR.getMsg();
     }
 
     /**
@@ -340,19 +421,28 @@ public class MinioUtil {
      * @param bucketName 存储桶
      * @param objectName 文件名称
      */
-    public  void removeFile(String bucketName, String objectName) throws Exception {
-        minioClient.removeObject(
-                RemoveObjectArgs.builder()
-                        .bucket(bucketName)
-                        .object(objectName)
-                        .build());
+    public  boolean removeFile(String bucketName, String objectName) {
+        boolean isDelete = true;
+        try{
+            if(!isObjectExist(bucketName,objectName)){
+                minioClient.removeObject(
+                        RemoveObjectArgs.builder()
+                                .bucket(bucketName)
+                                .object(objectName)
+                                .build());
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            isDelete = false;
+        }
+        return isDelete;
+
     }
 
     /**
      * 批量删除文件
      * @param bucketName 存储桶
      * @param keys 需要删除的文件列表
-     * @return
      */
     public  void removeFiles(String bucketName, List<String> keys) {
         List<DeleteObject> objects = new LinkedList<>();
@@ -372,7 +462,7 @@ public class MinioUtil {
      * @param objectName 文件名
      * @param expires 过期时间 <=7 秒 （外链有效时间（单位：秒））
      * @return url
-     * @throws Exception
+     * @throws Exception  异常
      */
     public  String getPresignedObjectUrl(String bucketName, String objectName, Integer expires) throws Exception {
         GetPresignedObjectUrlArgs args = GetPresignedObjectUrlArgs.builder().expiry(expires).bucket(bucketName).object(objectName).build();
@@ -384,7 +474,7 @@ public class MinioUtil {
      * @param bucketName  存储桶
      * @param objectName  文件名称
      * @return url
-     * @throws Exception
+     * @throws Exception  异常
      */
     public  String getPresignedObjectUrl(String bucketName, String objectName) throws Exception {
         GetPresignedObjectUrlArgs args = GetPresignedObjectUrlArgs.builder()
@@ -396,25 +486,25 @@ public class MinioUtil {
 
     /**
      * 获得文件外链
-     * @param bucketName   存储桶
+     * @param uId   用户id
      * @param objectName   文件名称
      * @return url         文件的下载链接
      */
-    public  String getFileUrl(String bucketName, String objectName) {
-        return minioConfig.getFileHost()+"/"+minioConfig.getBucketName()+"/"+objectName;
+    public  String getFileUrl(String uId ,String objectName) {
+        return getBasisUrl() + uId + SEPARATOR.getMsg() + objectName;
     }
 
     /**
      * 将URLDecoder编码转成UTF8
-     * @param str
-     * @return
-     * @throws UnsupportedEncodingException
+     * @param str url
+     * @return   utf-8 的地址
+     * @throws UnsupportedEncodingException  异常
      */
-    public  String getUtf8ByURLDecoder(String str) throws UnsupportedEncodingException {
+    public  String getUtf8ByUrlDecoder(String str) throws UnsupportedEncodingException {
         String url = str.replaceAll("%(?![0-9a-fA-F]{2})", "%25");
         return URLDecoder.decode(url, "UTF-8");
     }
 
-    /** ***************************  Operate Files End  ******************************/
+    /*****************************  Operate Files End  ******************************/
 
 }

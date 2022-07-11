@@ -10,11 +10,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -154,6 +151,23 @@ public class UserInfoController {
         //先查user_label 查insterest_lable_id 再去label info里面查label_name
         String uId = (String) StpUtil.getLoginId();
         return userInfoService.getUserInfo(uId,uInit);
+    }
+
+
+    /**
+     * 用户上传头像
+     * @param  file 用户头像图片
+     * @return  R
+     */
+    @PostMapping("/updateUserAvatar")
+    @ApiOperation(value = "用户上传头像",notes = "更换头像")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType="form",name="file",dataTypeClass = MultipartFile.class,required=true,value="用户头像图片")
+    })
+    public R<Object> updateUserAvatar(
+            @RequestPart("file")MultipartFile file
+    ) throws Exception {
+        return userInfoService.updateUserAvatar(file);
     }
 
     /**

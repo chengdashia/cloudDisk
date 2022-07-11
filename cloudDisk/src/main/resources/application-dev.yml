@@ -85,7 +85,7 @@ mybatis-plus:
     #org.apache.ibatis.logging.log4j2.Log4j2Impl:这个不在控制台打印查询结果,但是在log4j中打印
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     map-underscore-to-camel-case: true                          #下划线转驼峰
-  mapper-locations: classpath:/mapper/xml/*Mapper.xml
+  mapper-locations: classpath:**/mapper/xml/*.xml*
   type-aliases-package: com.example.cloudDisk.pojo
   global-config:
     db-config:
@@ -149,7 +149,7 @@ hdfs:
 minio:
   endpoint: http://10.111.43.55:9000      # MinIO服务地址
   fileHost: http://10.111.43.55:9000      # 文件地址host
-  bucketName: file                      # 存储桶bucket名称
+  bucketName: img                      # 存储桶bucket名称
   accessKey: admin                         # 用户名
   secretKey: 12345678                     # 密码
   imgSize: 1024                           # 图片大小限制，单位：m

@@ -1,14 +1,18 @@
 package com.example.cloudDisk.utils.hdfs;
 
+import com.example.cloudDisk.common.result.exception.BaseException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.*;
+import org.apache.hadoop.io.IOUtils;
 import org.apache.hadoop.util.Progressable;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -42,7 +46,6 @@ public class HdfsUtil {
      */
     public HdfsUtil() throws URISyntaxException {
         Configuration conf = new Configuration();
-        //String tmpUrl = this.url + ":" + this.port;
         String url = "hdfs://10.111.43.13:8020";
         URI uri = new URI(url);
         try {
@@ -97,6 +100,22 @@ public class HdfsUtil {
     }
 
     /**
+     * 从hdfs上传 文件 通过流的形式
+     * @param file      MultipartFile  文件
+     * @param hdfsPath        hdfs 路径
+     */
+    public boolean upload(MultipartFile file, String hdfsPath) throws IOException {
+        InputStream in = file.getInputStream();
+        FSDataOutputStream out = fs.create(new Path(hdfsPath));
+        try {
+            IOUtils.copyBytes(in,out,new Configuration());
+            return true;
+        }catch (Exception e){
+            throw new BaseException(e.getMessage());
+        }
+    }
+
+    /**
      * 从hdfs下载文件，到本地路径
      * @param localPath      本地路径
      * @param hdfsPath        hdfs 路径
@@ -109,6 +128,9 @@ public class HdfsUtil {
             e.printStackTrace();
         }
     }
+
+
+
 
     /**
      * 删除hdfs的某个文件或者目录

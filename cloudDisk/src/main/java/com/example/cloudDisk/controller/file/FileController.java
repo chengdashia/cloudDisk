@@ -2,6 +2,8 @@ package com.example.cloudDisk.controller.file;
 
 import com.example.cloudDisk.common.minio.MinioConfig;
 import com.example.cloudDisk.common.minio.MinioUtil;
+import com.example.cloudDisk.common.result.R;
+import com.example.cloudDisk.utils.hdfs.HdfsUtil;
 import io.minio.ObjectWriteResponse;
 import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
@@ -25,6 +27,7 @@ public class FileController {
 
     private final MinioUtil minioUtil;
 
+    private final HdfsUtil hdfsUtil;
 
     private final MinioConfig minioConfig;
 
@@ -51,5 +54,11 @@ public class FileController {
         //返回图片链接
         String imgUrl = minioConfig.getFileHost()+"/"+minioConfig.getBucketName()+"/" + "222/"+fileName;
         return imgUrl;
+    }
+
+    @PostMapping("/upload3")
+    public R testUpload3(@RequestPart("file") MultipartFile file) throws Exception {
+        hdfsUtil.upload(file,"/1.jpg");
+        return R.ok();
     }
 }

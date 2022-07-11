@@ -1,6 +1,5 @@
 package com.example.cloudDisk.common.minio;
 
-import io.minio.MinioClient;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -31,13 +30,10 @@ public class MinioConfig {
 
 
     @Bean
-    public MinioClient creatMinioClient() {
-        return MinioClient
-                .builder()
-                .endpoint(endpoint)
-                .credentials(accessKey, secretKey)
-                .build();
+    public MinioUtil creatMinioClient() {
+        return new MinioUtil(endpoint, bucketName, accessKey, secretKey, imgSize, fileSize);
     }
+
 
 
 }

@@ -4,6 +4,7 @@ import com.example.cloudDisk.common.result.R;
 import com.example.cloudDisk.pojo.UserInfo;
 import com.baomidou.mybatisplus.extension.service.IService;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * <p>
@@ -66,4 +67,12 @@ public interface UserInfoService extends IService<UserInfo> {
      * @return R
      */
     R<Object> registerByMail(String mailbox, String pwd, String mailCode);
+
+
+    /**
+     * 用户上传头像
+     * @param  file 用户头像图片
+     * @return  R
+     */
+    R<Object> updateUserAvatar(MultipartFile file) throws Exception;
 }
