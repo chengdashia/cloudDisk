@@ -69,6 +69,14 @@ public class FileController {
 
     @PostMapping("/upload4")
     public R testUpload4(@Email @RequestParam("code") String code){
-        throw new BaseException(ExceptionEnum.SIGNATURE_NOT_MATCH.getResultCode(),ExceptionEnum.SIGNATURE_NOT_MATCH.getResultMsg());
+        if(code == null){
+            return R.error();
+        }else if("1847085602@qq.com".equals(code)){
+            return R.ok();
+
+        }else {
+            throw new BaseException(ExceptionEnum.SIGNATURE_NOT_MATCH.getResultCode(),ExceptionEnum.SIGNATURE_NOT_MATCH.getResultMsg());
+        }
+
     }
 }

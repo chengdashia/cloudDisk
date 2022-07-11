@@ -11,6 +11,7 @@ import com.example.cloudDisk.common.minio.MinioUtil;
 import com.example.cloudDisk.common.result.R;
 import com.example.cloudDisk.common.result.ResultCode;
 import com.example.cloudDisk.common.result.exception.BaseException;
+import com.example.cloudDisk.common.result.exception.ExceptionEnum;
 import com.example.cloudDisk.controller.captcha.MailController;
 import com.example.cloudDisk.mapper.*;
 import com.example.cloudDisk.pojo.*;
@@ -76,35 +77,31 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
      */
     @Override
     public R<Object> loginByPwd(String userAccount, String userPwd) {
-        try {
-            UserInfo userInfo = null;
-            if(RegexUtil.checkMobile(userAccount)){
-                userInfo = userInfoMapper.selectOne(new QueryWrapper<UserInfo>()
-                        .select("user_id", "user_pwd", "user_initialize")
-                        .eq("user_tel", userAccount));
-            }else if(RegexUtil.checkEmail(userAccount)){
-                userInfo = userInfoMapper.selectOne(new QueryWrapper<UserInfo>()
-                        .select("user_id", "user_pwd", "user_initialize")
-                        .eq("user_mail", userAccount));
-            }else {
-               return R.error(ResultCode.FORMAT_MISMATCH.getCode(),ResultCode.FORMAT_MISMATCH.getMessage());
-            }
-            if(userInfo != null){
-                if(userInfo.getUserPwd().equals(userPwd)){
-                    StpUtil.login(userInfo.getUserId(), SaLoginConfig.setExtra("uInit", userInfo.getUserInitialize()));
-                    log.info("用户{}登录成功",userInfo.getUserId());
-                    return R.ok(StpUtil.getTokenInfo());
-                }
-                // 密码错误
-                return R.error(ResultCode.PWD_ERROR.getCode(), ResultCode.PWD_ERROR.getMessage());
-
-            }
-            // 用户不存在 请先注册
-            return R.error(ResultCode.NOT_EXIST.getCode(),ResultCode.NOT_EXIST.getMessage());
-        } catch (Exception e) {
-            e.printStackTrace();
-            return R.error();
+        UserInfo userInfo = null;
+        if(RegexUtil.checkMobile(userAccount)){
+            userInfo = userInfoMapper.selectOne(new QueryWrapper<UserInfo>()
+                    .select("user_id", "user_pwd", "user_initialize")
+                    .eq("user_tel", userAccount));
+        }else if(RegexUtil.checkEmail(userAccount)){
+            userInfo = userInfoMapper.selectOne(new QueryWrapper<UserInfo>()
+                    .select("user_id", "user_pwd", "user_initialize")
+                    .eq("user_mail", userAccount));
+        }else {
+           //return R.error(ResultCode.FORMAT_MISMATCH.getCode(),ResultCode.FORMAT_MISMATCH.getMessage());
+            throw new BaseException(ExceptionEnum.CONSTRAINT_VIOLATION_EXCEPTION.getResultCode(),ExceptionEnum.CONSTRAINT_VIOLATION_EXCEPTION.getResultMsg());
         }
+        if(userInfo != null){
+            if(userInfo.getUserPwd().equals(userPwd)){
+                StpUtil.login(userInfo.getUserId(), SaLoginConfig.setExtra("uInit", userInfo.getUserInitialize()));
+                log.info("用户{}登录成功",userInfo.getUserId());
+                return R.ok(StpUtil.getTokenInfo());
+            }
+            // 密码错误
+            return R.error(ResultCode.PWD_ERROR.getCode(), ResultCode.PWD_ERROR.getMessage());
+
+        }
+        // 用户不存在 请先注册
+        return R.error(ResultCode.NOT_EXIST.getCode(),ResultCode.NOT_EXIST.getMessage());
     }
 
     /**
