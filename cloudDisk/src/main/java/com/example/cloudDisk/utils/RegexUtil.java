@@ -8,13 +8,18 @@ import java.util.regex.Pattern;
  * @since 2022/7/11 10:23
  */
 public class RegexUtil {
+    public RegexUtil(){
+
+    }
+
+
     /**
      * 验证Email
      * @param email email地址，格式：zhangsan@sina.com，zhangsan@xxx.com.cn，xxx代表邮件服务商
      * @return 验证成功返回true，验证失败返回false
      */
     public static boolean checkEmail(String email) {
-        String regex = "^[a-z0-9A-Z]+[- | a-z0-9A-Z . _]+@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\\\.)+[a-z]{2,}$";
+        String regex = "^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*\\.[a-zA-Z0-9]{2,6}$";
         return Pattern.matches(regex, email);
     }
 
@@ -38,7 +43,8 @@ public class RegexUtil {
      * @return 验证成功返回true，验证失败返回false
      */
     public static boolean checkMobile(String mobile) {
-        String regex = "(\\+\\d+)?1[3456789]\\d{9}$";
+        //String regex = "(\\+\\d+)?1[3456789]\\d{9}$";
+        String regex = "^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(17[013678])|(18[0,5-9]))\\d{8}$";
         return Pattern.matches(regex,mobile);
     }
 
@@ -121,15 +127,12 @@ public class RegexUtil {
      * <pre>
      * 获取网址 URL 的一级域名
      * http://detail.tmall.com/item.htm?spm=a230r.1.10.44.1xpDSH&id=15453106243&_u=f4ve1uq1092 ->> tmall.com
-     * </pre>
-     *
-     * @param url
-     * @return
+     * @param url         网址
+     * @return            网址的一级域名
      */
     public static String getDomain(String url) {
         Pattern p = Pattern.compile("(?<=http://|\\.)[^.]*?\\.(com|cn|net|org|biz|info|cc|tv)", Pattern.CASE_INSENSITIVE);
         // 获取完整的域名
-        // Pattern p=Pattern.compile("[^//]*?\\.(com|cn|net|org|biz|info|cc|tv)", Pattern.CASE_INSENSITIVE);
         Matcher matcher = p.matcher(url);
         matcher.find();
         return matcher.group();
@@ -156,88 +159,67 @@ public class RegexUtil {
 
     /**
      * 判断字符串是否符合正则表达式
-     *
-     * @author : chenssy
-     * @date : 2016年6月1日 下午12:43:05
-     *
-     * @param str
-     * @param regex
-     * @return
+     * @param str         字符串
+     * @param regex       正则表达式
+     * @return             验证成功返回true，验证失败返回false
      */
     public static boolean find(String str, String regex) {
         Pattern p = Pattern.compile(regex);
         Matcher m = p.matcher(str);
-        boolean b = m.find();
-        return b;
+        return m.find();
     }
 
     /**
      * 判断输入的字符串是否符合Email格式.
-     * @autor:chenssy
-     * @date:2014年8月7日
-     *
-     * @param email
-     * 				传入的字符串
+     * @param email 传入的字符串
      * @return 符合Email格式返回true，否则返回false
      */
     public static boolean isEmail(String email) {
         if (email == null || email.length() < 1 || email.length() > 256) {
             return false;
         }
-        Pattern pattern = Pattern.compile("^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$");
-        return pattern.matcher(email).matches();
+        String regex = "^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$";
+        return Pattern.matches(regex,email);
     }
 
     /**
      * 判断输入的字符串是否为纯汉字
-     * @autor:chenssy
-     * @date:2014年8月7日
-     *
-     * @param value
-     * 				传入的字符串
-     * @return
+     * @param value 传入的字符串
+     * @return      验证成功返回true，验证失败返回false
      */
     public static boolean isChinese(String value) {
-        Pattern pattern = Pattern.compile("[\u0391-\uFFE5]+$");
-        return pattern.matcher(value).matches();
+        String regex = "[\u0391-\uFFE5]+$";
+        return Pattern.matches(regex,value);
     }
 
     /**
      * 判断是否为浮点数，包括double和float
-     * @autor:chenssy
-     * @date:2014年8月7日
-     *
-     * @param value
-     * 			传入的字符串
-     * @return
+     * @param value  传入的字符串
+     * @return   验证成功返回true，验证失败返回false
      */
     public static boolean isDouble(String value) {
-        Pattern pattern = Pattern.compile("^[-\\+]?\\d+\\.\\d+$");
-        return pattern.matcher(value).matches();
+        String regex = "^[-\\+]?\\d+\\.\\d+$";
+        return Pattern.matches(regex,value);
     }
 
     /**
      * 判断是否为整数
-     * @autor:chenssy
-     * @date:2014年8月7日
-     *
-     * @param value
-     * 			传入的字符串
-     * @retur
+     * @param value  传入的字符串
+     * @return   验证成功返回true，验证失败返回false
      */
     public static boolean isInteger(String value) {
-        Pattern pattern = Pattern.compile("^[-\\+]?[\\d]+$");
-        return pattern.matcher(value).matches();
+        String regex = "^[-\\+]?[\\d]+$";
+        return Pattern.matches(regex,value);
     }
 
     /**
      * 判断是否是字母
-     * @param value
-     * @return
+     * @param str  字符串
+     * @return   验证成功返回true，验证失败返回false
      */
-    public static boolean checkChar(String value) {
-        Pattern pattern = Pattern.compile("[a-z|A-Z]+");
-        return pattern.matcher(value).matches();
+    public static boolean checkChar(String str) {
+        String regex = "[a-z|A-Z]+";
+        return Pattern.matches(regex,str);
     }
 
 }
