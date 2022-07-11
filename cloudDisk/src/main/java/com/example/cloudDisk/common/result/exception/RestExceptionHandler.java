@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.ConstraintViolationException;
 
 /**
  * @author 成大事
@@ -18,31 +19,6 @@ import javax.servlet.http.HttpServletRequest;
 public class RestExceptionHandler {
 
 
-
-    ///**
-    // * 默认全局异常处理。
-    // * @param e the e
-    // * @return ResultData
-    // */
-    //@ExceptionHandler(Exception.class)
-    //@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    //public R<String> exception(Exception e) {
-    //    log.error("全局异常信息 ex={}", e.getMessage(), e);
-    //    return R.error(ResultCode.FAILED.getCode(),e.getMessage());
-    //}
-    //
-    //
-    ///**
-    // * 默认全局异常处理。
-    // * @param e the e
-    // * @return ResultData
-    // */
-    //@ExceptionHandler(AccessException.class)
-    //@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    //public R<String> accessException(Exception e) {
-    //    log.error("全局异常信息 ex={}", e.getMessage(), e);
-    //    return R.error(ResultCode.FAILED.getCode(),e.getMessage());
-    //}
 
     /**
      * 处理自定义的业务异常
@@ -84,7 +60,7 @@ public class RestExceptionHandler {
     }
 
     /**
-     * 处理其他异常
+     * 处理没登录异常
      * @param req
      * @param e
      * @return
@@ -92,6 +68,19 @@ public class RestExceptionHandler {
     @ExceptionHandler(value = NotLoginException.class)
     @ResponseBody
     public R<String> notLoginExceptionHandler(HttpServletRequest req, NotLoginException e){
+        log.error("未知异常！原因是:",e);
+        return R.error(e.getMessage());
+    }
+
+    /**
+     * 处理其他异常
+     * @param req
+     * @param e
+     * @return
+     */
+    @ExceptionHandler(value = ConstraintViolationException.class)
+    @ResponseBody
+    public R<String> ConstraintViolationExceptionHandler(HttpServletRequest req, NotLoginException e){
         log.error("未知异常！原因是:",e);
         return R.error(e.getMessage());
     }

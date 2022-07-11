@@ -12,14 +12,15 @@ import java.util.regex.Pattern;
 
 public class MobileValidate implements ConstraintValidator<Phone, String> {
 
+    private static Pattern pattern = Pattern.compile("^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(17[013678])|(18[0,5-9]))\\d{8}$");
+
     @Override
     public void initialize(Phone constraintAnnotation) {}
 
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        Pattern p = Pattern.compile("^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(17[013678])|(18[0,5-9]))\\d{8}$");
-        Matcher m = p.matcher(value);
+        Matcher m = pattern.matcher(value);
         return m.matches();
     }
 

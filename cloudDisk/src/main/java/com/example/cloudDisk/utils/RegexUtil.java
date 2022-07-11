@@ -8,31 +8,34 @@ import java.util.regex.Pattern;
  * @since 2022/7/11 10:23
  */
 public class RegexUtil {
-    public RegexUtil(){
+    private RegexUtil(){
 
     }
 
 
+    private static final Pattern EMAIL_PATTERN = Pattern.compile("^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*\\.[a-zA-Z0-9]{2,6}$");
     /**
      * 验证Email
      * @param email email地址，格式：zhangsan@sina.com，zhangsan@xxx.com.cn，xxx代表邮件服务商
      * @return 验证成功返回true，验证失败返回false
      */
     public static boolean checkEmail(String email) {
-        String regex = "^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*\\.[a-zA-Z0-9]{2,6}$";
-        return Pattern.matches(regex, email);
+       return EMAIL_PATTERN.matcher(email).matches();
     }
 
+
+    private static final Pattern ID_PATTERN = Pattern.compile("[1-9]\\d{16}[a-zA-Z0-9]{1}");
     /**
      * 验证身份证号码
      * @param idCard 居民身份证号码18位，第一位不能为0，最后一位可能是数字或字母，中间16位为数字 \d同[0-9]
      * @return 验证成功返回true，验证失败返回false
      */
     public static boolean checkIdCard(String idCard) {
-        String regex = "[1-9]\\d{16}[a-zA-Z0-9]{1}";
-        return Pattern.matches(regex,idCard);
+        return ID_PATTERN.matcher(idCard).matches();
     }
 
+
+    private static final Pattern MOBILE_PATTERN = Pattern.compile("^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(17[013678])|(18[0,5-9]))\\d{8}$");
     /**
      * 验证手机号码（支持国际格式，+86135xxxx...（中国内地），+00852137xxxx...（中国香港））
      * @param mobile 移动、联通、电信运营商的号码段
@@ -43,9 +46,7 @@ public class RegexUtil {
      * @return 验证成功返回true，验证失败返回false
      */
     public static boolean checkMobile(String mobile) {
-        //String regex = "(\\+\\d+)?1[3456789]\\d{9}$";
-        String regex = "^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(17[013678])|(18[0,5-9]))\\d{8}$";
-        return Pattern.matches(regex,mobile);
+       return MOBILE_PATTERN.matcher(mobile).matches();
     }
 
     /**
@@ -130,10 +131,10 @@ public class RegexUtil {
      * @param url         网址
      * @return            网址的一级域名
      */
+    private static Pattern domainPattern = Pattern.compile("(?<=http://|\\.)[^.]*?\\.(com|cn|net|org|biz|info|cc|tv)", Pattern.CASE_INSENSITIVE);
     public static String getDomain(String url) {
-        Pattern p = Pattern.compile("(?<=http://|\\.)[^.]*?\\.(com|cn|net|org|biz|info|cc|tv)", Pattern.CASE_INSENSITIVE);
         // 获取完整的域名
-        Matcher matcher = p.matcher(url);
+        Matcher matcher = domainPattern.matcher(url);
         matcher.find();
         return matcher.group();
     }
