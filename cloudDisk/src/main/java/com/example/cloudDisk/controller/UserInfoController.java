@@ -41,7 +41,7 @@ public class UserInfoController {
      * @param userPwd    密码
      * @return  R
      */
-    @ApiOperation("使用手机号+密码 或者 邮箱+密码 进行登录")
+    @ApiOperation(value = "使用手机号+密码 或者 邮箱+密码 进行登录",notes = "13885052724")
     @PostMapping("/loginByPassword")
     @ApiImplicitParams({
             @ApiImplicitParam(paramType="query",name="userAccount",dataTypeClass = String.class,required=true,value="用户的手机号 或者 邮箱"),
