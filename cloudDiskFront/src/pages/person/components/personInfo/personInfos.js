@@ -12,7 +12,7 @@ export default {
         userLocal: "未知",
         userName: "1350168278584b5b",
         userPwd: "728",
-        userTel: "13501682785"
+        userTel: "13501682785",
       },
       // createTime: "2022-04-17 22:28:12"
       // userAvatar: "暂无"
