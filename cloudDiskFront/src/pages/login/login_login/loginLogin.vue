@@ -11,8 +11,8 @@
           <el-form-item prop="user_tel">
             <el-input
               v-model="ruleForm.user_tel"
-              maxlength="20"
-              placeholder="请输入手机号/邮箱"
+              maxlength="11"
+              placeholder="请输入手机号"
               class="input_class"
               @keyup.enter.native="submitForm('ruleForm')"
             ></el-input>
