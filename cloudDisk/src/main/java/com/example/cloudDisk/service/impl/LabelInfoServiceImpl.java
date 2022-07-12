@@ -36,6 +36,7 @@ public class LabelInfoServiceImpl extends ServiceImpl<LabelInfoMapper, LabelInfo
             Page<Map<String, Object>> mapPage = this.baseMapper.selectMapsPage(new Page<>(random, 20,false),
                     new QueryWrapper<LabelInfo>()
                             .select("interest_label_id", "label_name"));
+            System.out.println("随机获取二十条标签");
             if(mapPage != null){
                 return R.ok(mapPage);
             }
