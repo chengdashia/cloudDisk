@@ -461,3 +461,337 @@ cn.dev33.satoken.exception.NotLoginException: Token无效：eyJ0eXAiOiJKV1QiLCJh
 2022-07-12 17:01:59.192 INFO [http-nio-9081-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2022-07-12 17:02:17.562 INFO [http-nio-9081-exec-5] com.alibaba.druid.pool.DruidDataSource : {dataSource-1} inited
 2022-07-12 17:02:18.011 INFO [http-nio-9081-exec-5] com.example.cloudDisk.common.minio.MinioUtil : bucketName:  img
+2022-07-12 17:11:14.909 INFO [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource : {dataSource-1} closing ...
+2022-07-12 17:11:14.984 INFO [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource : {dataSource-1} closed
+2022-07-12 17:12:51.245 INFO [background-preinit] org.hibernate.validator.internal.util.Version : HV000001: Hibernate Validator 6.2.3.Final
+2022-07-12 17:12:51.285 INFO [main] com.example.cloudDisk.CloudDiskApplication : Starting CloudDiskApplication using Java 1.8.0_131 on LAPTOP-FBDKCIEO with PID 22304 (D:\hadoop\cloudDisk\cloudDisk\target\classes started by hp in D:\hadoop\cloudDisk\cloudDisk)
+2022-07-12 17:12:51.289 INFO [main] com.example.cloudDisk.CloudDiskApplication : The following 1 profile is active: "niu"
+2022-07-12 17:12:52.894 INFO [main] org.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-9081"]
+2022-07-12 17:12:52.894 INFO [main] org.apache.catalina.core.StandardService : Starting service [Tomcat]
+2022-07-12 17:12:52.894 INFO [main] org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-07-12 17:12:53.050 INFO [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2022-07-12 17:12:56.857 INFO [main] com.example.cloudDisk.common.minio.MinioUtil : 开始创建 MinioClient...
+2022-07-12 17:12:58.353 INFO [main] com.example.cloudDisk.common.minio.MinioUtil : 创建完毕 MinioClient...
+2022-07-12 17:12:59.371 INFO [main] org.apache.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-9081"]
+2022-07-12 17:12:59.991 INFO [main] com.example.cloudDisk.CloudDiskApplication : Started CloudDiskApplication in 9.321 seconds (JVM running for 11.267)
+2022-07-12 17:13:03.391 INFO [http-nio-9081-exec-2] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-07-12 17:13:04.191 INFO [http-nio-9081-exec-2] com.alibaba.druid.pool.DruidDataSource : {dataSource-1} inited
+2022-07-12 17:15:11.796 INFO [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource : {dataSource-1} closing ...
+2022-07-12 17:15:11.818 INFO [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource : {dataSource-1} closed
+2022-07-12 17:15:23.229 INFO [background-preinit] org.hibernate.validator.internal.util.Version : HV000001: Hibernate Validator 6.2.3.Final
+2022-07-12 17:15:23.297 INFO [main] com.example.cloudDisk.CloudDiskApplication : Starting CloudDiskApplication using Java 1.8.0_131 on LAPTOP-FBDKCIEO with PID 10860 (D:\hadoop\cloudDisk\cloudDisk\target\classes started by hp in D:\hadoop\cloudDisk\cloudDisk)
+2022-07-12 17:15:23.301 INFO [main] com.example.cloudDisk.CloudDiskApplication : The following 1 profile is active: "niu"
+2022-07-12 17:15:25.382 INFO [main] org.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-9081"]
+2022-07-12 17:15:25.382 INFO [main] org.apache.catalina.core.StandardService : Starting service [Tomcat]
+2022-07-12 17:15:25.382 INFO [main] org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-07-12 17:15:25.565 INFO [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2022-07-12 17:15:30.442 INFO [main] com.example.cloudDisk.common.minio.MinioUtil : 开始创建 MinioClient...
+2022-07-12 17:15:31.409 INFO [main] com.example.cloudDisk.common.minio.MinioUtil : 创建完毕 MinioClient...
+2022-07-12 17:15:32.061 INFO [main] org.apache.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-9081"]
+2022-07-12 17:15:32.883 INFO [main] com.example.cloudDisk.CloudDiskApplication : Started CloudDiskApplication in 10.219 seconds (JVM running for 13.517)
+2022-07-12 17:15:34.013 INFO [http-nio-9081-exec-3] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-07-12 17:15:34.711 INFO [http-nio-9081-exec-3] com.alibaba.druid.pool.DruidDataSource : {dataSource-1} inited
+2022-07-12 17:15:36.188 INFO [http-nio-9081-exec-3] com.example.cloudDisk.service.impl.UserInfoServiceImpl : 用户9ca8ea4df1754d87ba215fc70935f527登录成功
+2022-07-12 17:19:38.443 INFO [http-nio-9081-exec-6] com.example.cloudDisk.common.minio.MinioUtil : contentType  :image/jpeg
+2022-07-12 17:56:53.182 INFO [http-nio-9081-exec-9] com.example.cloudDisk.service.impl.UserInfoServiceImpl : 用户9ca8ea4df1754d87ba215fc70935f527登录成功
+2022-07-12 17:11:14.909 INFO [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource : {dataSource-1} closing ...
+2022-07-12 17:11:14.984 INFO [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource : {dataSource-1} closed
+2022-07-12 17:12:51.245 INFO [background-preinit] org.hibernate.validator.internal.util.Version : HV000001: Hibernate Validator 6.2.3.Final
+2022-07-12 17:12:51.285 INFO [main] com.example.cloudDisk.CloudDiskApplication : Starting CloudDiskApplication using Java 1.8.0_131 on LAPTOP-FBDKCIEO with PID 22304 (D:\hadoop\cloudDisk\cloudDisk\target\classes started by hp in D:\hadoop\cloudDisk\cloudDisk)
+2022-07-12 17:12:51.289 INFO [main] com.example.cloudDisk.CloudDiskApplication : The following 1 profile is active: "niu"
+2022-07-12 17:12:52.894 INFO [main] org.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-9081"]
+2022-07-12 17:12:52.894 INFO [main] org.apache.catalina.core.StandardService : Starting service [Tomcat]
+2022-07-12 17:12:52.894 INFO [main] org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-07-12 17:12:53.050 INFO [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2022-07-12 17:12:56.857 INFO [main] com.example.cloudDisk.common.minio.MinioUtil : 开始创建 MinioClient...
+2022-07-12 17:12:58.353 INFO [main] com.example.cloudDisk.common.minio.MinioUtil : 创建完毕 MinioClient...
+2022-07-12 17:12:59.371 INFO [main] org.apache.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-9081"]
+2022-07-12 17:12:59.991 INFO [main] com.example.cloudDisk.CloudDiskApplication : Started CloudDiskApplication in 9.321 seconds (JVM running for 11.267)
+2022-07-12 17:13:03.391 INFO [http-nio-9081-exec-2] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-07-12 17:13:04.191 INFO [http-nio-9081-exec-2] com.alibaba.druid.pool.DruidDataSource : {dataSource-1} inited
+2022-07-12 17:15:11.796 INFO [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource : {dataSource-1} closing ...
+2022-07-12 17:15:11.818 INFO [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource : {dataSource-1} closed
+2022-07-12 17:15:23.229 INFO [background-preinit] org.hibernate.validator.internal.util.Version : HV000001: Hibernate Validator 6.2.3.Final
+2022-07-12 17:15:23.297 INFO [main] com.example.cloudDisk.CloudDiskApplication : Starting CloudDiskApplication using Java 1.8.0_131 on LAPTOP-FBDKCIEO with PID 10860 (D:\hadoop\cloudDisk\cloudDisk\target\classes started by hp in D:\hadoop\cloudDisk\cloudDisk)
+2022-07-12 17:15:23.301 INFO [main] com.example.cloudDisk.CloudDiskApplication : The following 1 profile is active: "niu"
+2022-07-12 17:15:25.382 INFO [main] org.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-9081"]
+2022-07-12 17:15:25.382 INFO [main] org.apache.catalina.core.StandardService : Starting service [Tomcat]
+2022-07-12 17:15:25.382 INFO [main] org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-07-12 17:15:25.565 INFO [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2022-07-12 17:15:30.442 INFO [main] com.example.cloudDisk.common.minio.MinioUtil : 开始创建 MinioClient...
+2022-07-12 17:15:31.409 INFO [main] com.example.cloudDisk.common.minio.MinioUtil : 创建完毕 MinioClient...
+2022-07-12 17:15:32.061 INFO [main] org.apache.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-9081"]
+2022-07-12 17:15:32.883 INFO [main] com.example.cloudDisk.CloudDiskApplication : Started CloudDiskApplication in 10.219 seconds (JVM running for 13.517)
+2022-07-12 17:15:34.013 INFO [http-nio-9081-exec-3] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-07-12 17:15:34.711 INFO [http-nio-9081-exec-3] com.alibaba.druid.pool.DruidDataSource : {dataSource-1} inited
+2022-07-12 17:15:36.188 INFO [http-nio-9081-exec-3] com.example.cloudDisk.service.impl.UserInfoServiceImpl : 用户9ca8ea4df1754d87ba215fc70935f527登录成功
+2022-07-12 17:19:38.443 INFO [http-nio-9081-exec-6] com.example.cloudDisk.common.minio.MinioUtil : contentType  :image/jpeg
+2022-07-12 17:56:53.182 INFO [http-nio-9081-exec-9] com.example.cloudDisk.service.impl.UserInfoServiceImpl : 用户9ca8ea4df1754d87ba215fc70935f527登录成功
+2022-07-12 22:01:56.246 ERROR[http-nio-9081-exec-6] com.example.cloudDisk.common.result.exception.RestExceptionHandler : 未知异常！原因是:
+cn.dev33.satoken.exception.NotLoginException: Token无效：eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpblR5cGUiOiJsb2dpbiIsImxvZ2luSWQiOiI3YjYzYjYxZTg1YjU0OTE5YmVkMzg2ODJhMmEyMWQ5NSIsInJuU3RyIjoibUJqNkdIQ3lQN3R4ZVd0UEl5V05scjZxZDBYRXB3N1EiLCJ1SW5pdCI6MH0.zKhDNscEBS_xMHjQrruS24eYzuUtdvr6HesWs48RXrU
+	at cn.dev33.satoken.exception.NotLoginException.newInstance(NotLoginException.java:137) ~[sa-token-core-1.30.0.jar:?]
+	at cn.dev33.satoken.stp.StpLogic.getLoginId(StpLogic.java:616) ~[sa-token-core-1.30.0.jar:?]
+	at cn.dev33.satoken.stp.StpLogic.checkLogin(StpLogic.java:596) ~[sa-token-core-1.30.0.jar:?]
+	at cn.dev33.satoken.stp.StpUtil.checkLogin(StpUtil.java:247) ~[sa-token-core-1.30.0.jar:?]
+	at com.example.cloudDisk.config.safe.WebConfig.lambda$null$0(WebConfig.java:60) ~[classes/:?]
+	at cn.dev33.satoken.router.SaRouterStaff.check(SaRouterStaff.java:225) ~[sa-token-core-1.30.0.jar:?]
+	at com.example.cloudDisk.config.safe.WebConfig.lambda$addInterceptors$1(WebConfig.java:60) ~[classes/:?]
+	at cn.dev33.satoken.interceptor.SaRouteInterceptor.preHandle(SaRouteInterceptor.java:60) ~[sa-token-spring-boot-starter-1.30.0.jar:?]
+	at org.springframework.web.servlet.HandlerExecutionChain.applyPreHandle(HandlerExecutionChain.java:148) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1062) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681) ~[tomcat-embed-core-9.0.63.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764) ~[tomcat-embed-core-9.0.63.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at com.github.xiaoymin.knife4j.spring.filter.SecurityBasicAuthFilter.doFilter(SecurityBasicAuthFilter.java:87) ~[knife4j-spring-3.0.3.jar:?]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:124) ~[druid-1.2.8.jar:1.2.8]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at java.lang.Thread.run(Thread.java:748) ~[?:1.8.0_131]
+2022-07-12 22:01:56.246 ERROR[http-nio-9081-exec-5] com.example.cloudDisk.common.result.exception.RestExceptionHandler : 未知异常！原因是:
+cn.dev33.satoken.exception.NotLoginException: Token无效：eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpblR5cGUiOiJsb2dpbiIsImxvZ2luSWQiOiI3YjYzYjYxZTg1YjU0OTE5YmVkMzg2ODJhMmEyMWQ5NSIsInJuU3RyIjoibUJqNkdIQ3lQN3R4ZVd0UEl5V05scjZxZDBYRXB3N1EiLCJ1SW5pdCI6MH0.zKhDNscEBS_xMHjQrruS24eYzuUtdvr6HesWs48RXrU
+	at cn.dev33.satoken.exception.NotLoginException.newInstance(NotLoginException.java:137) ~[sa-token-core-1.30.0.jar:?]
+	at cn.dev33.satoken.stp.StpLogic.getLoginId(StpLogic.java:616) ~[sa-token-core-1.30.0.jar:?]
+	at cn.dev33.satoken.stp.StpLogic.checkLogin(StpLogic.java:596) ~[sa-token-core-1.30.0.jar:?]
+	at cn.dev33.satoken.stp.StpUtil.checkLogin(StpUtil.java:247) ~[sa-token-core-1.30.0.jar:?]
+	at com.example.cloudDisk.config.safe.WebConfig.lambda$null$0(WebConfig.java:60) ~[classes/:?]
+	at cn.dev33.satoken.router.SaRouterStaff.check(SaRouterStaff.java:225) ~[sa-token-core-1.30.0.jar:?]
+	at com.example.cloudDisk.config.safe.WebConfig.lambda$addInterceptors$1(WebConfig.java:60) ~[classes/:?]
+	at cn.dev33.satoken.interceptor.SaRouteInterceptor.preHandle(SaRouteInterceptor.java:60) ~[sa-token-spring-boot-starter-1.30.0.jar:?]
+	at org.springframework.web.servlet.HandlerExecutionChain.applyPreHandle(HandlerExecutionChain.java:148) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1062) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681) ~[tomcat-embed-core-9.0.63.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764) ~[tomcat-embed-core-9.0.63.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at com.github.xiaoymin.knife4j.spring.filter.SecurityBasicAuthFilter.doFilter(SecurityBasicAuthFilter.java:87) ~[knife4j-spring-3.0.3.jar:?]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:124) ~[druid-1.2.8.jar:1.2.8]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at java.lang.Thread.run(Thread.java:748) ~[?:1.8.0_131]
+2022-07-12 22:01:56.246 ERROR[http-nio-9081-exec-7] com.example.cloudDisk.common.result.exception.RestExceptionHandler : 未知异常！原因是:
+cn.dev33.satoken.exception.NotLoginException: Token无效：eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpblR5cGUiOiJsb2dpbiIsImxvZ2luSWQiOiI3YjYzYjYxZTg1YjU0OTE5YmVkMzg2ODJhMmEyMWQ5NSIsInJuU3RyIjoibUJqNkdIQ3lQN3R4ZVd0UEl5V05scjZxZDBYRXB3N1EiLCJ1SW5pdCI6MH0.zKhDNscEBS_xMHjQrruS24eYzuUtdvr6HesWs48RXrU
+	at cn.dev33.satoken.exception.NotLoginException.newInstance(NotLoginException.java:137) ~[sa-token-core-1.30.0.jar:?]
+	at cn.dev33.satoken.stp.StpLogic.getLoginId(StpLogic.java:616) ~[sa-token-core-1.30.0.jar:?]
+	at cn.dev33.satoken.stp.StpLogic.checkLogin(StpLogic.java:596) ~[sa-token-core-1.30.0.jar:?]
+	at cn.dev33.satoken.stp.StpUtil.checkLogin(StpUtil.java:247) ~[sa-token-core-1.30.0.jar:?]
+	at com.example.cloudDisk.config.safe.WebConfig.lambda$null$0(WebConfig.java:60) ~[classes/:?]
+	at cn.dev33.satoken.router.SaRouterStaff.check(SaRouterStaff.java:225) ~[sa-token-core-1.30.0.jar:?]
+	at com.example.cloudDisk.config.safe.WebConfig.lambda$addInterceptors$1(WebConfig.java:60) ~[classes/:?]
+	at cn.dev33.satoken.interceptor.SaRouteInterceptor.preHandle(SaRouteInterceptor.java:60) ~[sa-token-spring-boot-starter-1.30.0.jar:?]
+	at org.springframework.web.servlet.HandlerExecutionChain.applyPreHandle(HandlerExecutionChain.java:148) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1062) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681) ~[tomcat-embed-core-9.0.63.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764) ~[tomcat-embed-core-9.0.63.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at com.github.xiaoymin.knife4j.spring.filter.SecurityBasicAuthFilter.doFilter(SecurityBasicAuthFilter.java:87) ~[knife4j-spring-3.0.3.jar:?]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:124) ~[druid-1.2.8.jar:1.2.8]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at java.lang.Thread.run(Thread.java:748) ~[?:1.8.0_131]
+2022-07-12 22:01:56.246 ERROR[http-nio-9081-exec-9] com.example.cloudDisk.common.result.exception.RestExceptionHandler : 未知异常！原因是:
+cn.dev33.satoken.exception.NotLoginException: Token无效：eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpblR5cGUiOiJsb2dpbiIsImxvZ2luSWQiOiI3YjYzYjYxZTg1YjU0OTE5YmVkMzg2ODJhMmEyMWQ5NSIsInJuU3RyIjoibUJqNkdIQ3lQN3R4ZVd0UEl5V05scjZxZDBYRXB3N1EiLCJ1SW5pdCI6MH0.zKhDNscEBS_xMHjQrruS24eYzuUtdvr6HesWs48RXrU
+	at cn.dev33.satoken.exception.NotLoginException.newInstance(NotLoginException.java:137) ~[sa-token-core-1.30.0.jar:?]
+	at cn.dev33.satoken.stp.StpLogic.getLoginId(StpLogic.java:616) ~[sa-token-core-1.30.0.jar:?]
+	at cn.dev33.satoken.stp.StpLogic.checkLogin(StpLogic.java:596) ~[sa-token-core-1.30.0.jar:?]
+	at cn.dev33.satoken.stp.StpUtil.checkLogin(StpUtil.java:247) ~[sa-token-core-1.30.0.jar:?]
+	at com.example.cloudDisk.config.safe.WebConfig.lambda$null$0(WebConfig.java:60) ~[classes/:?]
+	at cn.dev33.satoken.router.SaRouterStaff.check(SaRouterStaff.java:225) ~[sa-token-core-1.30.0.jar:?]
+	at com.example.cloudDisk.config.safe.WebConfig.lambda$addInterceptors$1(WebConfig.java:60) ~[classes/:?]
+	at cn.dev33.satoken.interceptor.SaRouteInterceptor.preHandle(SaRouteInterceptor.java:60) ~[sa-token-spring-boot-starter-1.30.0.jar:?]
+	at org.springframework.web.servlet.HandlerExecutionChain.applyPreHandle(HandlerExecutionChain.java:148) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1062) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681) ~[tomcat-embed-core-9.0.63.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764) ~[tomcat-embed-core-9.0.63.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at com.github.xiaoymin.knife4j.spring.filter.SecurityBasicAuthFilter.doFilter(SecurityBasicAuthFilter.java:87) ~[knife4j-spring-3.0.3.jar:?]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:124) ~[druid-1.2.8.jar:1.2.8]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at java.lang.Thread.run(Thread.java:748) ~[?:1.8.0_131]
+2022-07-12 22:12:25.870 INFO [http-nio-9081-exec-7] com.example.cloudDisk.service.impl.UserInfoServiceImpl : 用户9ca8ea4df1754d87ba215fc70935f527登录成功
+2022-07-12 22:17:43.576 INFO [http-nio-9081-exec-6] com.example.cloudDisk.service.impl.UserInfoServiceImpl : 用户9ca8ea4df1754d87ba215fc70935f527登录成功
+2022-07-12 22:21:42.529 INFO [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource : {dataSource-1} closing ...
+2022-07-12 22:21:42.555 INFO [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource : {dataSource-1} closed
+2022-07-12 22:21:52.299 INFO [background-preinit] org.hibernate.validator.internal.util.Version : HV000001: Hibernate Validator 6.2.3.Final
+2022-07-12 22:21:52.327 INFO [main] com.example.cloudDisk.CloudDiskApplication : Starting CloudDiskApplication using Java 1.8.0_131 on LAPTOP-FBDKCIEO with PID 13552 (D:\hadoop\cloudDisk\cloudDisk\target\classes started by hp in D:\hadoop\cloudDisk\cloudDisk)
+2022-07-12 22:21:52.330 INFO [main] com.example.cloudDisk.CloudDiskApplication : The following 1 profile is active: "niu"
+2022-07-12 22:21:53.825 INFO [main] org.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-9081"]
+2022-07-12 22:21:53.825 INFO [main] org.apache.catalina.core.StandardService : Starting service [Tomcat]
+2022-07-12 22:21:53.825 INFO [main] org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-07-12 22:21:53.965 INFO [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2022-07-12 22:21:57.432 INFO [main] com.example.cloudDisk.common.minio.MinioUtil : 开始创建 MinioClient...
+2022-07-12 22:21:58.222 INFO [main] com.example.cloudDisk.common.minio.MinioUtil : 创建完毕 MinioClient...
+2022-07-12 22:21:58.608 INFO [main] org.apache.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-9081"]
+2022-07-12 22:21:59.024 INFO [main] com.example.cloudDisk.CloudDiskApplication : Started CloudDiskApplication in 7.111 seconds (JVM running for 8.623)
+2022-07-12 22:22:26.118 INFO [http-nio-9081-exec-2] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-07-12 22:22:43.051 INFO [http-nio-9081-exec-6] com.alibaba.druid.pool.DruidDataSource : {dataSource-1} inited
+2022-07-12 22:22:43.829 INFO [http-nio-9081-exec-6] com.example.cloudDisk.common.minio.MinioUtil : bucketName:  img
+2022-07-12 22:25:50.020 INFO [http-nio-9081-exec-9] com.example.cloudDisk.common.minio.MinioUtil : bucketName:  img
+2022-07-12 22:26:06.489 INFO [http-nio-9081-exec-2] com.example.cloudDisk.service.impl.UserInfoServiceImpl : 用户8ec09c8034e7437bb99ae4637d0a6373登录成功
+2022-07-12 22:26:55.937 INFO [http-nio-9081-exec-9] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 22:31:32.525 INFO [http-nio-9081-exec-2] com.example.cloudDisk.common.minio.MinioUtil : contentType  :image/jpeg
+2022-07-12 22:32:55.941 INFO [http-nio-9081-exec-10] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 22:34:24.565 INFO [http-nio-9081-exec-5] com.example.cloudDisk.service.impl.UserInfoServiceImpl : 用户8ec09c8034e7437bb99ae4637d0a6373登录成功

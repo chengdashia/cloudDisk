@@ -205,6 +205,7 @@ export default {
           this.progressFlag = false
           this.progressPercent = 0
         }
+
       }).then(error => {
         console.log(error)
       })
