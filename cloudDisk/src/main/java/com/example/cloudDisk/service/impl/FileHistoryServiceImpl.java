@@ -30,8 +30,6 @@ public class FileHistoryServiceImpl extends ServiceImpl<FileHistoryMapper, FileH
     @Resource
     private FileHistoryMapper fileHistoryMapper;
 
-
-
     /**
      * 获取自己浏览的文件信息
      * @return  R
