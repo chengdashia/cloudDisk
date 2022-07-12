@@ -82,7 +82,7 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
         if(RegexUtil.checkMobile(userAccount)){
             userInfo = userInfoMapper.selectOne(new LambdaQueryWrapper<UserInfo>()
                             .select(UserInfo::getUserId,UserInfo::getUserPwd,UserInfo::getUserInitialize)
-                    .eq(UserInfo::getUserId, userAccount));
+                    .eq(UserInfo::getUserTel, userAccount));
         }else if(RegexUtil.checkEmail(userAccount)){
             userInfo = userInfoMapper.selectOne(new LambdaQueryWrapper<UserInfo>()
                     .select(UserInfo::getUserId,UserInfo::getUserPwd,UserInfo::getUserInitialize)
