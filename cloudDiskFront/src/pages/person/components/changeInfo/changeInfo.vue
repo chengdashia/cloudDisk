@@ -157,9 +157,9 @@
 <!--        <el-button type="primary" round @click="changePwd">修改</el-button>-->
 <!--      </div>-->
     </div>
-<!--    <div class="operation_button">-->
-<!--      <el-button type="primary" round @click="changeUserInfo">修改</el-button>-->
-<!--    </div>-->
+    <div class="operation_button">
+      <el-button type="primary" round @click="changeUserInfo">修改</el-button>
+    </div>
   </div>
 </template>
 <style lang="less" scoped>

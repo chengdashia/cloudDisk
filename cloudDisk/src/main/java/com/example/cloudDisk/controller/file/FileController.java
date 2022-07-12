@@ -36,6 +36,14 @@ public class FileController {
     private final MinioConfig minioConfig;
 
 
+
+
+    @PostMapping("/mkdir")
+    public String mkdir(@RequestParam("folderName") String folderName) throws Exception {
+        ObjectWriteResponse folder = minioUtil.createFolder(minioConfig.getBucketName(), folderName);
+        return folder.toString();
+    }
+
     @PostMapping("/upload")
     public String testUpload(@RequestPart("file") MultipartFile file) throws Exception {
         String fileName = file.getOriginalFilename();
@@ -43,12 +51,6 @@ public class FileController {
         //返回图片链接
         String imgUrl = minioConfig.getFileHost()+"/"+minioConfig.getBucketName()+"/"+fileName;
         return imgUrl;
-    }
-
-    @PostMapping("/mkdir")
-    public String mkdir(@RequestParam("folderName") String folderName) throws Exception {
-        ObjectWriteResponse folder = minioUtil.createFolder(minioConfig.getBucketName(), folderName);
-        return folder.toString();
     }
 
     @PostMapping("/upload2")
