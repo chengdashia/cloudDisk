@@ -5,8 +5,7 @@ export default {
     return {
       isActive: 1,
       url: url,
-      user_tel:"",
-      imageUrl:""
+      user_tel:""
     }
   },
   watch: {
@@ -36,22 +35,10 @@ export default {
 
   },
   mounted() {
-    this.user_tel=localStorage.getItem('user_mail')
+    this.user_tel=localStorage.getItem('userAccount')
     console.log("user_tel",this.user_tel)
-    this.getUserInfo()
   },
   methods: {
-    async getUserInfo(){
-      const res = await this.$myRequest({
-        url: '/userInfo/getUserInfo',
-        method: 'post',
-        header:{
-          token:localStorage.getItem('token')
-        },
-        data: {},
-      })
-      this.imageUrl=res.data.data.data.userAvatar
-    },
     goSuperior() {
       this.isActive = 0
       this.$router.push({

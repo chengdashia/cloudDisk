@@ -126,10 +126,7 @@ export default {
           message: '注册成功',
           type: 'success'
         });
-        // 设置登录后跳转到登录页
-        // await this.$router.push({
-        //   name:'mailVerLogin'
-        // })
+
       }
     },
     resetForm(formName) {
