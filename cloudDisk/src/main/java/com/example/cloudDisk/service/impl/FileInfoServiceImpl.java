@@ -3,7 +3,9 @@ package com.example.cloudDisk.service.impl;
 import cn.dev33.satoken.stp.StpUtil;
 import cn.hutool.core.util.IdUtil;
 import cn.hutool.core.util.RandomUtil;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -42,9 +44,6 @@ import java.util.Map;
 public class FileInfoServiceImpl extends ServiceImpl<FileInfoMapper, FileInfo> implements FileInfoService {
 
     @Resource
-    private FileInfoMapper fileInfoMapper;
-
-    @Resource
     private FileLabelMapper fileLabelMapper;
 
     @Resource
@@ -68,7 +67,7 @@ public class FileInfoServiceImpl extends ServiceImpl<FileInfoMapper, FileInfo> i
     public R<Object> getFileInfoById(String fileId) {
         Map<String, Object> map = new HashMap<>(3);
         try {
-            List<Map<String, Object>> fileInfoMaps = fileInfoMapper.selectJoinMaps(new MPJLambdaWrapper<>()
+            List<Map<String, Object>> fileInfoMaps = this.baseMapper.selectJoinMaps(new MPJLambdaWrapper<>()
                     .select(FileInfo.class, i -> !"file_info_id".equals(i.getColumn())
                             && !"file_folder_id".equals(i.getColumn())
                             && !"file_status".equals(i.getColumn())
@@ -81,16 +80,7 @@ public class FileInfoServiceImpl extends ServiceImpl<FileInfoMapper, FileInfo> i
                     .select(LabelInfo::getLabelName)
                     .leftJoin(LabelInfo.class, LabelInfo::getInterestLabelId, FileLabel::getFileLabelId)
                     .eq(FileLabel::getFileId, fileId));
-
-            //List<String> labelList = new ArrayList<>();
-            //if(fileLabelMaps.size() != 0){
-            //    for (Map<String, Object> fileLabelMap : fileLabelMaps) {
-            //        Object labelName = fileLabelMap.get("labelName");
-            //        labelList.add(String.valueOf(labelName));
-            //    }
-            //}
-
-            int i = fileInfoMapper.increaseClickNumByFileId(fileId);
+            int i = this.baseMapper.increaseClickNumByFileId(fileId);
             if (i == 1) {
                 map.put("data", fileInfoMaps);
                 map.put("label", fileLabelMaps);
@@ -115,7 +105,7 @@ public class FileInfoServiceImpl extends ServiceImpl<FileInfoMapper, FileInfo> i
 
         IPage<Map<String, Object>> mapPage;
         try {
-            mapPage = fileInfoMapper.selectJoinMapsPage(new Page<>(page, 20),new MPJLambdaWrapper<>()
+            mapPage = this.baseMapper.selectJoinMapsPage(new Page<>(page, 20),new MPJLambdaWrapper<>()
                             .select(FileInfo.class, i -> !"file_del".equals(i.getColumn())
                                     && !"file_path".equals(i.getColumn())
                                     && !"file_folder_id".equals(i.getColumn())
@@ -143,7 +133,7 @@ public class FileInfoServiceImpl extends ServiceImpl<FileInfoMapper, FileInfo> i
     public R<Object> getFileTopTen() {
         IPage<Map<String, Object>> mapPage;
         try {
-            mapPage = fileInfoMapper.selectJoinMapsPage(new Page<>(1, 10,false),
+            mapPage = this.baseMapper.selectJoinMapsPage(new Page<>(1, 10,false),
                     new MPJLambdaWrapper<>()
                             .select(FileInfo.class, i -> !"file_del".equals(i.getColumn())
                                     && !"file_path".equals(i.getColumn())
@@ -173,7 +163,7 @@ public class FileInfoServiceImpl extends ServiceImpl<FileInfoMapper, FileInfo> i
     @Override
     public R<Object> getFileRandomTen() {
         try {
-            int count = Math.toIntExact(fileInfoMapper.selectCount(new QueryWrapper<FileInfo>()
+            int count = Math.toIntExact(this.baseMapper.selectCount(new QueryWrapper<FileInfo>()
                     .select("1")
                     .eq("file_status",Constant.PUBLIC_TYPE)));
             int random = 0;
@@ -183,9 +173,9 @@ public class FileInfoServiceImpl extends ServiceImpl<FileInfoMapper, FileInfo> i
                 log.info("random{}",random );
             }
 
-            Page<Map<String, Object>> mapPage = fileInfoMapper.selectMapsPage(new Page<>(random, 10,false), new QueryWrapper<FileInfo>()
-                            .select("file_id","file_name")
-                            .eq("file_status", Constant.PUBLIC_TYPE));
+            Page<Map<String, Object>> mapPage = this.baseMapper.selectMapsPage(new Page<>(random, 10,false), new LambdaQueryWrapper<FileInfo>()
+                            .select(FileInfo::getFileName,FileInfo::getFileId)
+                            .eq(FileInfo::getFileType, Constant.PUBLIC_TYPE));
             if(mapPage != null){
                 log.info("===================================================");
                 return R.ok(mapPage);
@@ -213,9 +203,9 @@ public class FileInfoServiceImpl extends ServiceImpl<FileInfoMapper, FileInfo> i
         Map<String, Object> map = FileUtil.saveFile(file, uId);
         //保存成功！
         if (map.get("status").equals(StatusType.SUCCESS)) {
-            FolderInfo folderInfo = folderInfoMapper.selectOne(new QueryWrapper<FolderInfo>()
-                    .select("folder_url")
-                    .eq("folder_id", folderId));
+            FolderInfo folderInfo = folderInfoMapper.selectOne(new LambdaQueryWrapper<FolderInfo>()
+                    .select(FolderInfo::getFolderUrl)
+                    .eq(FolderInfo::getFolderId, folderId));
             //f父文件夹的路径
             String folderUrl = folderInfo.getFolderUrl();
             //上传到本地的文件
@@ -249,7 +239,7 @@ public class FileInfoServiceImpl extends ServiceImpl<FileInfoMapper, FileInfo> i
                 fileInfo.setFileType(type);
                 fileInfo.setFileUploadId(uId);
                 fileInfo.setFileOthers(remarks);
-                int fileInsert = fileInfoMapper.insert(fileInfo);
+                int fileInsert = this.baseMapper.insert(fileInfo);
                 //如果文件上传成功，插入文件表
                 if (fileInsert == 1 ) {
                     FolderFileInfo folderFileInfo = new FolderFileInfo();
@@ -298,8 +288,8 @@ public class FileInfoServiceImpl extends ServiceImpl<FileInfoMapper, FileInfo> i
     @Override
     public R<Object> delFile(String fileId) {
         String uId = (String) StpUtil.getLoginId();
-        int delete = fileInfoMapper.delete(new UpdateWrapper<FileInfo>()
-                .eq("file_id", fileId));
+        int delete = this.baseMapper.delete(new LambdaUpdateWrapper<FileInfo>()
+                .eq(FileInfo::getFileId, fileId));
         if (delete > 0) {
             FileDel fileDel = new FileDel();
             fileDel.setFileId(fileId);
@@ -323,7 +313,7 @@ public class FileInfoServiceImpl extends ServiceImpl<FileInfoMapper, FileInfo> i
     @Override
     public R<Object> updateFileStatus(String fileId, int fileStatus) {
         try {
-            int update = fileInfoMapper.update(null, new UpdateWrapper<FileInfo>()
+            int update = this.baseMapper.update(null, new UpdateWrapper<FileInfo>()
                     .set("file_status", fileStatus)
                     .eq("file_id", fileId));
             if (update == 1){
@@ -345,7 +335,7 @@ public class FileInfoServiceImpl extends ServiceImpl<FileInfoMapper, FileInfo> i
     @Override
     public R<Object> getFileInfoByFolderId(String folderId) {
         try {
-            List<FileInfo> fileInfos = fileInfoMapper.selectList(new QueryWrapper<FileInfo>()
+            List<FileInfo> fileInfos = this.baseMapper.selectList(new QueryWrapper<FileInfo>()
                     .eq("file_folder_id", folderId));
             if (fileInfos != null){
                 return R.ok(fileInfos);
@@ -365,7 +355,7 @@ public class FileInfoServiceImpl extends ServiceImpl<FileInfoMapper, FileInfo> i
     public R<Object> getFileInfoByShare() {
         String uId = (String) StpUtil.getLoginId();
         try {
-            List<FileInfo> fileInfos = fileInfoMapper.selectList(new QueryWrapper<FileInfo>()
+            List<FileInfo> fileInfos = this.baseMapper.selectList(new QueryWrapper<FileInfo>()
                     .eq("file_upload_id", uId)
                     .eq("file_status", Constant.PUBLIC_TYPE));
             if(fileInfos != null){
@@ -386,10 +376,10 @@ public class FileInfoServiceImpl extends ServiceImpl<FileInfoMapper, FileInfo> i
     @Override
     public R<Object> downloadFile(String fileId) {
         try {
-            FileInfo fileInfo = fileInfoMapper.selectOne(new QueryWrapper<FileInfo>().eq("file_id", fileId));
+            FileInfo fileInfo = this.baseMapper.selectOne(new QueryWrapper<FileInfo>().eq("file_id", fileId));
             if (fileInfo != null){
                 fileInfo.setFileDownloadNums(fileInfo.getFileDownloadNums() + 1);
-                fileInfoMapper.updateById(fileInfo);
+                this.baseMapper.updateById(fileInfo);
                 return R.ok();
             }else {
                 return R.error(ResultCode.NOT_EXIST.getCode(), ResultCode.NOT_EXIST.getMessage());
@@ -408,7 +398,7 @@ public class FileInfoServiceImpl extends ServiceImpl<FileInfoMapper, FileInfo> i
      */
     @Override
     public R<Object> updateFileName(String fileId, String fileName) {
-        FileInfo fileInfo = fileInfoMapper.selectOne(new QueryWrapper<FileInfo>().select("file_path").eq("file_id", fileId));
+        FileInfo fileInfo = this.baseMapper.selectOne(new QueryWrapper<FileInfo>().select("file_path").eq("file_id", fileId));
         if (fileInfo != null) {
             String filePath = fileInfo.getFilePath();
             String substring = filePath.substring(filePath.lastIndexOf("/")+1, filePath.lastIndexOf("."));
@@ -416,7 +406,7 @@ public class FileInfoServiceImpl extends ServiceImpl<FileInfoMapper, FileInfo> i
             fileInfo.setFileId(fileId);
             fileInfo.setFileName(fileName);
             fileInfo.setFilePath(newFilePath);
-            int i = fileInfoMapper.updateById(fileInfo);
+            int i = this.baseMapper.updateById(fileInfo);
             if (i == 1) {
                 hdfsUtil.fileRename(filePath,fileName);
                 return R.ok();
@@ -435,7 +425,7 @@ public class FileInfoServiceImpl extends ServiceImpl<FileInfoMapper, FileInfo> i
     @Override
     public R<Object> updateFileRemark(String fileId, String fileRemark) {
         try {
-            int update = fileInfoMapper.update(null, new UpdateWrapper<FileInfo>()
+            int update = this.baseMapper.update(null, new UpdateWrapper<FileInfo>()
                     .set("file_others", fileRemark)
                     .eq("file_id", fileId));
             if (update == 1){

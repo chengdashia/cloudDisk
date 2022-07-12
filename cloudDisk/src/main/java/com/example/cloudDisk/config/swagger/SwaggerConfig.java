@@ -35,8 +35,8 @@ public class SwaggerConfig {
 
     static {
         API_INFO = new ApiInfoBuilder()
-                .title("企业用户API接口")
-                .description("API接口文档")
+                .title("M78星云盘")
+                .description("M78星云盘API接口文档")
                 .termsOfServiceUrl("https://blog.chengdashi.cn")
                 .contact(new Contact("成大事",
                         "https://blog.chengdashi.cn",

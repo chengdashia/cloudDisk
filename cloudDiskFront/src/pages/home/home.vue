@@ -17,6 +17,7 @@
         <div class="plaza" :class="[isActive == 1 ? 'active' : '']" @click="goPlaza">文件广场</div>
       </div>
       <div class="top_right all_center">
+        <el-avatar  class="avatar" :src="imageUrl" style="margin-right: 10px"></el-avatar>
         <el-dropdown>
           <span class="el-dropdown-link">
             {{ user_tel }}

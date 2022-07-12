@@ -8,11 +8,11 @@
     <div class="login">
       <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px">
         <div>
-          <el-form-item prop="user_tel">
+          <el-form-item prop="userAccount">
             <el-input
-              v-model="ruleForm.user_tel"
-              maxlength="11"
-              placeholder="请输入手机号"
+              v-model="ruleForm.userAccount"
+              maxlength="17"
+              placeholder="请输入手机号/邮箱"
               class="input_class"
               @keyup.enter.native="submitForm('ruleForm')"
             ></el-input>

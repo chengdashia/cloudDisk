@@ -4,6 +4,7 @@ import cn.dev33.satoken.stp.SaLoginConfig;
 import cn.dev33.satoken.stp.StpUtil;
 import cn.hutool.core.util.IdUtil;
 import cn.hutool.core.util.RandomUtil;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.cloudDisk.common.minio.MinioConfig;
@@ -42,9 +43,6 @@ import java.util.*;
 public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> implements UserInfoService {
 
     @Resource
-    private UserInfoMapper userInfoMapper;
-
-    @Resource
     private UserLabelMapper userLabelMapper;
 
     @Resource
@@ -77,17 +75,16 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
      */
     @Override
     public R<Object> loginByPwd(String userAccount, String userPwd) {
-        UserInfo userInfo = null;
+        UserInfo userInfo;
         if(RegexUtil.checkMobile(userAccount)){
-            userInfo = userInfoMapper.selectOne(new QueryWrapper<UserInfo>()
-                    .select("user_id", "user_pwd", "user_initialize")
-                    .eq("user_tel", userAccount));
+            userInfo = this.baseMapper.selectOne(new LambdaQueryWrapper<UserInfo>()
+                            .select(UserInfo::getUserId,UserInfo::getUserPwd,UserInfo::getUserInitialize)
+                    .eq(UserInfo::getUserTel, userAccount));
         }else if(RegexUtil.checkEmail(userAccount)){
-            userInfo = userInfoMapper.selectOne(new QueryWrapper<UserInfo>()
-                    .select("user_id", "user_pwd", "user_initialize")
-                    .eq("user_mail", userAccount));
+            userInfo = this.baseMapper.selectOne(new LambdaQueryWrapper<UserInfo>()
+                    .select(UserInfo::getUserId,UserInfo::getUserPwd,UserInfo::getUserInitialize)
+                    .eq(UserInfo::getUserMail, userAccount));
         }else {
-           //return R.error(ResultCode.FORMAT_MISMATCH.getCode(),ResultCode.FORMAT_MISMATCH.getMessage());
             throw new BaseException(ExceptionEnum.CONSTRAINT_VIOLATION_EXCEPTION.getResultCode(),ExceptionEnum.CONSTRAINT_VIOLATION_EXCEPTION.getResultMsg());
         }
         if(userInfo != null){
@@ -115,9 +112,9 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
         if (redisUtil.hasKey(tel)) {
             if (redisUtil.get(tel).equals(code)) {
                 try {
-                    UserInfo userInfo = userInfoMapper.selectOne(new QueryWrapper<UserInfo>()
-                            .select("user_id", "user_initialize")
-                            .eq("user_tel", tel));
+                    UserInfo userInfo = this.baseMapper.selectOne(new LambdaQueryWrapper<UserInfo>()
+                                    .select(UserInfo::getUserId,UserInfo::getUserInitialize)
+                            .eq(UserInfo::getUserTel, tel));
                     if (userInfo != null){
                         StpUtil.login(userInfo.getUserId(), SaLoginConfig
                                 .setExtra("uInit", userInfo.getUserInitialize()));
@@ -152,7 +149,7 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
         if (redisUtil.hasKey(MailController.getLoginKey(mailbox))) {
             if (redisUtil.get(MailController.getLoginKey(mailbox)).equals(mailCode)) {
                 try {
-                    UserInfo userInfo = userInfoMapper.selectOne(new QueryWrapper<UserInfo>()
+                    UserInfo userInfo = this.baseMapper.selectOne(new QueryWrapper<UserInfo>()
                             .select("user_id", "user_initialize")
                             .eq("user_mail", mailbox));
                     if (userInfo != null){
@@ -188,16 +185,16 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
     public R<Object> updateUserAvatar(MultipartFile file) throws Exception {
         String uId = (String) StpUtil.getLoginId();
         try {
-            UserInfo userInfo = userInfoMapper.selectOne(new QueryWrapper<UserInfo>()
-                    .select("user_avatar", "user_id")
-                    .eq("user_id", uId));
+            UserInfo userInfo = this.baseMapper.selectOne(new LambdaQueryWrapper<UserInfo>()
+                            .select(UserInfo::getUserAvatar,UserInfo::getUserId)
+                    .eq(UserInfo::getUserId, uId));
             //将用户原本的头像删除
             minioUtil.removeFile(minioConfig.getBucketName(),userInfo.getUserAvatar());
             //上传用户的新头像
             String uploadFilePath = minioUtil.uploadFile(minioConfig.getBucketName(), file, uId);
             userInfo.setUserAvatar(uploadFilePath);
             //修改用户的头像
-            int i = userInfoMapper.updateById(userInfo);
+            int i = this.baseMapper.updateById(userInfo);
             if(i == 1){
                 return R.ok(uploadFilePath);
             }
@@ -218,7 +215,7 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
         Map<String, Object> map = new HashMap<>(2);
         try {
 
-            Map<String, Object> userInfo = userInfoMapper.selectJoinMap(new MPJLambdaWrapper<>()
+            Map<String, Object> userInfo = this.baseMapper.selectJoinMap(new MPJLambdaWrapper<>()
                     .select(UserInfo.class, i -> !"user_info_id".equals(i.getColumn()))
                     .select(RootDirectoryInfo::getFolderId)
                     .leftJoin(RootDirectoryInfo.class, RootDirectoryInfo::getUserId, UserInfo::getUserId)
@@ -263,7 +260,7 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
         if(redisUtil.hasKey(tel)){
             String redisSmsCode = (String) redisUtil.get(tel);
             if(redisSmsCode.equals(code)){
-                UserInfo user = userInfoMapper.selectOne(new QueryWrapper<UserInfo>().eq("user_tel", tel));
+                UserInfo user = this.baseMapper.selectOne(new QueryWrapper<UserInfo>().eq("user_tel", tel));
                 if (user == null) {
                     user = new UserInfo();
                     user.setUserInfoId(IdUtil.fastUUID());
@@ -272,7 +269,7 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
                     user.setUserTel(tel);
                     user.setUserPwd(pwd);
                     user.setUserName(tel + RandomUtil.randomString(IdUtil.simpleUUID(), 5));
-                    int userInsert = userInfoMapper.insert(user);
+                    int userInsert = this.baseMapper.insert(user);
                     //如果注册成功，则创建根目录
                     if (userInsert == 1) {
                         //先在文件表中创建
@@ -344,7 +341,7 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
         if(redisUtil.hasKey(MailController.getRegisterKey(mailbox))){
             String redisSmsCode = (String) redisUtil.get(MailController.getRegisterKey(mailbox));
             if(redisSmsCode.equals(mailCode)){
-                UserInfo user = userInfoMapper.selectOne(new QueryWrapper<UserInfo>().eq("user_mail", mailbox));
+                UserInfo user = this.baseMapper.selectOne(new QueryWrapper<UserInfo>().eq("user_mail", mailbox));
                 if (user == null) {
                     user = new UserInfo();
                     user.setUserInfoId(IdUtil.fastUUID());
@@ -353,7 +350,7 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
                     user.setUserMail(mailbox);
                     user.setUserPwd(pwd);
                     user.setUserName(mailbox + RandomUtil.randomString(IdUtil.simpleUUID(), 5));
-                    int userInsert = userInfoMapper.insert(user);
+                    int userInsert = this.baseMapper.insert(user);
                     //如果注册成功，则创建根目录
                     if (userInsert == 1) {
                         //先在文件表中创建

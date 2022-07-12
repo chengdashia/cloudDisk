@@ -79,7 +79,7 @@ const router = new Router({
           path: 'register',
           component: register,
           meta: {
-            title: '注册',
+            title: '手机注册',
             needLogin: false
           },
         },
@@ -97,7 +97,7 @@ const router = new Router({
           path: 'login',
           component: loginLogin,
           meta: {
-            title: '登陆',
+            title: '密码登陆',
             needLogin: false
           },
         },
@@ -106,7 +106,7 @@ const router = new Router({
           path: 'verLogin',
           component: verLogin,
           meta: {
-            title: '登陆',
+            title: '手机验证码登陆',
             needLogin: false
           },
         },
@@ -115,7 +115,7 @@ const router = new Router({
           path: 'mailVerLogin',
           component: mailVerLogin,
           meta:{
-            title: '邮箱登录',
+            title: '邮箱验证码登录',
             needLogin: false
           },
         },
