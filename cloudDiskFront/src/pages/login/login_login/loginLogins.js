@@ -5,7 +5,7 @@ export default {
     let validAccount = (rule,value,callback) => {
       let reg = new RegExp("(^[1](([3][0-9])|([4][5-9])|([5][0-3,5-9])|([6][5,6])|([7][0-8])|([8][0-9])|([9][1,8,9]))[0-9]{8}$)|(^\\w+((-\\w+)|(\\.\\w+))*\\@[A-Za-z0-9]+((\\.|-)[A-Za-z0-9]+)*\\.[A-Za-z0-9]+$)")
       if (!reg.test(value)) {
-        callback(new Error('手机号\邮箱不合法'))
+        callback(new Error('手机号/邮箱不合法'))
       } else {
         callback()
       }
