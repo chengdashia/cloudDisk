@@ -9,6 +9,7 @@
         </div>
       </div>
       <div class="top_right all_center">
+        <el-avatar  class="avatar" :src="imageUrl" style="margin-right: 10px"></el-avatar>
         <el-dropdown>
           <span class="el-dropdown-link">
             {{ user_tel }}
@@ -237,7 +238,8 @@ import { mapState, mapActions } from 'vuex'
 export default {
   data() {
     return {
-      user_tel: ""
+      user_tel: "",
+      imageUrl:""
     }
   },
   computed: {
@@ -249,9 +251,21 @@ export default {
     console.log(this.user_tel)
     this.getData()
     this.user_tel=localStorage.getItem('user_mail')
+    this.getUserInfo()
   },
   methods: {
   ...mapActions('PersonV',["change_info",'change_tel']),
+    async getUserInfo(){
+      const res = await this.$myRequest({
+        url: '/userInfo/getUserInfo',
+        method: 'post',
+        header:{
+          token:localStorage.getItem('token')
+        },
+        data: {},
+      })
+      this.imageUrl=res.data.data.data.userAvatar
+    },
     quit() {
       const that = this
       console.log("退出登录")

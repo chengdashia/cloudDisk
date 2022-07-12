@@ -287,3 +287,5 @@ org.springframework.web.HttpRequestMethodNotSupportedException: Request method '
 2022-07-12 11:06:18.383 INFO [http-nio-9081-exec-10] com.example.cloudDisk.common.minio.MinioUtil : contentType  :image/jpeg
 2022-07-12 11:15:42.893 INFO [http-nio-9081-exec-5] com.example.cloudDisk.common.minio.MinioUtil : isExists:     true 
 2022-07-12 11:15:42.898 INFO [http-nio-9081-exec-5] com.example.cloudDisk.common.minio.MinioUtil : contentType  :image/jpeg
+2022-07-12 11:27:22.089 INFO [http-nio-9081-exec-2] com.example.cloudDisk.common.minio.MinioUtil : isExists:     true 
+2022-07-12 11:27:22.092 INFO [http-nio-9081-exec-2] com.example.cloudDisk.common.minio.MinioUtil : contentType  :image/jpeg
