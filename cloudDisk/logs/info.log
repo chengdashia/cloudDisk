@@ -278,3 +278,442 @@ cn.dev33.satoken.exception.NotLoginException: Token无效
 2022-07-12 17:18:25.006 INFO [http-nio-9081-exec-10] com.example.cloudDisk.service.impl.UserInfoServiceImpl : 用户daed76a6b9654a6f80a907029834de34登录成功
 2022-07-12 17:20:02.840 INFO [http-nio-9081-exec-3] com.example.cloudDisk.common.minio.MinioUtil : isExists:     true 
 2022-07-12 17:20:02.852 INFO [http-nio-9081-exec-3] com.example.cloudDisk.common.minio.MinioUtil : contentType  :image/jpeg
+2022-07-12 19:19:13.003 INFO [background-preinit] org.hibernate.validator.internal.util.Version : HV000001: Hibernate Validator 6.2.3.Final
+2022-07-12 19:19:13.045 INFO [main] com.example.cloudDisk.CloudDiskApplication : Starting CloudDiskApplication using Java 1.8.0_131 on DESKTOP-1BJ4MST with PID 3860 (R:\test\cloudDisk\cloudDisk\target\classes started by lilililion in R:\test\cloudDisk\cloudDisk)
+2022-07-12 19:19:13.050 INFO [main] com.example.cloudDisk.CloudDiskApplication : The following 1 profile is active: "guo"
+2022-07-12 19:19:14.933 INFO [main] org.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-9081"]
+2022-07-12 19:19:14.934 INFO [main] org.apache.catalina.core.StandardService : Starting service [Tomcat]
+2022-07-12 19:19:14.934 INFO [main] org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-07-12 19:19:15.056 INFO [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2022-07-12 19:19:23.110 INFO [main] com.example.cloudDisk.common.minio.MinioUtil : 开始创建 MinioClient...
+2022-07-12 19:19:24.459 INFO [main] com.example.cloudDisk.common.minio.MinioUtil : 创建完毕 MinioClient...
+2022-07-12 19:19:24.892 INFO [main] org.apache.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-9081"]
+2022-07-12 19:19:25.379 INFO [main] com.example.cloudDisk.CloudDiskApplication : Started CloudDiskApplication in 12.83 seconds (JVM running for 15.163)
+2022-07-12 19:21:06.505 INFO [http-nio-9081-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-07-12 19:21:07.124 INFO [http-nio-9081-exec-8] com.alibaba.druid.pool.DruidDataSource : {dataSource-1} inited
+2022-07-12 19:21:08.099 INFO [http-nio-9081-exec-8] com.example.cloudDisk.service.impl.UserInfoServiceImpl : 用户daed76a6b9654a6f80a907029834de34登录成功
+2022-07-12 20:04:11.612 INFO [http-nio-9081-exec-1] com.example.cloudDisk.controller.FileInfoController : 上传文件，用户id：daed76a6b9654a6f80a907029834de34
+2022-07-12 20:04:11.614 INFO [http-nio-9081-exec-1] com.example.cloudDisk.controller.FileInfoController : 上传文件，父文件夹id：8ad3be8482f643e68fe58048e1172a29
+2022-07-12 20:04:11.614 INFO [http-nio-9081-exec-1] com.example.cloudDisk.controller.FileInfoController : 上传文件，文件名字：IU (2)
+2022-07-12 20:04:11.614 INFO [http-nio-9081-exec-1] com.example.cloudDisk.controller.FileInfoController : 上传文件，标签列表：[02c8366104e04b1f84512e2b1a01b0b7]
+2022-07-12 20:04:11.616 INFO [http-nio-9081-exec-1] com.example.cloudDisk.controller.FileInfoController : 上传文件，文件：IU (2).jpg
+2022-07-12 20:04:11.616 INFO [http-nio-9081-exec-1] com.example.cloudDisk.controller.FileInfoController : 标签信息  [02c8366104e04b1f84512e2b1a01b0b7]
+2022-07-12 20:04:11.622 INFO [http-nio-9081-exec-1] com.example.cloudDisk.utils.file.FileUtil : ==============================
+2022-07-12 20:04:11.901 INFO [http-nio-9081-exec-1] com.example.cloudDisk.utils.file.FileUtil : 文件后缀：jpg
+2022-07-12 20:04:11.902 INFO [http-nio-9081-exec-1] com.example.cloudDisk.utils.file.FileUtil : 文件类型：image/jpeg
+2022-07-12 20:04:11.903 INFO [http-nio-9081-exec-1] com.example.cloudDisk.utils.file.FileUtil : 文件名：IU (2).jpg
+2022-07-12 20:04:11.908 INFO [http-nio-9081-exec-1] com.example.cloudDisk.utils.file.FileUtil : 文件格式：jpg
+2022-07-12 20:04:11.908 INFO [http-nio-9081-exec-1] com.example.cloudDisk.utils.file.FileUtil : 文件夹路径：E:\temp\
+2022-07-12 20:05:57.801 INFO [background-preinit] org.hibernate.validator.internal.util.Version : HV000001: Hibernate Validator 6.2.3.Final
+2022-07-12 20:05:57.851 INFO [main] com.example.cloudDisk.CloudDiskApplication : Starting CloudDiskApplication using Java 1.8.0_131 on DESKTOP-1BJ4MST with PID 3120 (R:\test\cloudDisk\cloudDisk\target\classes started by lilililion in R:\test\cloudDisk\cloudDisk)
+2022-07-12 20:05:57.856 INFO [main] com.example.cloudDisk.CloudDiskApplication : The following 1 profile is active: "guo"
+2022-07-12 20:06:00.262 INFO [main] org.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-9081"]
+2022-07-12 20:06:00.263 INFO [main] org.apache.catalina.core.StandardService : Starting service [Tomcat]
+2022-07-12 20:06:00.263 INFO [main] org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-07-12 20:06:00.382 INFO [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2022-07-12 20:06:08.830 INFO [main] com.example.cloudDisk.common.minio.MinioUtil : 开始创建 MinioClient...
+2022-07-12 20:06:10.396 INFO [main] com.example.cloudDisk.common.minio.MinioUtil : 创建完毕 MinioClient...
+2022-07-12 20:06:10.840 INFO [main] org.apache.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-9081"]
+2022-07-12 20:06:11.386 INFO [main] com.example.cloudDisk.CloudDiskApplication : Started CloudDiskApplication in 14.186 seconds (JVM running for 17.911)
+2022-07-12 20:07:14.693 INFO [http-nio-9081-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-07-12 20:07:15.559 INFO [http-nio-9081-exec-2] com.alibaba.druid.pool.DruidDataSource : {dataSource-1} inited
+2022-07-12 20:07:17.106 INFO [http-nio-9081-exec-2] com.example.cloudDisk.service.impl.UserInfoServiceImpl : 用户daed76a6b9654a6f80a907029834de34登录成功
+2022-07-12 20:07:53.295 INFO [http-nio-9081-exec-7] com.example.cloudDisk.controller.FileInfoController : 上传文件，用户id：daed76a6b9654a6f80a907029834de34
+2022-07-12 20:07:53.296 INFO [http-nio-9081-exec-7] com.example.cloudDisk.controller.FileInfoController : 上传文件，父文件夹id：8ad3be8482f643e68fe58048e1172a29
+2022-07-12 20:07:53.296 INFO [http-nio-9081-exec-7] com.example.cloudDisk.controller.FileInfoController : 上传文件，文件名字：IU (2)
+2022-07-12 20:07:53.296 INFO [http-nio-9081-exec-7] com.example.cloudDisk.controller.FileInfoController : 上传文件，标签列表：[84b4bc16d1074f7ba423cd50e77b65e0]
+2022-07-12 20:07:53.296 INFO [http-nio-9081-exec-7] com.example.cloudDisk.controller.FileInfoController : 上传文件，文件：IU (2).jpg
+2022-07-12 20:07:53.296 INFO [http-nio-9081-exec-7] com.example.cloudDisk.controller.FileInfoController : 标签信息  [84b4bc16d1074f7ba423cd50e77b65e0]
+2022-07-12 20:07:53.298 INFO [http-nio-9081-exec-7] com.example.cloudDisk.utils.file.FileUtil : ==============================
+2022-07-12 20:07:53.515 INFO [http-nio-9081-exec-7] com.example.cloudDisk.utils.file.FileUtil : 文件后缀：jpg
+2022-07-12 20:07:53.515 INFO [http-nio-9081-exec-7] com.example.cloudDisk.utils.file.FileUtil : 文件类型：image/jpeg
+2022-07-12 20:07:53.515 INFO [http-nio-9081-exec-7] com.example.cloudDisk.utils.file.FileUtil : 文件名：IU (2).jpg
+2022-07-12 20:07:53.517 INFO [http-nio-9081-exec-7] com.example.cloudDisk.utils.file.FileUtil : 文件格式：jpg
+2022-07-12 20:07:53.518 INFO [http-nio-9081-exec-7] com.example.cloudDisk.utils.file.FileUtil : 文件夹路径：D:\temp\
+2022-07-12 20:09:40.965 INFO [http-nio-9081-exec-8] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 20:11:13.230 INFO [http-nio-9081-exec-7] com.example.cloudDisk.service.impl.UserInfoServiceImpl : 用户daed76a6b9654a6f80a907029834de34登录成功
+2022-07-12 20:16:15.467 INFO [background-preinit] org.hibernate.validator.internal.util.Version : HV000001: Hibernate Validator 6.2.3.Final
+2022-07-12 20:16:15.515 INFO [main] com.example.cloudDisk.CloudDiskApplication : Starting CloudDiskApplication using Java 1.8.0_131 on DESKTOP-1BJ4MST with PID 17092 (R:\test\cloudDisk\cloudDisk\target\classes started by lilililion in R:\test\cloudDisk\cloudDisk)
+2022-07-12 20:16:15.520 INFO [main] com.example.cloudDisk.CloudDiskApplication : The following 1 profile is active: "guo"
+2022-07-12 20:16:17.841 INFO [main] org.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-9081"]
+2022-07-12 20:16:17.841 INFO [main] org.apache.catalina.core.StandardService : Starting service [Tomcat]
+2022-07-12 20:16:17.842 INFO [main] org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-07-12 20:16:17.956 INFO [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2022-07-12 20:16:26.474 INFO [main] com.example.cloudDisk.common.minio.MinioUtil : 开始创建 MinioClient...
+2022-07-12 20:16:27.974 INFO [main] com.example.cloudDisk.common.minio.MinioUtil : 创建完毕 MinioClient...
+2022-07-12 20:16:28.441 INFO [main] org.apache.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-9081"]
+2022-07-12 20:16:28.945 INFO [main] com.example.cloudDisk.CloudDiskApplication : Started CloudDiskApplication in 14.068 seconds (JVM running for 18.432)
+2022-07-12 20:16:48.885 INFO [http-nio-9081-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-07-12 20:16:49.563 INFO [http-nio-9081-exec-1] com.alibaba.druid.pool.DruidDataSource : {dataSource-1} inited
+2022-07-12 20:16:50.948 INFO [http-nio-9081-exec-1] com.example.cloudDisk.service.impl.UserInfoServiceImpl : 用户daed76a6b9654a6f80a907029834de34登录成功
+2022-07-12 20:17:26.768 INFO [http-nio-9081-exec-6] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 20:34:59.097 INFO [http-nio-9081-exec-10] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 20:35:24.669 INFO [http-nio-9081-exec-9] com.example.cloudDisk.common.minio.MinioUtil : isExists:     true 
+2022-07-12 20:35:24.681 INFO [http-nio-9081-exec-9] com.example.cloudDisk.common.minio.MinioUtil : contentType  :image/jpeg
+2022-07-12 20:35:44.906 INFO [http-nio-9081-exec-10] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 20:35:51.391 INFO [http-nio-9081-exec-3] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 20:37:05.506 INFO [http-nio-9081-exec-6] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 20:38:02.686 INFO [http-nio-9081-exec-1] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 20:41:07.711 INFO [http-nio-9081-exec-1] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 20:43:06.543 INFO [http-nio-9081-exec-1] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 20:43:25.892 INFO [http-nio-9081-exec-9] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 20:45:14.817 INFO [http-nio-9081-exec-5] com.example.cloudDisk.service.impl.UserInfoServiceImpl : 用户daed76a6b9654a6f80a907029834de34登录成功
+2022-07-12 20:45:24.952 INFO [http-nio-9081-exec-9] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 20:45:30.468 INFO [http-nio-9081-exec-7] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 21:03:28.051 INFO [http-nio-9081-exec-6] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 21:05:15.891 INFO [http-nio-9081-exec-6] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 21:11:37.918 INFO [http-nio-9081-exec-2] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 21:13:39.192 INFO [http-nio-9081-exec-6] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 21:19:02.775 INFO [http-nio-9081-exec-6] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 21:20:35.984 INFO [http-nio-9081-exec-6] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 21:23:24.049 INFO [http-nio-9081-exec-6] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 21:25:54.680 INFO [http-nio-9081-exec-7] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 21:26:07.082 INFO [http-nio-9081-exec-10] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 21:28:24.791 INFO [http-nio-9081-exec-3] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 21:29:58.521 INFO [http-nio-9081-exec-7] com.example.cloudDisk.controller.FileInfoController : 上传文件，用户id：daed76a6b9654a6f80a907029834de34
+2022-07-12 21:29:58.522 INFO [http-nio-9081-exec-7] com.example.cloudDisk.controller.FileInfoController : 上传文件，父文件夹id：8ad3be8482f643e68fe58048e1172a29
+2022-07-12 21:29:58.522 INFO [http-nio-9081-exec-7] com.example.cloudDisk.controller.FileInfoController : 上传文件，文件名字：spider
+2022-07-12 21:29:58.522 INFO [http-nio-9081-exec-7] com.example.cloudDisk.controller.FileInfoController : 上传文件，标签列表：[undefined]
+2022-07-12 21:29:58.523 INFO [http-nio-9081-exec-7] com.example.cloudDisk.controller.FileInfoController : 上传文件，文件：spider.txt
+2022-07-12 21:29:58.523 INFO [http-nio-9081-exec-7] com.example.cloudDisk.controller.FileInfoController : 标签信息  [undefined]
+2022-07-12 21:29:58.529 INFO [http-nio-9081-exec-7] com.example.cloudDisk.utils.file.FileUtil : ==============================
+2022-07-12 21:29:58.825 INFO [http-nio-9081-exec-7] com.example.cloudDisk.utils.file.FileUtil : 文件后缀：txt
+2022-07-12 21:29:58.825 INFO [http-nio-9081-exec-7] com.example.cloudDisk.utils.file.FileUtil : 文件类型：text/plain
+2022-07-12 21:29:58.825 INFO [http-nio-9081-exec-7] com.example.cloudDisk.utils.file.FileUtil : 文件名：spider.txt
+2022-07-12 21:29:58.826 INFO [http-nio-9081-exec-7] com.example.cloudDisk.utils.file.FileUtil : 文件格式：txt
+2022-07-12 21:29:58.827 INFO [http-nio-9081-exec-7] com.example.cloudDisk.utils.file.FileUtil : 文件夹路径：D:\temp\
+2022-07-12 21:30:02.812 INFO [http-nio-9081-exec-4] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 21:30:52.613 INFO [http-nio-9081-exec-5] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 21:30:59.888 INFO [http-nio-9081-exec-4] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 21:34:39.837 INFO [http-nio-9081-exec-9] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 21:35:25.320 INFO [http-nio-9081-exec-3] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 21:42:24.633 INFO [http-nio-9081-exec-10] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 21:42:30.049 INFO [http-nio-9081-exec-9] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 21:42:50.955 INFO [http-nio-9081-exec-10] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 21:43:20.340 INFO [http-nio-9081-exec-8] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 21:43:28.588 ERROR[http-nio-9081-exec-7] com.example.cloudDisk.common.result.exception.RestExceptionHandler : 未知异常！原因是:
+org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.handleNoMatch(RequestMappingInfoHandlerMapping.java:253) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.lookupHandlerMethod(AbstractHandlerMethodMapping.java:442) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.getHandlerInternal(AbstractHandlerMethodMapping.java:383) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.getHandlerInternal(RequestMappingInfoHandlerMapping.java:125) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.getHandlerInternal(RequestMappingInfoHandlerMapping.java:67) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.handler.AbstractHandlerMapping.getHandler(AbstractHandlerMapping.java:498) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.DispatcherServlet.getHandler(DispatcherServlet.java:1261) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1043) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:655) ~[tomcat-embed-core-9.0.63.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764) ~[tomcat-embed-core-9.0.63.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at com.github.xiaoymin.knife4j.spring.filter.SecurityBasicAuthFilter.doFilter(SecurityBasicAuthFilter.java:87) ~[knife4j-spring-3.0.3.jar:?]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:124) ~[druid-1.2.8.jar:1.2.8]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at java.lang.Thread.run(Thread.java:748) ~[?:1.8.0_131]
+2022-07-12 21:43:46.693 ERROR[http-nio-9081-exec-5] com.example.cloudDisk.common.result.exception.RestExceptionHandler : 未知异常！原因是:
+org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.handleNoMatch(RequestMappingInfoHandlerMapping.java:253) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.lookupHandlerMethod(AbstractHandlerMethodMapping.java:442) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.getHandlerInternal(AbstractHandlerMethodMapping.java:383) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.getHandlerInternal(RequestMappingInfoHandlerMapping.java:125) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.getHandlerInternal(RequestMappingInfoHandlerMapping.java:67) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.handler.AbstractHandlerMapping.getHandler(AbstractHandlerMapping.java:498) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.DispatcherServlet.getHandler(DispatcherServlet.java:1261) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1043) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:655) ~[tomcat-embed-core-9.0.63.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764) ~[tomcat-embed-core-9.0.63.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at com.github.xiaoymin.knife4j.spring.filter.SecurityBasicAuthFilter.doFilter(SecurityBasicAuthFilter.java:87) ~[knife4j-spring-3.0.3.jar:?]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:124) ~[druid-1.2.8.jar:1.2.8]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at java.lang.Thread.run(Thread.java:748) ~[?:1.8.0_131]
+2022-07-12 21:45:53.484 INFO [http-nio-9081-exec-5] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 21:46:21.658 INFO [http-nio-9081-exec-8] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 21:47:07.197 INFO [http-nio-9081-exec-3] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 21:47:12.774 INFO [http-nio-9081-exec-7] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 21:47:54.634 INFO [http-nio-9081-exec-4] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 21:48:47.734 INFO [http-nio-9081-exec-6] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 21:51:12.936 INFO [http-nio-9081-exec-6] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 21:52:53.802 INFO [http-nio-9081-exec-9] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 21:53:16.784 INFO [http-nio-9081-exec-2] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 21:54:22.957 INFO [http-nio-9081-exec-2] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 21:54:33.652 INFO [http-nio-9081-exec-5] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 21:54:36.268 ERROR[http-nio-9081-exec-4] com.example.cloudDisk.common.result.exception.RestExceptionHandler : 未知异常！原因是:
+org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.handleNoMatch(RequestMappingInfoHandlerMapping.java:253) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.lookupHandlerMethod(AbstractHandlerMethodMapping.java:442) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.getHandlerInternal(AbstractHandlerMethodMapping.java:383) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.getHandlerInternal(RequestMappingInfoHandlerMapping.java:125) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.getHandlerInternal(RequestMappingInfoHandlerMapping.java:67) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.handler.AbstractHandlerMapping.getHandler(AbstractHandlerMapping.java:498) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.DispatcherServlet.getHandler(DispatcherServlet.java:1261) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1043) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:655) ~[tomcat-embed-core-9.0.63.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764) ~[tomcat-embed-core-9.0.63.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at com.github.xiaoymin.knife4j.spring.filter.SecurityBasicAuthFilter.doFilter(SecurityBasicAuthFilter.java:87) ~[knife4j-spring-3.0.3.jar:?]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:124) ~[druid-1.2.8.jar:1.2.8]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at java.lang.Thread.run(Thread.java:748) ~[?:1.8.0_131]
+2022-07-12 21:54:44.688 ERROR[http-nio-9081-exec-1] com.example.cloudDisk.common.result.exception.RestExceptionHandler : 未知异常！原因是:
+org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.handleNoMatch(RequestMappingInfoHandlerMapping.java:253) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.lookupHandlerMethod(AbstractHandlerMethodMapping.java:442) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.getHandlerInternal(AbstractHandlerMethodMapping.java:383) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.getHandlerInternal(RequestMappingInfoHandlerMapping.java:125) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.getHandlerInternal(RequestMappingInfoHandlerMapping.java:67) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.handler.AbstractHandlerMapping.getHandler(AbstractHandlerMapping.java:498) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.DispatcherServlet.getHandler(DispatcherServlet.java:1261) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1043) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:655) ~[tomcat-embed-core-9.0.63.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764) ~[tomcat-embed-core-9.0.63.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at com.github.xiaoymin.knife4j.spring.filter.SecurityBasicAuthFilter.doFilter(SecurityBasicAuthFilter.java:87) ~[knife4j-spring-3.0.3.jar:?]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:124) ~[druid-1.2.8.jar:1.2.8]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at java.lang.Thread.run(Thread.java:748) ~[?:1.8.0_131]
+2022-07-12 21:57:23.192 INFO [http-nio-9081-exec-1] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 21:57:36.664 INFO [http-nio-9081-exec-7] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 21:57:58.331 INFO [http-nio-9081-exec-10] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 21:58:04.422 INFO [http-nio-9081-exec-6] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 21:58:25.480 INFO [http-nio-9081-exec-9] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 21:58:54.899 INFO [http-nio-9081-exec-4] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 22:00:20.945 INFO [http-nio-9081-exec-10] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 22:01:15.028 INFO [http-nio-9081-exec-8] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 22:02:30.954 INFO [http-nio-9081-exec-8] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 22:04:53.389 INFO [http-nio-9081-exec-8] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 22:07:31.414 INFO [http-nio-9081-exec-2] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 22:07:43.494 INFO [http-nio-9081-exec-3] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 22:07:46.787 ERROR[http-nio-9081-exec-8] com.example.cloudDisk.common.result.exception.RestExceptionHandler : 未知异常！原因是:
+org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.handleNoMatch(RequestMappingInfoHandlerMapping.java:253) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.lookupHandlerMethod(AbstractHandlerMethodMapping.java:442) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.getHandlerInternal(AbstractHandlerMethodMapping.java:383) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.getHandlerInternal(RequestMappingInfoHandlerMapping.java:125) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.getHandlerInternal(RequestMappingInfoHandlerMapping.java:67) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.handler.AbstractHandlerMapping.getHandler(AbstractHandlerMapping.java:498) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.DispatcherServlet.getHandler(DispatcherServlet.java:1261) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1043) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:655) ~[tomcat-embed-core-9.0.63.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764) ~[tomcat-embed-core-9.0.63.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at com.github.xiaoymin.knife4j.spring.filter.SecurityBasicAuthFilter.doFilter(SecurityBasicAuthFilter.java:87) ~[knife4j-spring-3.0.3.jar:?]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:124) ~[druid-1.2.8.jar:1.2.8]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at java.lang.Thread.run(Thread.java:748) ~[?:1.8.0_131]
+2022-07-12 22:09:03.434 INFO [http-nio-9081-exec-8] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 22:10:28.760 INFO [http-nio-9081-exec-8] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 22:10:36.602 INFO [http-nio-9081-exec-5] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 22:11:29.122 INFO [http-nio-9081-exec-1] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 22:11:41.062 INFO [http-nio-9081-exec-10] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 22:13:26.565 INFO [http-nio-9081-exec-10] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 22:19:06.271 INFO [http-nio-9081-exec-2] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================
+2022-07-12 22:20:32.453 INFO [http-nio-9081-exec-6] com.example.cloudDisk.service.impl.FileInfoServiceImpl : ===================================================

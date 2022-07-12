@@ -7,16 +7,29 @@ export default {
     return {
       files: {
         fileId: 12,
-        fileName: "模拟数据11",
-        fileOthers: "这是2个数据这是2个数据这是2个数据",
-        fileUploadTime: '2022年7月12日17:03:17',
+        fileName: "",
+        fileOthers: "",
+        fileUploadTime: '',
         fileType: 3,
         fileClickNums: 200,
-        userName: '13525955142',
-        fileAvatar: 'https://pic2.zhimg.com/v2-6a98838ca01408a817ad4b204a5141bb_r.jpg?source=1940ef5c',
-        avatar:'https://pic2.zhimg.com/v2-6a98838ca01408a817ad4b204a5141bb_r.jpg?source=1940ef5c',
-        fileUploadId: 45456465
+        userName: '',
+        fileAvatar: '',
+        avatar:'',
+        fileUploadId: 45456465,
+        fileLabel:""
         },
+      userInfo: {
+        createTime: "2022-04-17 22:28:12",
+        userAvatar: "暂无",
+        userId: "00812c858be54d2f8fed5ed5392a2e7b",
+        userInfoId: null,
+        userInitialize: 0,
+        userIntroduction: "暂无",
+        userLocal: "未知",
+        userName: "1350168278584b5b",
+        userPwd: "728",
+        userTel: "13501682785",
+      },
 
       // files: {  },
       // fileLables: ['轻音乐', '运动', '说唱', '国风', '流行'],
@@ -27,7 +40,8 @@ export default {
       playTips: '播放',
       fileRand: [],
       page:1,
-      src: 'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg'
+      src: 'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg',
+      imageUrl:"",
     }
   },
   components: {
@@ -35,7 +49,7 @@ export default {
   },
   props:['fileId'],
   mounted() {
-
+    this.getUserInfo()
     // if(this.$route.params.file){
     //   this.$message({
     //     type: 'success',
@@ -63,6 +77,17 @@ export default {
   },
   methods: {
     ...mapActions('FileV', ['change_download_url']),
+    async getUserInfo(){
+      const res = await this.$myRequest({
+        url: '/userInfo/getUserInfo',
+        method: 'post',
+        header:{
+          token:localStorage.getItem('token')
+        },
+        data: {},
+      })
+      this.imageUrl=res.data.data.data.userAvatar
+    },
     async getFileInfo(id) {
       //  console.log('发送请求')
       // /fileHistory/addMyFileHistoryRedis
@@ -90,7 +115,7 @@ export default {
       }
 
         this.files=res.data.data.data[0]
-        this.fileLables=res.data.data.label
+        this.fileLables=res.data.data.label[0].labelName
         this.useLabes()
     },
     useLabes() {

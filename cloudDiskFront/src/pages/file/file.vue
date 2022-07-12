@@ -5,7 +5,7 @@
       <div class="file_left">
         <div class="file_left_top">
           <div class="files_avatar">
-            <el-avatar :src="files.avatar" :size="130">暂无</el-avatar>
+            <el-avatar :src="imageUrl" :size="130" class="avatar"></el-avatar>
           </div>
           <div class="user_info">
             <div class="user_info_sub">
@@ -56,7 +56,7 @@
           </div>
           <div>
             <span>文件标签:</span>
-            <el-tag v-for="(item, index) in fileLables2" :type="item.type" :key="index" size="small">{{ item.labels }}
+            <el-tag v-for="(item, index) in fileLables" :type="item.type" :key="index" size="small">{{ item}}
             </el-tag>
 
           </div>
@@ -88,7 +88,8 @@
 
           <el-empty :description="files.fileName" v-if="files.fileType == 1"></el-empty>
         </div>
-        <div class="clcik_button">
+
+        <div class="click_button">
           <div>
             <el-button @click="playFile" type="primary" v-if="files.fileType == 2">点击{{ playTips }}</el-button>
             <el-button @click="downloadFile" type="success">点击下载</el-button>
@@ -96,6 +97,7 @@
           </div>
         </div>
       </div>
+
       <div class="file_right">
         <el-card class="box-card">
           <div slot="header" class="clearfix">
