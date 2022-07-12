@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: guo
+    active: dev
 
 # MinIO 配置
 minio:
