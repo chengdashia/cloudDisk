@@ -3,7 +3,7 @@ import axios from "axios";
 export default {
   data() {
     return {
-      userAvatar: "暂无",
+      userAvatar: "",
       input: "",
       input_user_name: "",
       input_user_introduction: "",
@@ -24,6 +24,7 @@ export default {
   },
   mounted() {
     this.change_active_index("1-2");
+    this.getUserInfo()
   },
   computed: {
     ...mapState('PersonV', ['info','token']),
@@ -38,6 +39,17 @@ export default {
     change(res) {
       this.show_name = true
       console.log(res)
+    },
+    async getUserInfo(){
+      const res = await this.$myRequest({
+        url: '/userInfo/getUserInfo',
+        method: 'post',
+        header:{
+          token:localStorage.getItem('token')
+        },
+        data: {},
+      })
+      this.imageUrl=res.data.data.data.userAvatar
     },
     handleClose(done) {
       this.$confirm('确认关闭？')
@@ -164,7 +176,7 @@ export default {
           this.progressPercent = (progressEvent.loaded / progressEvent.total * 100)
         }
       }).then(res => {
-        this.imageUrl = res.data.msg
+        this.userInfo.userAvatar = res.data.msg
         if (this.progressPercent === 100) {
           this.progressFlag = false
           this.progressPercent = 0
@@ -173,5 +185,6 @@ export default {
         console.log(error)
       })
     },
-  },
+
+},
 };

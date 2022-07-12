@@ -67,7 +67,7 @@
 <!--      <i v-else class="el-icon-plus avatar-uploader-icon"></i>-->
 <!--    </el-upload>-->
 <!--    2头像上传-->
-    <img  class="avatar" :src="imageUrl" />
+    <el-avatar  class="avatar" :src="imageUrl"></el-avatar>
     <el-upload class="img-btn" action="#"
                :show-file-list="false"  :before-upload="beforeAvatarUpload"
                :http-request="uploadImg" >

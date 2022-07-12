@@ -4,6 +4,7 @@ import cn.dev33.satoken.stp.SaLoginConfig;
 import cn.dev33.satoken.stp.StpUtil;
 import cn.hutool.core.util.IdUtil;
 import cn.hutool.core.util.RandomUtil;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.cloudDisk.common.minio.MinioConfig;
@@ -77,17 +78,16 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
      */
     @Override
     public R<Object> loginByPwd(String userAccount, String userPwd) {
-        UserInfo userInfo = null;
+        UserInfo userInfo;
         if(RegexUtil.checkMobile(userAccount)){
-            userInfo = userInfoMapper.selectOne(new QueryWrapper<UserInfo>()
-                    .select("user_id", "user_pwd", "user_initialize")
-                    .eq("user_tel", userAccount));
+            userInfo = userInfoMapper.selectOne(new LambdaQueryWrapper<UserInfo>()
+                            .select(UserInfo::getUserId,UserInfo::getUserPwd,UserInfo::getUserInitialize)
+                    .eq(UserInfo::getUserId, userAccount));
         }else if(RegexUtil.checkEmail(userAccount)){
-            userInfo = userInfoMapper.selectOne(new QueryWrapper<UserInfo>()
-                    .select("user_id", "user_pwd", "user_initialize")
-                    .eq("user_mail", userAccount));
+            userInfo = userInfoMapper.selectOne(new LambdaQueryWrapper<UserInfo>()
+                    .select(UserInfo::getUserId,UserInfo::getUserPwd,UserInfo::getUserInitialize)
+                    .eq(UserInfo::getUserMail, userAccount));
         }else {
-           //return R.error(ResultCode.FORMAT_MISMATCH.getCode(),ResultCode.FORMAT_MISMATCH.getMessage());
             throw new BaseException(ExceptionEnum.CONSTRAINT_VIOLATION_EXCEPTION.getResultCode(),ExceptionEnum.CONSTRAINT_VIOLATION_EXCEPTION.getResultMsg());
         }
         if(userInfo != null){
@@ -115,9 +115,9 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
         if (redisUtil.hasKey(tel)) {
             if (redisUtil.get(tel).equals(code)) {
                 try {
-                    UserInfo userInfo = userInfoMapper.selectOne(new QueryWrapper<UserInfo>()
-                            .select("user_id", "user_initialize")
-                            .eq("user_tel", tel));
+                    UserInfo userInfo = userInfoMapper.selectOne(new LambdaQueryWrapper<UserInfo>()
+                                    .select(UserInfo::getUserId,UserInfo::getUserInitialize)
+                            .eq(UserInfo::getUserTel, tel));
                     if (userInfo != null){
                         StpUtil.login(userInfo.getUserId(), SaLoginConfig
                                 .setExtra("uInit", userInfo.getUserInitialize()));
@@ -188,9 +188,9 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
     public R<Object> updateUserAvatar(MultipartFile file) throws Exception {
         String uId = (String) StpUtil.getLoginId();
         try {
-            UserInfo userInfo = userInfoMapper.selectOne(new QueryWrapper<UserInfo>()
-                    .select("user_avatar", "user_id")
-                    .eq("user_id", uId));
+            UserInfo userInfo = userInfoMapper.selectOne(new LambdaQueryWrapper<UserInfo>()
+                            .select(UserInfo::getUserAvatar,UserInfo::getUserId)
+                    .eq(UserInfo::getUserId, uId));
             //将用户原本的头像删除
             minioUtil.removeFile(minioConfig.getBucketName(),userInfo.getUserAvatar());
             //上传用户的新头像

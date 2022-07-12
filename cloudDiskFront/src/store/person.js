@@ -7,7 +7,8 @@ export default {
     sum:0,
     name:"",
     address:"",
-    info:{}
+    info:{},
+    userAvatar: ""
 	},
 	actions:{
     change_tel(context,value){
