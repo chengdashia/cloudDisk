@@ -57,6 +57,30 @@ export default {
       this.show_name = true
 
     },
+    changeUserInfo(){
+      if (this.input_user_name.length == 0) {
+        this.infoTips()
+      } else {
+        this.$message({
+          message: '修改成功',
+          type: 'success'
+        });
+        this.show_name = false
+        this.input_user_name = ''
+      }
+      this.show_name = true
+      if (this.input_user_local.length == 0) {
+        this.infoTips()
+      } else {
+        this.$message({
+          message: '修改成功',
+          type: 'success'
+        });
+        this.show_local = false
+        this.input_user_local = ''
+      }
+      this.show_local = true
+    },
     changeConfirmName() {
       if (this.input_user_name.length == 0) {
         this.infoTips()

@@ -5,7 +5,7 @@ export default {
     return {
       isActive: 1,
       url: url,
-      user_tel:""
+      user_tel:''
     }
   },
   watch: {
@@ -35,7 +35,12 @@ export default {
 
   },
   mounted() {
-    this.user_tel=localStorage.getItem('user_mail')
+    // if(this.user_tel=localStorage.getItem('user_mail')){
+    //   this.user_tel=localStorage.getItem('user_mail')
+    // }else {
+    //   this.user_tel=localStorage.getItem('user_tel')
+    // }
+    this.user_tel=localStorage.getItem('userAccount')
     console.log("user_tel",this.user_tel)
   },
   methods: {

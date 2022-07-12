@@ -88,8 +88,8 @@
         <el-input placeholder="请输入内容" v-model="info.userTel" :disabled="true">
         </el-input>
       </div>
-      <div class="operation_button">
-      </div>
+<!--      <div class="operation_button">-->
+<!--      </div>-->
     </div>
     <div class="labels">
       <div class="label_left">
@@ -99,9 +99,9 @@
         <el-input placeholder="请输入内容" v-model="info.userName" :disabled="true">
         </el-input>
       </div>
-      <div class="operation_button">
-        <el-button type="primary" round @click="changeName">修改</el-button>
-      </div>
+<!--      <div class="operation_button">-->
+<!--        <el-button type="primary" round @click="changeName">修改</el-button>-->
+<!--      </div>-->
     </div>
     <div class="labels">
       <div class="label_left">
@@ -111,9 +111,9 @@
         <el-input placeholder="请输入内容" v-model="info.userLocal" :disabled="true">
         </el-input>
       </div>
-      <div class="operation_button">
-        <el-button type="primary" round @click="changeLocal">修改</el-button>
-      </div>
+<!--      <div class="operation_button">-->
+<!--        <el-button type="primary" round @click="changeLocal">修改</el-button>-->
+<!--      </div>-->
     </div>
     <div class="labels">
       <div class="label_left">
@@ -123,9 +123,9 @@
         <el-input placeholder="请输入内容" v-model="info.userIntroduction" :disabled="true">
         </el-input>
       </div>
-      <div class="operation_button">
-        <el-button type="primary" round @click="changeIntroduction">修改</el-button>
-      </div>
+<!--      <div class="operation_button">-->
+<!--        <el-button type="primary" round @click="changeIntroduction">修改</el-button>-->
+<!--      </div>-->
     </div>
        <div class="labels">
       <div class="label_left">
@@ -135,9 +135,9 @@
         <el-input placeholder="请输入内容" v-model="info.userIntroduction" :disabled="true">
         </el-input>
       </div>
-      <div class="operation_button">
-        <el-button type="primary" round @click="changeInitialize">修改</el-button>
-      </div>
+<!--      <div class="operation_button">-->
+<!--        <el-button type="primary" round @click="changeInitialize">修改</el-button>-->
+<!--      </div>-->
     </div>
     <div class="labels">
       <div class="label_left">
@@ -147,9 +147,12 @@
         <el-input placeholder="请输入内容" v-model="info.userPwd" :disabled="true" type="password">
         </el-input>
       </div>
-      <div class="operation_button">
-        <el-button type="primary" round @click="changePwd">修改</el-button>
-      </div>
+<!--      <div class="operation_button">-->
+<!--        <el-button type="primary" round @click="changePwd">修改</el-button>-->
+<!--      </div>-->
+    </div>
+    <div class="operation_button">
+      <el-button type="primary" round @click="changeUserInfo">修改</el-button>
     </div>
   </div>
 </template>

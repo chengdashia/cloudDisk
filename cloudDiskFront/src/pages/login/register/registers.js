@@ -103,6 +103,7 @@ export default {
         } else {
           return false;
         }
+
       });
     },
     async registered() {
@@ -134,7 +135,11 @@ export default {
           message: '注册成功',
           type: 'success'
         });
-
+        setTimeout(() => {
+          this.$router.push({
+            name: 'loginLogin',
+          })
+        }, 1000)
       }
     },
     resetForm(formName) {

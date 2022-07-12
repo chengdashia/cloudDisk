@@ -2,10 +2,10 @@ import { mapState, mapActions } from 'vuex'
 export default {
   name:"loginLogin",
   data() {
-    let validTel = (rule, value, callback) => {
-      let reg = /^[1](([3][0-9])|([4][5-9])|([5][0-3,5-9])|([6][5,6])|([7][0-8])|([8][0-9])|([9][1,8,9]))[0-9]{8}$/
+    let validAccount = (rule,value,callback) => {
+      let reg = new RegExp("(^[1](([3][0-9])|([4][5-9])|([5][0-3,5-9])|([6][5,6])|([7][0-8])|([8][0-9])|([9][1,8,9]))[0-9]{8}$)|(^\\w+((-\\w+)|(\\.\\w+))*\\@[A-Za-z0-9]+((\\.|-)[A-Za-z0-9]+)*\\.[A-Za-z0-9]+$)")
       if (!reg.test(value)) {
-        callback(new Error('手机号不合法'))
+        callback(new Error('手机号\邮箱不合法'))
       } else {
         callback()
       }
@@ -20,13 +20,14 @@ export default {
       time: 59,
       getVerLoad: false,
       ruleForm: {
-        user_tel: '',
+        userAccount:'',
         password: '',
       },
       rules: {
-        user_tel: [
-          { required: true, message: '请输入手机号', trigger: 'blur' },
-          { validator: validTel, trigger: 'blur' }
+
+        userAccount:[
+          { required: true, message: '请输入手机号/邮箱', trigger: 'blur' },
+          { validator:validAccount, trigger: 'blur' }
         ],
         password: [
           { required: true, message: '请输入密码', trigger: 'blur' }
@@ -36,7 +37,7 @@ export default {
     }
   },
   computed:{
-    ...mapState('PersonV',['user_tel','token']),
+    ...mapState('PersonV',['userAccount','token']),
   },
   mounted() {
     this.changeMarginClass()
@@ -48,8 +49,8 @@ export default {
   watch: {
   },
   methods: {
-    ...mapActions('PersonV',{login_tel:'change_tel'}),
-    async login_tel(){
+    ...mapActions('PersonV',{login_userAccount:'change_tel'}),
+    async login_userAccount(){
       let that=this
       const res = await this.$myRequest({
         url: '/userInfo/loginByPassword',
@@ -58,8 +59,8 @@ export default {
           token:""
         },
         data: {
-          user_pwd:this.ruleForm.password,
-          user_tel:this.ruleForm.user_tel
+          userPwd:this.ruleForm.password,
+          userAccount:this.ruleForm.userAccount
        },
       })
       if(res.data.code==200){
@@ -67,9 +68,9 @@ export default {
           message: '登陆成功',
           type: 'success'
         });
-        that.$store.dispatch('PersonV/change_tel',this.ruleForm.user_tel)
+        that.$store.dispatch('PersonV/change_tel',this.ruleForm.userAccount)
         localStorage.setItem('token',res.data.data.tokenValue)
-        localStorage.setItem('user_tel',this.ruleForm.user_tel)
+        localStorage.setItem('userAccount',this.ruleForm.userAccount)
         setTimeout(()=>{
           this.$router.push({
             name:'plaza',
@@ -124,7 +125,7 @@ export default {
       let that=this
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          that.login_tel()
+          that.login_userAccount()
         } else {
           console.log('error submit!!');
           return false;
