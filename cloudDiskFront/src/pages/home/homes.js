@@ -35,7 +35,7 @@ export default {
 
   },
   mounted() {
-    this.user_tel=localStorage.getItem('user_mail')
+    this.user_tel=localStorage.getItem('userAccount')
     console.log("user_tel",this.user_tel)
   },
   methods: {
