@@ -52,3 +52,4 @@
 2022-07-12 13:07:25.504 INFO [http-nio-9081-exec-2] com.example.cloudDisk.common.minio.MinioUtil : bucketName:  file
 2022-07-12 13:09:26.981 INFO [http-nio-9081-exec-6] com.example.cloudDisk.common.minio.MinioUtil : bucketName:  file
 2022-07-12 13:11:10.746 INFO [http-nio-9081-exec-9] com.example.cloudDisk.service.impl.UserInfoServiceImpl : 用户fb5166e3f5a444e594e2f37e8084fbad登录成功
+2022-07-12 13:20:34.725 INFO [http-nio-9081-exec-8] com.example.cloudDisk.service.impl.UserInfoServiceImpl : 用户492c8106f2b549e1a1c2d8baeee3b7cf登录成功
