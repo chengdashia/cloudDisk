@@ -54,6 +54,24 @@ public class UserInfoController {
        return userInfoService.loginByPwd(userAccount,userPwd);
     }
 
+    /**
+     * 使用邮箱验证码登录
+     * @param mailbox  手机号
+     * @param mailCode 邮箱验证码
+     * @return  R
+     */
+    @ApiOperation("使用邮箱验证码登录")
+    @PostMapping("/loginByMail")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType="query",name="mailbox",dataTypeClass = String.class,required=true,value="用户的邮箱"),
+            @ApiImplicitParam(paramType="query",name="mailCode",dataTypeClass = String.class,required=true,value="邮箱验证码")
+    })
+    public R<Object> loginByMail(
+            @RequestParam("mailbox") @NotBlank(message = "用户的邮箱不能为空") String mailbox,
+            @RequestParam("mailCode") @NotBlank(message = "邮箱验证码不能为空") @Size(max = 6,min = 6) String mailCode
+    ){
+        return userInfoService.loginByMail(mailbox,mailCode);
+    }
 
     /**
      * 手机号登录,使用手机号+验证码
@@ -75,24 +93,7 @@ public class UserInfoController {
     }
 
 
-    /**
-     * 使用邮箱验证码登录
-     * @param mailbox  手机号
-     * @param mailCode 邮箱验证码
-     * @return  R
-     */
-    @ApiOperation("使用邮箱验证码登录")
-    @PostMapping("/loginByMail")
-    @ApiImplicitParams({
-            @ApiImplicitParam(paramType="query",name="mailbox",dataTypeClass = String.class,required=true,value="用户的邮箱"),
-            @ApiImplicitParam(paramType="query",name="mailCode",dataTypeClass = String.class,required=true,value="邮箱验证码")
-    })
-    public R<Object> loginByMail(
-            @RequestParam("mailbox") @NotBlank(message = "用户的邮箱不能为空") String mailbox,
-            @RequestParam("mailCode") @NotBlank(message = "邮箱验证码不能为空") @Size(max = 6,min = 6) String mailCode
-    ){
-        return userInfoService.loginByMail(mailbox,mailCode);
-    }
+
 
     /**
      * 注册 通过邮箱
