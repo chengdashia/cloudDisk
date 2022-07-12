@@ -1,5 +1,7 @@
 package com.example.cloudDisk.utils.Constants;
 
+import cn.hutool.core.util.RandomUtil;
+
 /**
  * @author 成大事
  * @date 2022/3/20 16:41
@@ -70,9 +72,9 @@ public class Constant {
 
     //获取下载路径
     public static String getDownLoadPath(String filePath){
-        String localUrl="http://hadoop";
+        String localUrl="http://10.111.43.1";
         String port="9864";
-        String node=Integer.toString((int)(Math.random() *3) + 1);
+        String node=Integer.toString(RandomUtil.randomInt(3,5));
         return  localUrl+node+":"+port+"/webhdfs/v1"+filePath+"?op=OPEN&namenoderpcaddress=hadoop1:8020&offset=0";
     }
 

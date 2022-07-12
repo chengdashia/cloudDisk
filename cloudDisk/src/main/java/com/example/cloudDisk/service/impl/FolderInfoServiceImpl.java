@@ -2,8 +2,9 @@ package com.example.cloudDisk.service.impl;
 
 import cn.dev33.satoken.stp.StpUtil;
 import cn.hutool.core.util.IdUtil;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.cloudDisk.common.result.R;
 import com.example.cloudDisk.common.result.ResultCode;
@@ -29,8 +30,6 @@ import javax.annotation.Resource;
 @Service
 public class FolderInfoServiceImpl extends ServiceImpl<FolderInfoMapper, FolderInfo> implements FolderInfoService {
 
-    @Resource
-    private FolderInfoMapper folderInfoMapper;
 
     @Resource
     private FolderFileInfoMapper folderFileInfoMapper;
@@ -46,10 +45,10 @@ public class FolderInfoServiceImpl extends ServiceImpl<FolderInfoMapper, FolderI
     @Override
     public R<Object> createFolder(String folderName, String parentFolderId, String folderDesc) {
         String uId = (String) StpUtil.getLoginId();
-        FolderInfo folder = folderInfoMapper.selectOne(new QueryWrapper<FolderInfo>()
-                .select("folder_url")
-                .eq("user_id", uId)
-                .eq("folder_id", parentFolderId));
+        FolderInfo folder = this.baseMapper.selectOne(new LambdaQueryWrapper<FolderInfo>()
+                .select(FolderInfo::getFolderUrl)
+                .eq(FolderInfo::getUserId, uId)
+                .eq(FolderInfo::getFolderId, parentFolderId));
 
         String folderUrl = folder.getFolderUrl() + "/" + folderName;
         hdfsUtil.createFolder(folderUrl);
@@ -61,7 +60,7 @@ public class FolderInfoServiceImpl extends ServiceImpl<FolderInfoMapper, FolderI
             folderInfo.setFolderTips(folderDesc);
             folderInfo.setUserId(uId);
             folderInfo.setFolderUrl(folderUrl);
-            int save = folderInfoMapper.insert(folderInfo);
+            int save = this.baseMapper.insert(folderInfo);
             if (save > 0) {
                 //添加文件夹成功
                 //folder_file_info表插入数据
@@ -84,13 +83,14 @@ public class FolderInfoServiceImpl extends ServiceImpl<FolderInfoMapper, FolderI
     @Override
     public R<Object> deleteFolder(String folderId) {
         String uId = (String) StpUtil.getLoginId();
-        FolderInfo folderInfo = folderInfoMapper.selectOne(new QueryWrapper<FolderInfo>()
-                .select("folder_url")
-                .eq("folder_id",folderId)
-                .eq("user_id",uId));
+        FolderInfo folderInfo = this.baseMapper.selectOne(new LambdaQueryWrapper<FolderInfo>()
+                .select(FolderInfo::getFolderUrl)
+                .eq(FolderInfo::getFolderId,folderId)
+                .eq(FolderInfo::getUserId,uId));
         if (folderInfo != null) {
             String folderUrl = folderInfo.getFolderUrl();
-            int delFolderInfo = folderInfoMapper.delete(new QueryWrapper<FolderInfo>().eq("folder_id", folderId));
+            int delFolderInfo = this.baseMapper.delete(new LambdaQueryWrapper<FolderInfo>()
+                    .eq(FolderInfo::getFolderId, folderId));
             if (delFolderInfo > 0) {
                 //删除文件夹成功
                 //删除folder_file_info表数据
@@ -116,15 +116,16 @@ public class FolderInfoServiceImpl extends ServiceImpl<FolderInfoMapper, FolderI
      */
     @Override
     public R<Object> updateFolderName(String folderId, String folderName) {
-        FolderInfo folderInfo = folderInfoMapper.selectOne(new QueryWrapper<FolderInfo>().select("folder_url")
-                .eq("folder_id", folderId));
+        FolderInfo folderInfo = this.baseMapper.selectOne(new LambdaQueryWrapper<FolderInfo>()
+                .select(FolderInfo::getFolderUrl)
+                .eq(FolderInfo::getFolderId, folderId));
         if (folderInfo != null) {
             String folderUrl = folderInfo.getFolderUrl();
             String substring = folderUrl.substring(folderUrl.lastIndexOf("/")+1);
             String newFilePath = folderUrl.replace(substring,folderName);
             folderInfo.setFolderUrl(newFilePath);
             folderInfo.setFolderName(folderName);
-            int i = folderInfoMapper.updateById(folderInfo);
+            int i = this.baseMapper.updateById(folderInfo);
             if (i == 1) {
                 hdfsUtil.folderRename(folderUrl, folderName);
                 return R.ok();
@@ -143,9 +144,9 @@ public class FolderInfoServiceImpl extends ServiceImpl<FolderInfoMapper, FolderI
     @Override
     public R<Object> updateFolderRemark(String folderId, String folderRemark) {
         try {
-            int update = folderInfoMapper.update(null, new UpdateWrapper<FolderInfo>()
-                    .set("file_tips", folderRemark)
-                    .eq("folder_id", folderId));
+            int update = this.baseMapper.update(null, new LambdaUpdateWrapper<FolderInfo>()
+                    .set(FolderInfo::getFolderTips, folderRemark)
+                    .eq(FolderInfo::getFolderId, folderId));
             if (update == 1){
                 return R.ok();
             }
