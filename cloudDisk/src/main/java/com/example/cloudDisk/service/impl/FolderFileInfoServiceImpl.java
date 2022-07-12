@@ -32,8 +32,6 @@ import java.util.stream.Collectors;
 @Service
 public class FolderFileInfoServiceImpl extends ServiceImpl<FolderFileInfoMapper, FolderFileInfo> implements FolderFileInfoService {
 
-    @Resource
-    private FolderFileInfoMapper folderFileInfoMapper;
 
     @Resource
     private FileInfoMapper fileInfoMapper;
@@ -50,7 +48,7 @@ public class FolderFileInfoServiceImpl extends ServiceImpl<FolderFileInfoMapper,
     public R<Object> getFolderFileByFolderId(String folderId) {
         Map<String, Object> map = new HashMap<>(2);
         try {
-            List<FolderFileInfo> folderFileInfoList = folderFileInfoMapper.selectList(new QueryWrapper<FolderFileInfo>().eq("folder_pd", folderId));
+            List<FolderFileInfo> folderFileInfoList = this.baseMapper.selectList(new QueryWrapper<FolderFileInfo>().eq("folder_pd", folderId));
             if (folderFileInfoList != null) {
                 Map<Integer, List<FolderFileInfo>> collect = folderFileInfoList.stream().collect(Collectors.groupingBy(FolderFileInfo::getFolderFileType));
                 List<String> folderIdList ;
