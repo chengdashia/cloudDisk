@@ -52,6 +52,9 @@ public class WebConfig implements WebMvcConfigurer {
                     .notMatch("/fileInfo/getFIieRandomTen")
                     .notMatch("/fileInfo/getFIieTopTen")
                     .notMatch("/fileInfo/getFileInfoListByPage")
+
+                    .notMatch("/fileUpload/*")
+
                     .notMatch("/captcha/*")
                     .notMatch("/mail/*")
                     .check(r-> StpUtil.checkLogin());

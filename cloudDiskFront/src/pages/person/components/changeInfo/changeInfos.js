@@ -1,7 +1,9 @@
 import { mapState, mapActions } from "vuex";
+import axios from "axios";
 export default {
   data() {
     return {
+      userAvatar: "",
       input: "",
       input_user_name: "",
       input_user_introduction: "",
@@ -14,22 +16,40 @@ export default {
       show_pwd: false,
       show_initialize: false,
       imageUrl: "https://ts1.cn.mm.bing.net/th/id/R-C.7c9c4e243fdb9a9ee4ef8543b8775774?rik=aSIWGQ1%2fQpDFcw&riu=http%3a%2f%2fimg.jutoula.com%2f202001%2f13%2f112034433.jpg&ehk=7Ih01mtXJxyOWholMYPxNQFyVqwJhAkQmJkql3lLVfc%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1",
-      myHeaders: {Authorization: localStorage.getItem('_UTK')}, //获取Token
-      action: "" + '',
+      // imageUrl:this.data.msg,
+      // myHeaders: {Authorization: localStorage.getItem('_UTK')}, //获取Token
+      action: "http://localhost:9081/" + 'userinfo/updateUserAvatar',
       // action: "http://172.20.21.92:8084/" + 'file/uploadFile',
     };
   },
   mounted() {
     this.change_active_index("1-2");
+    this.getUserInfo()
   },
   computed: {
-    ...mapState('PersonV', ['info']),
+    ...mapState('PersonV', ['info','token']),
+    headers() {
+      return {
+        "Authorization": localStorage.getItem("token")
+      }
+    }
   },
   methods: {
     ...mapActions('FileV', ["change_active_index"]),
     change(res) {
       this.show_name = true
       console.log(res)
+    },
+    async getUserInfo(){
+      const res = await this.$myRequest({
+        url: '/userInfo/getUserInfo',
+        method: 'post',
+        header:{
+          token:localStorage.getItem('token')
+        },
+        data: {},
+      })
+      this.imageUrl=res.data.data.data.userAvatar
     },
     handleClose(done) {
       this.$confirm('确认关闭？')
@@ -147,7 +167,7 @@ export default {
     changePwd() {
       this.show_pwd = true
     },
-    //
+    // 1头像上传
     handleAvatarSuccess(res, file) {
       this.imageUrl = URL.createObjectURL(file.raw);
     },
@@ -161,6 +181,34 @@ export default {
         this.$message.error("上传头像图片大小不能超过 2MB!");
       }
       return isJPG && isLt2M;
-    }
-  },
+    },
+    uploadImg (f) {
+      console.log(f)
+      this.progressFlag = true
+      let formdata = new FormData()
+      formdata.append('file', f.file)
+      axios({
+        url: 'http://localhost:9081' + '/userInfo/updateUserAvatar',
+        method: 'post',
+        data: formdata,
+        headers: {'Content-Type': 'multipart/form-data',
+          'Accept': '*/*',
+          'token':localStorage.getItem('token')},
+        onUploadProgress: progressEvent => {
+          // progressEvent.loaded:已上传文件大小
+          // progressEvent.total:被上传文件的总大小
+          this.progressPercent = (progressEvent.loaded / progressEvent.total * 100)
+        }
+      }).then(res => {
+        this.userInfo.userAvatar = res.data.msg
+        if (this.progressPercent === 100) {
+          this.progressFlag = false
+          this.progressPercent = 0
+        }
+      }).then(error => {
+        console.log(error)
+      })
+    },
+
+},
 };

@@ -7,6 +7,7 @@ import io.minio.messages.Bucket;
 import io.minio.messages.DeleteObject;
 import io.minio.messages.Item;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -185,11 +186,14 @@ public class MinioUtil {
      * @return boolean
      */
     public  boolean isObjectExist(String bucketName, String objectName) {
-        boolean exist = true;
+        boolean exist = false;
         try {
-            minioClient.statObject(StatObjectArgs.builder().bucket(bucketName).object(objectName).build());
+            minioClient.statObject(
+                    StatObjectArgs.builder().bucket(bucketName).object(objectName).build());
+            exist = true;
+            log.info("isExists:     {} ", exist);
         } catch (Exception e) {
-            exist = false;
+            e.printStackTrace();
         }
         return exist;
     }
@@ -275,8 +279,7 @@ public class MinioUtil {
      * @param recursive 是否递归查找，false：模拟文件夹结构查找
      * @return 二进制流
      */
-    public  Iterable<Result<Item>> listObjects(String bucketName, String prefix,
-                                                     boolean recursive) {
+    public  Iterable<Result<Item>> listObjects(String bucketName, String prefix, boolean recursive) {
         return minioClient.listObjects(
                 ListObjectsArgs.builder()
                         .bucket(bucketName)
@@ -291,11 +294,11 @@ public class MinioUtil {
      * @param file 文件名
      * @throws Exception 异常
      */
-    public  String
-    uploadFile(String bucketName, MultipartFile file,String uId) throws Exception {
+    public  String uploadFile(String bucketName, MultipartFile file,String uId) throws Exception {
 
         String objectName = getUserUploadUrl(uId,file.getOriginalFilename());
         String contentType = file.getContentType();
+        log.info("contentType  :{}",contentType);
         InputStream inputStream = file.getInputStream();
         minioClient.putObject(
                 PutObjectArgs.builder()
@@ -314,8 +317,7 @@ public class MinioUtil {
      * @param objectName 对象名称
      * @param fileName 本地文件路径
      */
-    public  ObjectWriteResponse uploadFile(String bucketName, String objectName,
-                                                 String fileName) throws Exception {
+    public  ObjectWriteResponse uploadFile(String bucketName, String objectName, String fileName) throws Exception {
         return minioClient.uploadObject(
                 UploadObjectArgs.builder()
                         .bucket(bucketName)
@@ -424,7 +426,8 @@ public class MinioUtil {
     public  boolean removeFile(String bucketName, String objectName) {
         boolean isDelete = true;
         try{
-            if(!isObjectExist(bucketName,objectName)){
+            objectName = objectName.replace(StringUtils.chop(getBasisUrl()),"");
+            if(isObjectExist(bucketName,objectName)){
                 minioClient.removeObject(
                         RemoveObjectArgs.builder()
                                 .bucket(bucketName)

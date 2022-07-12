@@ -54,32 +54,38 @@
       </span>
     </el-dialog>
 
-<!--    //用户头像-->
-    <el-upload
-      class="avatar-uploader"
-      :action= action
-      :headers="myHeaders"
-      :show-file-list="false"
-      :on-success="handleAvatarSuccess"
-      :before-upload="beforeAvatarUpload"
-    >
-      <img v-if="imageUrl" :src="imageUrl" class="avatar" />
-      <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-    </el-upload>
-
-<!--&lt;!&ndash;用户头像二    &ndash;&gt;-->
+<!--    1用户头像-->
 <!--    <el-upload-->
-<!--      class="avatar-uploader2"-->
-<!--      :action="/api/toUpdateAvatar?userid=1"-->
+<!--      class="avatar-uploader"-->
+<!--      :action= action-->
+<!--      :headers="myHeaders"-->
 <!--      :show-file-list="false"-->
-<!--      accept=".jpg,.png"-->
 <!--      :on-success="handleAvatarSuccess"-->
+<!--      :before-upload="beforeAvatarUpload"-->
+<!--    >-->
+<!--      <img v-if="imageUrl" :src="imageUrl" class="avatar" />-->
+<!--      <i v-else class="el-icon-plus avatar-uploader-icon"></i>-->
+<!--    </el-upload>-->
+<!--    2头像上传-->
+    <el-avatar  class="avatar" :src="imageUrl"></el-avatar>
+    <el-upload class="img-btn" action="#"
+               :show-file-list="false"  :before-upload="beforeAvatarUpload"
+               :http-request="uploadImg" >
+      <el-button type="success" plain round size="mini" :headers="headers" class="change">更改头像</el-button></el-upload>
+
+<!--&lt;!&ndash;    3头像上传&ndash;&gt;-->
+<!--    <el-upload-->
+<!--      class="avatar-uploader"-->
+<!--      action="http://127.0.0.1:9081/userinfo/updateUserAvatar"-->
+<!--      :show-file-list="false"-->
+<!--      :on-success="handleAvatarSuccess"-->
+<!--      :on-remove="handleRemove"-->
 <!--      :before-upload="beforeAvatarUpload">-->
-<!--      <img v-if="imageUrl" :src="imageUrl" class="avatar2">-->
-<!--      <i v-else class="el-icon-plus avatar-uploader2-icon"></i>-->
+<!--      <img v-if="imageUrl" :src="imageUrl" class="avatar">-->
+<!--      <span v-if="imageUrl" class="el-upload-action" @click.stop="handleRemove()"></span>-->
+<!--      <i v-else class="el-icon-upload2 avatar-uploader-icon" stop></i>-->
 <!--    </el-upload>-->
 
-<!--    <el-avatar src="https://pic2.zhimg.com/v2-6a98838ca01408a817ad4b204a5141bb_r.jpg?source=1940ef5c" :size="100">user</el-avatar>-->
     <div class="labels">
       <div class="label_left">
         手机号:
