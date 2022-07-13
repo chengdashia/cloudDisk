@@ -32,31 +32,25 @@ public class FileHistoryServiceImpl extends ServiceImpl<FileHistoryMapper, FileH
 
 
 
+
     /**
-     * 获取自己浏览的文件信息
-     * @return  R
+     * 添加浏览记录 不使用redis
+     * @param fileId   文件id
+     * @return           R
      */
     @Override
-    public R<Object> getMyFileHistory() {
+    public R<Object> addMyFileHistory(String fileId) {
         String uId = (String) StpUtil.getLoginId();
-        try {
-            List<Map<String, Object>> maps = fileHistoryMapper.selectJoinMaps(new MPJLambdaWrapper<>()
-                    .select(FileHistory::getHistoryId, FileHistory::getViewTime)
-                    .select(FileInfo::getFileName, FileInfo::getFileType, FileInfo::getFileOthers)
-                    .leftJoin(FileInfo.class, FileInfo::getFileId, FileHistory::getFileId)
-                    .eq(FileHistory::getUserId, uId));
-            if(maps != null){
-                return R.ok(maps);
-
-            }
-            return R.error();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return R.error();
+        FileHistory fileHistory = new FileHistory();
+        fileHistory.setHistoryId(IdUtil.fastUUID());
+        fileHistory.setFileId(fileId);
+        fileHistory.setUserId(uId);
+        int insert = fileHistoryMapper.insert(fileHistory);
+        if(insert > 0){
+            return R.ok();
         }
+        return R.error();
     }
-
-
 
     /**
      * 删除自己浏览的文件信息
@@ -82,22 +76,27 @@ public class FileHistoryServiceImpl extends ServiceImpl<FileHistoryMapper, FileH
     }
 
     /**
-     * 添加浏览记录 不使用redis
-     * @param fileId   文件id
-     * @return           R
+     * 获取自己浏览的文件信息
+     * @return  R
      */
     @Override
-    public R<Object> addMyFileHistory(String fileId) {
+    public R<Object> getMyFileHistory() {
         String uId = (String) StpUtil.getLoginId();
-        FileHistory fileHistory = new FileHistory();
-        fileHistory.setHistoryId(IdUtil.fastUUID());
-        fileHistory.setFileId(fileId);
-        fileHistory.setUserId(uId);
-        int insert = fileHistoryMapper.insert(fileHistory);
-        if(insert > 0){
-            return R.ok();
+        try {
+            List<Map<String, Object>> maps = fileHistoryMapper.selectJoinMaps(new MPJLambdaWrapper<>()
+                    .select(FileHistory::getHistoryId, FileHistory::getViewTime)
+                    .select(FileInfo::getFileName, FileInfo::getFileType, FileInfo::getFileOthers)
+                    .leftJoin(FileInfo.class, FileInfo::getFileId, FileHistory::getFileId)
+                    .eq(FileHistory::getUserId, uId));
+            if(maps != null){
+                return R.ok(maps);
+
+            }
+            return R.error();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return R.error();
         }
-        return R.error();
     }
 
 }
