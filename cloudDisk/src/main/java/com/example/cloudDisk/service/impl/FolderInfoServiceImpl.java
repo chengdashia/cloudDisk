@@ -80,34 +80,7 @@ public class FolderInfoServiceImpl extends ServiceImpl<FolderInfoMapper, FolderI
         }
     }
 
-    @Override
-    public R<Object> deleteFolder(String folderId) {
-        String uId = (String) StpUtil.getLoginId();
-        FolderInfo folderInfo = this.baseMapper.selectOne(new LambdaQueryWrapper<FolderInfo>()
-                .select(FolderInfo::getFolderUrl)
-                .eq(FolderInfo::getFolderId,folderId)
-                .eq(FolderInfo::getUserId,uId));
-        if (folderInfo != null) {
-            String folderUrl = folderInfo.getFolderUrl();
-            int delFolderInfo = this.baseMapper.delete(new LambdaQueryWrapper<FolderInfo>()
-                    .eq(FolderInfo::getFolderId, folderId));
-            if (delFolderInfo > 0) {
-                //删除文件夹成功
-                //删除folder_file_info表数据
-                int delFolderFileInfo = folderFileInfoMapper.delete(new QueryWrapper<FolderFileInfo>()
-                        .eq("folder_file_id", folderId));
-                if (delFolderFileInfo == 1) {
-                    //删除文件夹 文件成功
-                     hdfsUtil.deleteFileOrFolder(folderUrl);
-                    return R.ok();
-                }
-                return R.error();
 
-            }
-            return R.error();
-        }
-        return R.error(ResultCode.NOT_EXIST.getCode(), ResultCode.NOT_EXIST.getMessage());
-    }
 
 
     /**
@@ -129,6 +102,35 @@ public class FolderInfoServiceImpl extends ServiceImpl<FolderInfoMapper, FolderI
             if (i == 1) {
                 hdfsUtil.folderRename(folderUrl, folderName);
                 return R.ok();
+            }
+            return R.error();
+        }
+        return R.error(ResultCode.NOT_EXIST.getCode(), ResultCode.NOT_EXIST.getMessage());
+    }
+
+    @Override
+    public R<Object> deleteFolder(String folderId) {
+        String uId = (String) StpUtil.getLoginId();
+        FolderInfo folderInfo = this.baseMapper.selectOne(new LambdaQueryWrapper<FolderInfo>()
+                .select(FolderInfo::getFolderUrl)
+                .eq(FolderInfo::getFolderId,folderId)
+                .eq(FolderInfo::getUserId,uId));
+        if (folderInfo != null) {
+            String folderUrl = folderInfo.getFolderUrl();
+            int delFolderInfo = this.baseMapper.delete(new LambdaQueryWrapper<FolderInfo>()
+                    .eq(FolderInfo::getFolderId, folderId));
+            if (delFolderInfo > 0) {
+                //删除文件夹成功
+                //删除folder_file_info表数据
+                int delFolderFileInfo = folderFileInfoMapper.delete(new QueryWrapper<FolderFileInfo>()
+                        .eq("folder_file_id", folderId));
+                if (delFolderFileInfo == 1) {
+                    //删除文件夹 文件成功
+                    hdfsUtil.deleteFileOrFolder(folderUrl);
+                    return R.ok();
+                }
+                return R.error();
+
             }
             return R.error();
         }
