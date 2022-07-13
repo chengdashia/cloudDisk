@@ -30,24 +30,7 @@ public class FileHistoryServiceImpl extends ServiceImpl<FileHistoryMapper, FileH
     @Resource
     private FileHistoryMapper fileHistoryMapper;
 
-    /**
-     * 添加浏览记录 不使用redis
-     * @param fileId   文件id
-     * @return           R
-     */
-    @Override
-    public R<Object> addMyFileHistory(String fileId) {
-        String uId = (String) StpUtil.getLoginId();
-        FileHistory fileHistory = new FileHistory();
-        fileHistory.setHistoryId(IdUtil.fastUUID());
-        fileHistory.setFileId(fileId);
-        fileHistory.setUserId(uId);
-        int insert = fileHistoryMapper.insert(fileHistory);
-        if(insert > 0){
-            return R.ok();
-        }
-        return R.error();
-    }
+
 
     /**
      * 获取自己浏览的文件信息
@@ -97,4 +80,24 @@ public class FileHistoryServiceImpl extends ServiceImpl<FileHistoryMapper, FileH
             return R.error();
         }
     }
+
+    /**
+     * 添加浏览记录 不使用redis
+     * @param fileId   文件id
+     * @return           R
+     */
+    @Override
+    public R<Object> addMyFileHistory(String fileId) {
+        String uId = (String) StpUtil.getLoginId();
+        FileHistory fileHistory = new FileHistory();
+        fileHistory.setHistoryId(IdUtil.fastUUID());
+        fileHistory.setFileId(fileId);
+        fileHistory.setUserId(uId);
+        int insert = fileHistoryMapper.insert(fileHistory);
+        if(insert > 0){
+            return R.ok();
+        }
+        return R.error();
+    }
+
 }
