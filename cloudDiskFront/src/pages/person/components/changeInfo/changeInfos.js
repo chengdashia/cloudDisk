@@ -198,6 +198,7 @@ export default {
           // progressEvent.loaded:已上传文件大小
           // progressEvent.total:被上传文件的总大小
           this.progressPercent = (progressEvent.loaded / progressEvent.total * 100)
+          window.location.reload()
         }
       }).then(res => {
         this.userInfo.userAvatar = res.data.msg

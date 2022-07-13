@@ -68,7 +68,12 @@ export default {
     this.getRandFile()
     let file=document.getElementsByClassName("file")
     file[0].style.cssText="margin:0"
+    if (location.href.indexOf("#reloaded")<=0) {
+      location.href = location.href + "#reloaded"+"#reloaded";
+      location.reload();
+    }
   },
+
   computed: {
     ...mapState('FileV',['download_url']),
     // file(){
@@ -112,8 +117,9 @@ export default {
           },
           data: { fileId:id },
         })
-      }
+        // window.location.reload()
 
+      }
         this.files=res.data.data.data[0]
         this.fileLables=res.data.data.label[0].labelName
         this.useLabes()
@@ -165,6 +171,7 @@ export default {
     },
     getFileUrl(res) {
       this.downloadFileUrlUse = res
+
     },
     async goFileInfo(res) {
       // this.files=res
