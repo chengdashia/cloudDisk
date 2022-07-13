@@ -33,22 +33,17 @@ public class FileCollectionController {
 
     private final FileCollectionService fileCollectionService;
 
-
     /**
-     * 文件收藏
+     * 获取自己收藏的文件信息
      *
-     * @param fileId 文件id
      * @return R
      */
-    @ApiOperation("文件收藏")
-    @PostMapping("/fileCollection")
-    @ApiImplicitParams({
-            @ApiImplicitParam(paramType = "query", name = "fileId", dataTypeClass = String.class, required = true, value = "文件的id")
-    })
-    public R<Object> fileCollection(
-            @RequestParam("fileId") @NotBlank(message = "文件的id") @NotNull String fileId
+    @ApiOperation("获取自己收藏的文件信息")
+    @PostMapping("/getMyCollection")
+    public R<Object> getMyCollection(
     ) {
-        return fileCollectionService.fileCollection(fileId);
+        // 查询自己收藏的文件
+        return fileCollectionService.getMyCollectionFile();
     }
 
     /**
@@ -69,17 +64,22 @@ public class FileCollectionController {
         return fileCollectionService.delMyFileCollection(fileId);
     }
 
-
     /**
-     * 获取自己收藏的文件信息
+     * 文件收藏
      *
+     * @param fileId 文件id
      * @return R
      */
-    @ApiOperation("获取自己收藏的文件信息")
-    @PostMapping("/getMyCollection")
-    public R<Object> getMyCollection(
+    @ApiOperation("文件收藏")
+    @PostMapping("/fileCollection")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType = "query", name = "fileId", dataTypeClass = String.class, required = true, value = "文件的id")
+    })
+    public R<Object> fileCollection(
+            @RequestParam("fileId") @NotBlank(message = "文件的id") @NotNull String fileId
     ) {
-        // 查询自己收藏的文件
-        return fileCollectionService.getMyCollectionFile();
+        return fileCollectionService.fileCollection(fileId);
     }
+
+
 }
