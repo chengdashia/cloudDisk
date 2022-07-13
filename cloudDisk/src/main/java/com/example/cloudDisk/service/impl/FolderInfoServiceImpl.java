@@ -82,8 +82,53 @@ public class FolderInfoServiceImpl extends ServiceImpl<FolderInfoMapper, FolderI
 
 
 
+    /**
+     * 更改文件夹备注
+     * @param folderId 文件夹id
+     * @param folderRemark 文件夹的备注
+     * @return  R
+     */
+    @Override
+    public R<Object> updateFolderRemark(String folderId, String folderRemark) {
+        try {
+            int update = this.baseMapper.update(null, new LambdaUpdateWrapper<FolderInfo>()
+                    .set(FolderInfo::getFolderTips, folderRemark)
+                    .eq(FolderInfo::getFolderId, folderId));
+            if (update == 1){
+                return R.ok();
+            }
+            return R.error();
 
+        }catch (Exception e){
+            e.printStackTrace();
+            return R.error();
+        }
+    }
 
+    /**
+     * 更改文件夹名称
+     * @return  R
+     */
+    @Override
+    public R<Object> updateFolderName(String folderId, String folderName) {
+        FolderInfo folderInfo = this.baseMapper.selectOne(new LambdaQueryWrapper<FolderInfo>()
+                .select(FolderInfo::getFolderUrl)
+                .eq(FolderInfo::getFolderId, folderId));
+        if (folderInfo != null) {
+            String folderUrl = folderInfo.getFolderUrl();
+            String substring = folderUrl.substring(folderUrl.lastIndexOf("/")+1);
+            String newFilePath = folderUrl.replace(substring,folderName);
+            folderInfo.setFolderUrl(newFilePath);
+            folderInfo.setFolderName(folderName);
+            int i = this.baseMapper.updateById(folderInfo);
+            if (i == 1) {
+                hdfsUtil.folderRename(folderUrl, folderName);
+                return R.ok();
+            }
+            return R.error();
+        }
+        return R.error(ResultCode.NOT_EXIST.getCode(), ResultCode.NOT_EXIST.getMessage());
+    }
 
     @Override
     public R<Object> deleteFolder(String folderId) {
@@ -114,51 +159,4 @@ public class FolderInfoServiceImpl extends ServiceImpl<FolderInfoMapper, FolderI
         return R.error(ResultCode.NOT_EXIST.getCode(), ResultCode.NOT_EXIST.getMessage());
     }
 
-    /**
-     * 更改文件夹名称
-     * @return  R
-     */
-    @Override
-    public R<Object> updateFolderName(String folderId, String folderName) {
-        FolderInfo folderInfo = this.baseMapper.selectOne(new LambdaQueryWrapper<FolderInfo>()
-                .select(FolderInfo::getFolderUrl)
-                .eq(FolderInfo::getFolderId, folderId));
-        if (folderInfo != null) {
-            String folderUrl = folderInfo.getFolderUrl();
-            String substring = folderUrl.substring(folderUrl.lastIndexOf("/")+1);
-            String newFilePath = folderUrl.replace(substring,folderName);
-            folderInfo.setFolderUrl(newFilePath);
-            folderInfo.setFolderName(folderName);
-            int i = this.baseMapper.updateById(folderInfo);
-            if (i == 1) {
-                hdfsUtil.folderRename(folderUrl, folderName);
-                return R.ok();
-            }
-            return R.error();
-        }
-        return R.error(ResultCode.NOT_EXIST.getCode(), ResultCode.NOT_EXIST.getMessage());
-    }
-
-    /**
-     * 更改文件夹备注
-     * @param folderId 文件夹id
-     * @param folderRemark 文件夹的备注
-     * @return  R
-     */
-    @Override
-    public R<Object> updateFolderRemark(String folderId, String folderRemark) {
-        try {
-            int update = this.baseMapper.update(null, new LambdaUpdateWrapper<FolderInfo>()
-                    .set(FolderInfo::getFolderTips, folderRemark)
-                    .eq(FolderInfo::getFolderId, folderId));
-            if (update == 1){
-                return R.ok();
-            }
-            return R.error();
-
-        }catch (Exception e){
-            e.printStackTrace();
-            return R.error();
-        }
-    }
 }
