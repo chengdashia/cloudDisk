@@ -33,18 +33,7 @@ public class FileCollectionController {
 
     private final FileCollectionService fileCollectionService;
 
-    /**
-     * 获取自己收藏的文件信息
-     *
-     * @return R
-     */
-    @ApiOperation("获取自己收藏的文件信息")
-    @PostMapping("/getMyCollection")
-    public R<Object> getMyCollection(
-    ) {
-        // 查询自己收藏的文件
-        return fileCollectionService.getMyCollectionFile();
-    }
+
 
     /**
      * 删除自己收藏的文件信息
@@ -64,6 +53,7 @@ public class FileCollectionController {
         return fileCollectionService.delMyFileCollection(fileId);
     }
 
+
     /**
      * 文件收藏
      *
@@ -81,5 +71,17 @@ public class FileCollectionController {
         return fileCollectionService.fileCollection(fileId);
     }
 
+    /**
+     * 获取自己收藏的文件信息
+     *
+     * @return R
+     */
+    @ApiOperation("获取自己收藏的文件信息")
+    @PostMapping("/getMyCollection")
+    public R<Object> getMyCollection(
+    ) {
+        // 查询自己收藏的文件
+        return fileCollectionService.getMyCollectionFile();
+    }
 
 }
