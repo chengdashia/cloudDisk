@@ -33,8 +33,6 @@ public class FileCollectionController {
 
     private final FileCollectionService fileCollectionService;
 
-
-
     /**
      * 删除自己收藏的文件信息
      *
