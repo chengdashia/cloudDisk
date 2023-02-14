@@ -30,9 +30,7 @@ import javax.validation.constraints.NotNull;
 @Validated
 @RequiredArgsConstructor(onConstructor_ = @Autowired)
 public class FileCollectionController {
-
     private final FileCollectionService fileCollectionService;
-
     /**
      * 删除自己收藏的文件信息
      *
